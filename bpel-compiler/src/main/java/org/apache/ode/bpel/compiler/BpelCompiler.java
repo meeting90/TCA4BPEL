@@ -137,16 +137,16 @@ public abstract class BpelCompiler implements CompilerContext {
     protected static final Log __log = LogFactory.getLog(BpelCompiler.class);
 
     /** Standardized compiler messages. */
-    private static final CommonCompilationMessages __cmsgs = MessageBundle.getMessages(CommonCompilationMessages.class);
+    protected static final CommonCompilationMessages __cmsgs = MessageBundle.getMessages(CommonCompilationMessages.class);
 
-    private org.apache.ode.bpel.compiler.bom.Process _processDef;
+    protected org.apache.ode.bpel.compiler.bom.Process _processDef;
 
-    private Date _generatedDate;
+    protected Date _generatedDate;
 
     @SuppressWarnings("unchecked")
     private HashMap<Class, ActivityGenerator> _actGenerators = new HashMap<Class, ActivityGenerator>();
 
-    private boolean _supressJoinFailure = false;
+    protected boolean _supressJoinFailure = false;
 
     /** Are we currently in an atomic scope context? */
     private boolean _atomicScope = false;
@@ -155,7 +155,7 @@ public abstract class BpelCompiler implements CompilerContext {
     private boolean _isolatedScope = false;
 
     /** Syntactic scope stack. */
-    private StructureStack _structureStack = new StructureStack();
+    protected StructureStack _structureStack = new StructureStack();
 
     /** Fault/compensate recovery stack. */
     private Stack<OScope> _recoveryContextStack = new Stack<OScope>();
@@ -163,13 +163,13 @@ public abstract class BpelCompiler implements CompilerContext {
     /** History of compiled activities */
     private List<OActivity> _compiledActivities = new ArrayList<OActivity>();
 
-    private OProcess _oprocess;
+    protected OProcess _oprocess;
 
     private ResourceFinder _resourceFinder;
 
-    private WSDLRegistry _wsdlRegistry;
+    protected WSDLRegistry _wsdlRegistry;
 
-    private final List<CompilationMessage> _errors = new ArrayList<CompilationMessage>();
+    protected final List<CompilationMessage> _errors = new ArrayList<CompilationMessage>();
 
     private CompileListener _compileListener;
 
@@ -177,15 +177,15 @@ public abstract class BpelCompiler implements CompilerContext {
 
     private final HashMap<String, OExpressionLanguage> _expLanguages = new HashMap<String, OExpressionLanguage>();
 
-    private ExpressionValidatorFactory _expressionValidatorFactory = new ExpressionValidatorFactory(System.getProperties());
+    protected ExpressionValidatorFactory _expressionValidatorFactory = new ExpressionValidatorFactory(System.getProperties());
 
     private WSDLFactory4BPEL _wsdlFactory;
 
-    private OExpressionLanguage _konstExprLang;
+    protected OExpressionLanguage _konstExprLang;
 
-    private Map<QName, Node> _customProcessProperties;
+    public Map<QName, Node> _customProcessProperties;
 
-    private URI _processURI;
+    protected URI _processURI;
 
     BpelCompiler(WSDLFactory4BPEL wsdlFactory) {
         _wsdlFactory = wsdlFactory;
@@ -796,7 +796,7 @@ public abstract class BpelCompiler implements CompilerContext {
         return _oprocess;
     }
 
-    private OConstants makeConstants() {
+    protected OConstants makeConstants() {
         OConstants constants = new OConstants(_oprocess);
         constants.qnConflictingReceive = new QName(getBpwsNamespace(), "conflictingReceive");
         constants.qnConflictingRequest = new QName(getBpwsNamespace(), "conflictingRequest");
@@ -870,7 +870,7 @@ public abstract class BpelCompiler implements CompilerContext {
      * @param imprt
      *            BOM representation of the import
      */
-    private void compile(URI current, Import imprt) {
+    protected void compile(URI current, Import imprt) {
         try {
             if (imprt.getImportType() == null)
                 throw new CompilationException(__cmsgs.errUnspecifiedImportType().setSource(imprt));
@@ -989,7 +989,7 @@ public abstract class BpelCompiler implements CompilerContext {
         return source.getType().getLocalPart() + "-" + type + "-line-" + source.getLineNo();
     }
 
-    private OProcess.OProperty compile(Property property) {
+    protected OProcess.OProperty compile(Property property) {
         OProcess.OProperty oproperty = new OProcess.OProperty(_oprocess);
         oproperty.name = property.getName();
         oproperty.debugInfo = createDebugInfo(_processDef, "Property " + property.getName());
@@ -1006,7 +1006,7 @@ public abstract class BpelCompiler implements CompilerContext {
         return oproperty;
     }
 
-    private OProcess.OPropertyAlias compile(PropertyAlias src) {
+    protected OProcess.OPropertyAlias compile(PropertyAlias src) {
         OProcess.OProperty property = resolveProperty(src.getPropertyName());
 
         OProcess.OPropertyAlias alias = new OProcess.OPropertyAlias(_oprocess);
@@ -1153,7 +1153,7 @@ public abstract class BpelCompiler implements CompilerContext {
         }
     }
 
-    private OScope compileScope(final OScope oscope, final Scope src, final Runnable init) {
+    protected OScope compileScope(final OScope oscope, final Scope src, final Runnable init) {
         if (oscope.name == null)
             throw new IllegalArgumentException("Unnamed scope:" + src);
 
@@ -1403,7 +1403,7 @@ public abstract class BpelCompiler implements CompilerContext {
         oscope.eventHandler.onMessages.add(oevent);
     }
 
-    private DebugInfo createDebugInfo(BpelObject bpelObject, String description) {
+    protected DebugInfo createDebugInfo(BpelObject bpelObject, String description) {
         int lineNo = bpelObject == null ? -1 : bpelObject.getLineNo();
         String str = description == null && bpelObject != null ? bpelObject.toString() : null;
         Map<QName, Object> extElmt = bpelObject == null ? null : bpelObject.getExtensibilityElements();
@@ -1774,7 +1774,7 @@ public abstract class BpelCompiler implements CompilerContext {
         return oextvar;
     }
 
-    private static class StructureStack {
+    public static class StructureStack {
         private Stack<OActivity> _stack = new Stack<OActivity>();
         private Map<OActivity,BpelObject> _srcMap = new HashMap<OActivity,BpelObject>();
 

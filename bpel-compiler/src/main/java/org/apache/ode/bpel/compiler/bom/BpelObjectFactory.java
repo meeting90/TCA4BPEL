@@ -49,9 +49,9 @@ public class BpelObjectFactory {
     public static final String WSDL = "http://schemas.xmlsoap.org/wsdl/";
     public static final String XML = "http://www.w3.org/2001/xml.xsd";
 
-    private final Map<QName, Class<? extends BpelObject>> _mappings = new HashMap<QName, Class<? extends BpelObject>>();
+    protected final Map<QName, Class<? extends BpelObject>> _mappings = new HashMap<QName, Class<? extends BpelObject>>();
 
-    private Class[] __CTOR = { Element.class };
+    protected Class[] __CTOR = { Element.class };
 
     public BpelObjectFactory() {
 

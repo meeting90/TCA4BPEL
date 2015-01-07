@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<aspect name="helloworld" 
+targetNamespace="http://cs.nju.edu.cn/tcao4bpel/2.0/aspect" 
+bpelurl="test.bpel"
+xmlns="http://cs.nju.edu.cn/tcao4bpel/2.0/aspect"
+xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+>
+	<pointcut>
+		<preCondition>
+			<place type="finished">activity(name = "searchFlight")</place>
+		</preCondition>
+		<postCondition >
+			<place type="finished">activity(type = "reply")</place>
+		</postCondition>
+	</pointcut>
+	<advice name="logging" 
+	targetNamespace="http://cs.nju.edu.cn/tcao4bpel/2.0/aspect/example" 
+	xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:test="http://cn.edu.nju.cs/ctao4bpel/aspect/unit-test.wsdl"
+    queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"
+    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"
+	>
+		<bpel:import location="HelloWorld2.wsdl" namespace="http://cn.edu.nju.cs/ctao4bpel/aspect/unit-test.wsdl" importType="http://schemas.xmlsoap.org/wsdl/" />
+
+   <bpel:partnerLinks>
+      <bpel:partnerLink name="helloPartnerLink" 
+         partnerLinkType="test:HelloPartnerLinkType" 
+         myRole="me" />
+   </bpel:partnerLinks>
+    
+   <bpel:variables>
+     <bpel:variable name="myVar" messageType="test:HelloMessage"/>
+     <bpel:variable name="tmpVar" type="xsd:string"/>
+     <bpel:variable name="tmpDate" type="xsd:dateTime"/>
+   </bpel:variables>
+        
+   <bpel:sequence>   
+       <bpel:receive 
+          name="start"
+          partnerLink="helloPartnerLink"
+          portType="test:HelloPortType"
+          operation="hello"
+          variable="myVar"
+          createInstance="yes"/>
+
+      <bpel:assign name="assign1">
+         <bpel:copy>
+            <bpel:from variable="myVar" part="TestPart"/>
+            <bpel:to variable="tmpVar"/>
+         </bpel:copy>
+         <bpel:copy>
+             <bpel:from>concat($tmpVar,' World')</bpel:from>
+             <bpel:to variable="myVar" part="TestPart"/>
+         </bpel:copy>
+      </bpel:assign>
+       <bpel:reply name="end"  
+              partnerLink="helloPartnerLink"
+              portType="test:HelloPortType" 
+              operation="hello"
+              variable="myVar"/>
+   </bpel:sequence>
+	</advice>
+</aspect>

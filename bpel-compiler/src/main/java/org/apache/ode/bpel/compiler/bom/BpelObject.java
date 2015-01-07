@@ -54,7 +54,7 @@ public class BpelObject implements SourceLocation {
     private List<BpelObject> _children = null;
 
     /** URI of the source document. */
-    private URI _docURI;
+    protected URI _docURI;
 
 
     public BpelObject(Element el) {

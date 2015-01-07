@@ -147,7 +147,7 @@ public class Serializer  {
         return oprocess;
     }
 
-    static class CustomObjectOutputStream extends ObjectOutputStream {
+    public static class CustomObjectOutputStream extends ObjectOutputStream {
 
         /**
          * @param out
@@ -168,7 +168,7 @@ public class Serializer  {
 
     }
 
-    static class CustomObjectInputStream extends ObjectInputStream {
+    public static class CustomObjectInputStream extends ObjectInputStream {
 
         /**
          * @param in
