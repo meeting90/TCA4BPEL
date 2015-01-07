@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+xmlns:ext="http://ode.apache.org/activityRecovery" 
+targetNamespace="http://cn.nju.edu.cs/ctao4bpel/schemas/dd/2015/01" 
+xmlns:tns="http://cn.nju.edu.cs/ctao4bpel/schemas/dd/2015/01"
+xmlns:dd="http://www.apache.org/ode/schemas/dd/2007/03"
+elementFormDefault="qualified">
+
+ <import namespace="http://www.apache.org/ode/schemas/dd/2007/03" schemaLocation="dd.xsd"></import>
+	<element name ="deployAspect" id="deployAspect" type="tns:tDeploymentAspect">
+	</element>
+	<complexType name="tDeploymentAspect">
+		<sequence>
+			<element name="aspect" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="scope" minOccurs="0" maxOccurs="1" type ="string">
+							<annotation>
+								<documentation>Scope for this aspect</documentation>
+							</annotation>
+						</element>
+						<element name="invoke" minOccurs="0" maxOccurs="unbounded" type="dd:tInvoke"></element>
+					</sequence>
+					<attribute name="name" type="QName" use="required"></attribute>
+					<attribute name ="fileName" type="string" use="optional"></attribute>
+					
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>
