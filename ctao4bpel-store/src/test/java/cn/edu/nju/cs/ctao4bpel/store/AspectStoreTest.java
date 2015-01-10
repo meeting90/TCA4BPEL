@@ -9,7 +9,12 @@ import javax.xml.namespace.QName;
 import org.junit.Test;
 
 import junit.framework.TestCase;
-
+/**
+ * 
+ * @author Mingzhu Yuan @ cs.nju.edu.cn
+ * 2015-1-7 2015
+ * AspectStoreTest.java
+ */
 public class AspectStoreTest extends TestCase{
 	
 	AspectStoreImpl _as;

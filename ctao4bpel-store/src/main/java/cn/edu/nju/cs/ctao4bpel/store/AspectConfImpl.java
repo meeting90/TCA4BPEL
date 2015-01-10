@@ -18,7 +18,12 @@ import org.apache.ode.bpel.o.OFailureHandling;
 
 import cn.edu.nju.cs.ctao4bpel.dd.TDeploymentAspect;
 import cn.edu.nju.cs.ctao4bpel.o.OAspect;
-
+/**
+ * 
+ * @author Mingzhu Yuan @ cs.nju.edu.cn
+ * 2015-1-7 2015
+ * AspectConfImpl.java
+ */
 public class AspectConfImpl {
 	private static final Log log = LogFactory.getLog(AspectConfImpl.class);
 	private final Date _deployDate; 

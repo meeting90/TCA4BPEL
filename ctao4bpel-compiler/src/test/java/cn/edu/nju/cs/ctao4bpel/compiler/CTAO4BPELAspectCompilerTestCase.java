@@ -10,7 +10,12 @@ import cn.edu.nju.cs.ctao4bpel.o.OPlace;
 import cn.edu.nju.cs.ctao4bpel.o.OPointcut;
 import cn.edu.nju.cs.ctao4bpel.o.OPostCondition;
 import cn.edu.nju.cs.ctao4bpel.o.OPreCondition;
-
+/**
+ * 
+ * @author Mingzhu Yuan @ cs.nju.edu.cn
+ * 2015-1-7 2015
+ * CTAO4BPELAspectCompilerTestCase.java
+ */
 public class CTAO4BPELAspectCompilerTestCase extends TestCase {
 
 	

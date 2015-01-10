@@ -39,7 +39,12 @@ import cn.edu.nju.cs.ctao4bpel.compiler.CTAO4BPELAspectCompiler;
 import cn.edu.nju.cs.ctao4bpel.dd.DeployAspectDocument;
 import cn.edu.nju.cs.ctao4bpel.o.AspectSerializer;
 import cn.edu.nju.cs.ctao4bpel.o.OAspect;
-
+/**
+ * 
+ * @author Mingzhu Yuan @ cs.nju.edu.cn
+ * 2015-1-7 2015
+ * AspectDeploymentUnitDir.java
+ */
 public class AspectDeploymentUnitDir {
 	private static Log log = LogFactory.getLog(AspectDeploymentUnitDir.class);
 	private File _duDir;

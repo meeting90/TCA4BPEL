@@ -15,6 +15,12 @@ import cn.edu.nju.cs.ctao4bpel.compiler.bom.PostCondition;
 import cn.edu.nju.cs.ctao4bpel.compiler.bom.PreCondition;
 
 import junit.framework.TestCase;
+/**
+ * 
+ * @author Mingzhu Yuan @ cs.nju.edu.cn
+ * 2015-1-7 2015
+ * AspectObjectFactoryTestCase.java
+ */
 public class AspectObjectFactoryTestCase extends TestCase{
 	
 	private AspectObjectFactory _factory;

@@ -8,7 +8,12 @@ import org.apache.ode.store.DocumentRegistry;
 import org.junit.Test;
 
 import junit.framework.TestCase;
-
+/**
+ * 
+ * @author Mingzhu Yuan @ cs.nju.edu.cn
+ * 2015-1-7 2015
+ * AspectDeploymentUnitTest.java
+ */
 
 public class AspectDeploymentUnitTest extends TestCase{
 	AspectDeploymentUnitDir du;

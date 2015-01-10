@@ -12,7 +12,12 @@ import javax.xml.namespace.QName;
 
 import org.apache.ode.bpel.o.Serializer;
 
-
+/**
+ * 
+ * @author Mingzhu Yuan @ cs.nju.edu.cn
+ * 2015-1-7 2015
+ * AspectSerializer.java
+ */
 public class AspectSerializer extends  Serializer{
 	
 	public AspectSerializer(){

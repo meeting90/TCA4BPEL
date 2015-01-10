@@ -23,7 +23,12 @@ import org.apache.ode.utils.msg.MessageBundle;
 import cn.edu.nju.cs.ctao4bpel.dd.DeployAspectDocument;
 import cn.edu.nju.cs.ctao4bpel.dd.TDeploymentAspect;
 import cn.edu.nju.cs.ctao4bpel.o.OAspect;
-
+/**
+ * 
+ * @author Mingzhu Yuan @ cs.nju.edu.cn
+ * 2015-1-7 2015
+ * AspectStoreImpl.java
+ */
 public class AspectStoreImpl  implements AspectStore{
 	
 	private static final Log _log = LogFactory.getLog(AspectStoreImpl.class);

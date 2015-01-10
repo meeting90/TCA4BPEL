@@ -6,7 +6,12 @@ import java.util.List;
 
 import javax.xml.namespace.QName;
 
-
+/**
+ * 
+ * @author Mingzhu Yuan @ cs.nju.edu.cn
+ * 2015-1-7 2015
+ * OAspect.java
+ */
 public class OAspect implements Serializable{
 
 	private static final long serialVersionUID = -1028076817167548777L;

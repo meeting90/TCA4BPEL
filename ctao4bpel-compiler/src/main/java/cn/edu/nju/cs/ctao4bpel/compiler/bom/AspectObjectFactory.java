@@ -22,7 +22,12 @@ import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-
+/**
+ * 
+ * @author Mingzhu Yuan @ cs.nju.edu.cn
+ * 2015-1-7 2015
+ * AspectObjectFactory.java
+ */
 public class AspectObjectFactory extends BpelObjectFactory{
 	private static AspectObjectFactory _instance= new AspectObjectFactory();
 	private static final Log _log=LogFactory.getLog(BpelObjectFactory.class);

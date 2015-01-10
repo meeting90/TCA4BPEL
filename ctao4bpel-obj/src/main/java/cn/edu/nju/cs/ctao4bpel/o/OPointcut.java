@@ -1,7 +1,12 @@
 package cn.edu.nju.cs.ctao4bpel.o;
 
 import java.io.Serializable;
-
+/**
+ * 
+ * @author Mingzhu Yuan @ cs.nju.edu.cn
+ * 2015-1-7 2015
+ * OPointcut.java
+ */
 public class OPointcut implements  Serializable{
 
 

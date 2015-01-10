@@ -11,6 +11,8 @@ import java.util.Map;
 
 import javax.xml.namespace.QName;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.ode.bpel.compiler.BpelCompiler20;
 import org.apache.ode.bpel.compiler.DefaultResourceFinder;
 import org.apache.ode.bpel.compiler.ResourceFinder;
@@ -19,13 +21,11 @@ import org.apache.ode.bpel.compiler.api.CompilationMessage;
 import org.apache.ode.bpel.compiler.bom.Bpel11QNames;
 import org.apache.ode.bpel.compiler.bom.Bpel20QNames;
 import org.apache.ode.bpel.compiler.bom.Import;
-import org.apache.ode.bpel.compiler.bom.Process;
 import org.apache.ode.bpel.compiler.bom.Property;
 import org.apache.ode.bpel.compiler.bom.PropertyAlias;
 import org.apache.ode.bpel.compiler.wsdl.Definition4BPEL;
 import org.apache.ode.bpel.o.OConstantVarType;
 import org.apache.ode.bpel.o.OExpressionLanguage;
-import org.apache.ode.bpel.o.OProcess;
 import org.apache.ode.bpel.o.OScope;
 import org.apache.ode.bpel.o.OVarType;
 import org.apache.ode.store.ProcessStoreImpl;
@@ -39,7 +39,6 @@ import org.xml.sax.SAXException;
 import cn.edu.nju.cs.ctao4bpel.compiler.bom.Advice;
 import cn.edu.nju.cs.ctao4bpel.compiler.bom.Aspect;
 import cn.edu.nju.cs.ctao4bpel.compiler.bom.AspectObjectFactory;
-import cn.edu.nju.cs.ctao4bpel.compiler.bom.Condition;
 import cn.edu.nju.cs.ctao4bpel.compiler.bom.Place;
 import cn.edu.nju.cs.ctao4bpel.compiler.bom.Pointcut;
 import cn.edu.nju.cs.ctao4bpel.compiler.bom.PostCondition;
@@ -52,8 +51,14 @@ import cn.edu.nju.cs.ctao4bpel.o.OPointcut;
 import cn.edu.nju.cs.ctao4bpel.o.OPostCondition;
 import cn.edu.nju.cs.ctao4bpel.o.OPreCondition;
 
+/**
+ * 
+ * @author Mingzhu Yuan @ cs.nju.edu.cn
+ * 2015-1-7 2015
+ * CTAO4BPELAspectCompiler.java
+ */
 public class CTAO4BPELAspectCompiler extends BpelCompiler20{
-	
+	private static final Log log = LogFactory.getLog(CTAO4BPELAspectCompiler.class);
 	private ProcessStoreImpl processStore;
 
 	public CTAO4BPELAspectCompiler(ProcessStoreImpl processStore) throws Exception {

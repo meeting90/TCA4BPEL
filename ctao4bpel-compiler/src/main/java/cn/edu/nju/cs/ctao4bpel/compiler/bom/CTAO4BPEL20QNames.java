@@ -1,7 +1,12 @@
 package cn.edu.nju.cs.ctao4bpel.compiler.bom;
 
 import javax.xml.namespace.QName;
-
+/**
+ * 
+ * @author Mingzhu Yuan @ cs.nju.edu.cn
+ * 2015-1-7 2015
+ * CTAO4BPEL20QNames.java
+ */
 public class CTAO4BPEL20QNames {
 	public static final String NS_CTAO4BPEL2_0_ASPECT="http://cs.nju.edu.cn/tcao4bpel/2.0/aspect";
 	public static final QName ASPECT = newFinalQName("aspect");
