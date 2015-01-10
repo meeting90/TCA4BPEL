@@ -28,7 +28,7 @@ public final class ActivityFunctionStruct {
 	public static final String NAME_KEY="name";
 	public static final String TYPE_KEY="type";
 	public static final String OPERATION_KEY="operation";
-	public static final String PARTNERLINK_KEY="partnerlink";
+	public static final String PARTNERLINK_KEY="partnerLink";
 	
 	
 	

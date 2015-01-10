@@ -1,7 +1,7 @@
 package cn.edu.nju.cs.ctao4bpel.alang;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -47,10 +47,18 @@ public class ActivityFunctionImpl implements ActivityFunction{
 	private static final String commaSymbol = ",";
 	private static final String equalSymbol="=";
 	
+	private List<Activity> _activities = null;
+	private Process _process;
+
+	
 	enum MatchResult{
 		NotSpecified,
 		NotMatched,
 		Matched
+	}
+	public ActivityFunctionImpl(Process process){
+		
+		this._process = process;
 	}
 	@Override
 	public ActivityFunctionStruct interpreter(String expression)
@@ -71,17 +79,17 @@ public class ActivityFunctionImpl implements ActivityFunction{
 						String []pair = equation.split(equalSymbol);
 						if(pair.length != 2)
 							throw new InterpreterException(_imsgs.msgSyntaxErr());
-						String key = pair[0].trim().toLowerCase();
+						String key = pair[0].trim();
 						String value = pair[1].replace("\"", "").trim();
-						if(key.equals(ActivityFunctionStruct.XPATH_KEY)){
+						if(key.equalsIgnoreCase(ActivityFunctionStruct.XPATH_KEY)){
 							xpath = new ActivityFunctionStruct.Xpath(value);
-						}else if(key.equals(ActivityFunctionStruct.NAME_KEY)){
+						}else if(key.equalsIgnoreCase(ActivityFunctionStruct.NAME_KEY)){
 							name = new ActivityFunctionStruct.NamePattern(value);
-						}else if(key.equals(ActivityFunctionStruct.TYPE_KEY)){
+						}else if(key.equalsIgnoreCase(ActivityFunctionStruct.TYPE_KEY)){
 							type= new ActivityFunctionStruct.TypePattern(value);
-						}else if(key.equals(ActivityFunctionStruct.OPERATION_KEY)){
+						}else if(key.equalsIgnoreCase(ActivityFunctionStruct.OPERATION_KEY)){
 							operation = new ActivityFunctionStruct.OperationPattern(value);
-						}else if(key.equals(ActivityFunctionStruct.PARTNERLINK_KEY)){
+						}else if(key.equalsIgnoreCase(ActivityFunctionStruct.PARTNERLINK_KEY)){
 							partnerlink= new ActivityFunctionStruct.PartnerlinkPattern(value);
 						}else{
 							throw new InterpreterException(_imsgs.msgParamErr());
@@ -105,26 +113,29 @@ public class ActivityFunctionImpl implements ActivityFunction{
 	}
 
 	@Override
-	public Collection<Activity> getActivities(ActivityFunctionStruct struct, 
-			Process process) {
+	public List<Activity> getActivities(ActivityFunctionStruct struct) {
+		List<Activity> result =null;
 		try{
 			if(struct.getXpath()!=null){
-				return getActivitiesWithXpath(struct, process);
+				result= getActivitiesWithXpath(struct);
 			}else{
-				return getActivitiesWithOutXpath(struct, process);
+				result= getActivitiesWithOutXpath(struct);
 			}
+			log.debug(result );
+			return result;
 		}catch(Exception e){
+			e.printStackTrace();
 			throw new InterpreterException(e);
 		}
 	}
 	
-	private Collection<Activity> getActivitiesWithXpath(ActivityFunctionStruct struct, 
-			Process process) throws XPathExpressionException{
+	private List<Activity> getActivitiesWithXpath(ActivityFunctionStruct struct) throws XPathExpressionException{
 		
 		assert(struct.getXpath() != null);
-		Element element = struct.getXpath().getElement(process);
+		Element element = struct.getXpath().getElement(_process);
 		if(element == null)
-			throw new InterpreterException(_imsgs.msgMatchFailed(struct.getXpath(), element));
+			throw new InterpreterException(_imsgs.msgMatchFailed(struct.getXpath(), null));
+		Activity activity = element2Activity(element);
 		List<ActivityFunctionStruct.StructElement> ses = struct.getStructElement();
 		for(ActivityFunctionStruct.StructElement se: ses){
 			if(se instanceof ActivityFunctionStruct.Xpath)
@@ -132,65 +143,82 @@ public class ActivityFunctionImpl implements ActivityFunction{
 			MatchResult matchResult = matchRegular(element, se);
 			switch (matchResult) {
 			case NotSpecified:
-				throw new InterpreterException(_imsgs.msgAttrNotSpecified(se.key, element));
+				throw new InterpreterException(_imsgs.msgAttrNotSpecified(se.key, activity.toString()));
 			case NotMatched:
-				throw new InterpreterException(_imsgs.msgMatchFailed(se, element));
+				throw new InterpreterException(_imsgs.msgMatchFailed(se, activity.toString()));
 			case Matched:
 				break;
 			}
 		}
 		
 	
-		Activity result = element2Activity(element);
+	
 		
-		Collection<Activity> activities = Collections.singletonList(result);
+		List<Activity> activities = new ArrayList<Activity>();
+		activities.add(activity);
 		return activities;
 	}
 	
 	
 	
-	private Collection<Activity> getActivitiesWithOutXpath(ActivityFunctionStruct struct, Process process){
-		Collection<Activity> result = Collections.emptyList();
-		Collection<Activity> candidate=Collections.emptyList();
-		Activity root = process.getRootActivity();
-		candidate.add(root);
-		List<OnAlarm> alarms = process.getAlarms();
-		for(OnAlarm alarm: alarms)
-			candidate.add(alarm.getActivity());
-		List<OnEvent> events =process.getEvents();
-		for(OnEvent event: events)
-			candidate.add(event.getActivity());
-		FaultHandler fh = process.getFaultHandler();
-		if(fh!=null)
-			for(Catch _catch: fh.getCatches())
-				candidate.add(_catch.getActivity());
-		CompensationHandler ch=process.getCompensationHandler();
-		if(ch!=null)
-			candidate.add(ch.getActivity());
-		TerminationHandler th=process.getTerminationHandler();
-		if(th!=null)
-			candidate.add(th.getActivity());
-		
+	private List<Activity> getActivitiesWithOutXpath(ActivityFunctionStruct struct){
+		List<Activity> candidate = listActivities();
+		List<Activity> result=new ArrayList<Activity>();
 		for(Activity activity : candidate){
-			Collection<Activity> allChildren= bfsChidrenActivities(activity);
-			for(Activity act: allChildren){
-				boolean isMatched = checkIfRegularMatchForActivities(act, struct);
+				boolean isMatched = checkIfRegularMatchForActivities(activity, struct);
 				if(isMatched)
-					result.add(act);
-			}
+					result.add(activity);
+			
 		}
 		return result;
 	}
 	
+	/**
+	 * list all activities of BPEL process
+	 * @param process
+	 * @return
+	 */
+	private List<Activity> listActivities(){
+		if(_activities != null)
+			return _activities;
+		List<Activity> result = new ArrayList<Activity>();
+		List<Activity> candidate=new ArrayList<Activity>();
+		Activity root = _process.getRootActivity();
+		candidate.add(root);
+		List<OnAlarm> alarms = _process.getAlarms();
+		for(OnAlarm alarm: alarms)
+			candidate.add(alarm.getActivity());
+		List<OnEvent> events =_process.getEvents();
+		for(OnEvent event: events)
+			candidate.add(event.getActivity());
+		FaultHandler fh = _process.getFaultHandler();
+		if(fh!=null)
+			for(Catch _catch: fh.getCatches())
+				candidate.add(_catch.getActivity());
+		CompensationHandler ch=_process.getCompensationHandler();
+		if(ch!=null)
+			candidate.add(ch.getActivity());
+		TerminationHandler th=_process.getTerminationHandler();
+		if(th!=null)
+			candidate.add(th.getActivity());
+		for(Activity activity : candidate){
+			Collection<Activity> allChildren= bfsChidrenActivities(activity);
+			for(Activity act: allChildren){
+				result.addAll(bfsChidrenActivities(act));
+			}
+		}
+		_activities = result;
+		return _activities;
+		
+	}
 	/**
 	 * BFS scan all the children of an activity
 	 * @param result
 	 * @param bob
 	 * @param struct
 	 */
-
 	private Collection<Activity> bfsChidrenActivities(Activity activity){
-		List<Activity> activities = Collections.emptyList();
+		List<Activity> activities = new ArrayList<Activity>();
 		activities.add(activity);
 		int index =0;
 		while(index < activities.size() ){
@@ -269,6 +297,11 @@ public class ActivityFunctionImpl implements ActivityFunction{
 	 * @return
 	 */
 	private Activity element2Activity(Element element) {
+		Collection<Activity> all = this.listActivities();
+		for(Activity act: all){
+			if( act.getElement().equals(element))
+				return act;
+		}
 		return null;
 	}
 
@@ -277,6 +310,8 @@ public class ActivityFunctionImpl implements ActivityFunction{
 	private MatchResult matchRegular(Element element, ActivityFunctionStruct.StructElement regular){
 		
 		String matcher =null;
+		if(ActivityFunctionStruct.XPATH_KEY.equals(regular.key))
+			return MatchResult.Matched;
 		if(ActivityFunctionStruct.TYPE_KEY.equals(regular.key))
 			matcher =element.getNodeName();
 		else 

@@ -37,6 +37,9 @@ public class ValidatorMessages extends CompilationMessageBundle {
 	//pattern type pre size and post size should be 0-1
 	//if pre size == post size ==1 
 	//then pre expression  should equal to post expression
+	CompilationMessage msgPrePostNotDefinedErr(){
+		return formatCompilationMessage("PreCondition and PostCondition are all emptysets!");
+	}
 	CompilationMessage msgPreSizeLimitErr(int size){
 		return formatCompilationMessage("Precondition size is {0}, more than one in patten type!", size);
 	}
@@ -48,6 +51,9 @@ public class ValidatorMessages extends CompilationMessageBundle {
 	}
 	// N=skip no patten type, pre size =1 post size =1 , preExp refer to one activity and postExp refer to one activity
 	// preExp ~ postExp should refer to a region or one activity.
+	CompilationMessage msgSkipPrePostSizeErr(int preSize ,int postSize){
+		return formatCompilationMessage("preCondition size =  {0} and postCondition size =  {1} in not allowed when skip = ture!", preSize,postSize);
+	}
 	CompilationMessage msgNotRegionErr(String preExp, String postExp){
 		return formatCompilationMessage("pre expression {0} and post expression {1} do not refer to a region", preExp, postExp);
 	}

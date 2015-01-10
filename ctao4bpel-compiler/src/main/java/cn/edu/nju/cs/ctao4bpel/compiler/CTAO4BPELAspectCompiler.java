@@ -11,8 +11,6 @@ import java.util.Map;
 
 import javax.xml.namespace.QName;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ode.bpel.compiler.BpelCompiler20;
 import org.apache.ode.bpel.compiler.DefaultResourceFinder;
 import org.apache.ode.bpel.compiler.ResourceFinder;
@@ -58,7 +56,7 @@ import cn.edu.nju.cs.ctao4bpel.o.OPreCondition;
  * CTAO4BPELAspectCompiler.java
  */
 public class CTAO4BPELAspectCompiler extends BpelCompiler20{
-	private static final Log log = LogFactory.getLog(CTAO4BPELAspectCompiler.class);
+	
 	private ProcessStoreImpl processStore;
 
 	public CTAO4BPELAspectCompiler(ProcessStoreImpl processStore) throws Exception {
@@ -276,7 +274,7 @@ public class CTAO4BPELAspectCompiler extends BpelCompiler20{
 			return null;
 		List<QName> processIds= processStore.getProcesses();
 		for(QName processId: processIds){
-			if(processId.getLocalPart().equals( bpelUrl))
+			if(processId.toString().endsWith(bpelUrl))
 				return processId;
 		}
 		return null;
