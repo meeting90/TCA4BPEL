@@ -19,9 +19,9 @@
   -->
 
 <wsdl:definitions 
-    targetNamespace="http://cn.edu.nju.cs/ctao4bpel/aspect/unit-test.wsdl"
+    targetNamespace="http://cn.edu.nju.cs/tcao4bpel/aspect/unit-test.wsdl"
     xmlns="http://schemas.xmlsoap.org/wsdl/"
-    xmlns:tns="http://cn.edu.nju.cs/ctao4bpel/aspect/unit-test.wsdl"
+    xmlns:tns="http://cn.edu.nju.cs/tcao4bpel/aspect/unit-test.wsdl"
     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"

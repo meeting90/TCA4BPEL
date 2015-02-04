@@ -35,8 +35,8 @@ import org.apache.ode.utils.InternPool.InternableBlock;
 import org.apache.ode.utils.fs.FileUtils;
 import org.apache.xmlbeans.XmlOptions;
 
-import cn.edu.nju.cs.ctao4bpel.dd.DeployAspectDocument;
-import cn.edu.nju.cs.tcao4bpel.compiler.CTAO4BPELAspectCompiler;
+import cn.edu.nju.cs.tcao4bpel.dd.DeployAspectDocument;
+import cn.edu.nju.cs.tcao4bpel.compiler.TCAO4BPELAspectCompiler;
 import cn.edu.nju.cs.tcao4bpel.o.AspectSerializer;
 import cn.edu.nju.cs.tcao4bpel.o.OAspect;
 /**
@@ -101,7 +101,7 @@ public class AspectDeploymentUnitDir {
 			@Override
 			public void run() {
 				try {
-					CTAO4BPELAspectCompiler compiler = new CTAO4BPELAspectCompiler(
+					TCAO4BPELAspectCompiler compiler = new TCAO4BPELAspectCompiler(
 							processStore);
 					OAspect oaspect = compiler.compileAspect(aspectFile, scope);
 
@@ -203,7 +203,7 @@ public class AspectDeploymentUnitDir {
 				XmlOptions options = new XmlOptions();
 				HashMap<String, String> otherNs = new HashMap<String,String>();
 				 otherNs.put("http://ode.fivesight.com/schemas/2006/06/27/dd",
-	                        "http://cn.nju.edu.cs/ctao4bpel/schemas/dd/2015/01");
+	                        "http://cn.nju.edu.cs/tcao4bpel/schemas/dd/2015/01");
 				 options.setLoadSubstituteNamespaces(otherNs);
 				 _dd = DeployAspectDocument.Factory.parse(ddLocation, options);
 				

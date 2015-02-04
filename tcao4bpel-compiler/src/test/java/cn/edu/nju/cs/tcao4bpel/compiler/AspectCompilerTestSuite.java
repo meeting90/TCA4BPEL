@@ -15,7 +15,7 @@ public class AspectCompilerTestSuite extends TestCase{
 		suite.setName("AspectCompilerTestSuite");
 		suite.addTest(new AspectObjectFactoryTestCase("test"));
 	
-		suite.addTest(new CTAO4BPELAspectCompilerTestCase("test"));
+		suite.addTest(new TCAO4BPELAspectCompilerTestCase("test"));
 		return suite;
 	}
 }

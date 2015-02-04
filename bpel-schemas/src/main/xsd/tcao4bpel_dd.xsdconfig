@@ -18,10 +18,10 @@
   -->
 
 <xb:config xmlns:xb="http://xml.apache.org/xmlbeans/2004/02/xbean/config"
-           xmlns:dd="http://cn.nju.edu.cs/ctao4bpel/schemas/dd/2015/01">
+           xmlns:dd="http://cn.nju.edu.cs/tcao4bpel/schemas/dd/2015/01">
 
-  <xb:namespace uri="http://cn.nju.edu.cs/ctao4bpel/schemas/dd/2015/01">
-    <xb:package>cn.edu.nju.cs.ctao4bpel.dd</xb:package>
+  <xb:namespace uri="http://cn.nju.edu.cs/tcao4bpel/schemas/dd/2015/01">
+    <xb:package>cn.edu.nju.cs.tcao4bpel.dd</xb:package>
   </xb:namespace> 
   
   <xb:namespace uri="##any">

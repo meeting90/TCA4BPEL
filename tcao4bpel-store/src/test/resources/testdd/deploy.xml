@@ -16,9 +16,9 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   -->
-<deployAspect xmlns="http://cn.nju.edu.cs/ctao4bpel/schemas/dd/2015/01"
+<deployAspect xmlns="http://cn.nju.edu.cs/tcao4bpel/schemas/dd/2015/01"
 	xmlns:ans="http://cs.nju.edu.cn/tcao4bpel/2.0/aspect" 
-	xmlns:wns="http://cn.edu.nju.cs/ctao4bpel/aspect/unit-test.wsdl">
+	xmlns:wns="http://cn.edu.nju.cs/tcao4bpel/aspect/unit-test.wsdl">
 
 	<aspect name="ans:helloworld">
 		<invoke partnerLink="helloPartnerLink">

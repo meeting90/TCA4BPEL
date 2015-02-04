@@ -28,7 +28,7 @@ public class AspectDeploymentUnitTest extends TestCase{
 	@Test
 	public void testRegistry(){
 		DocumentRegistry dr = du.getDocRegistry();
-		assertNotNull(dr.getDefinitionForPortType(new QName("http://cn.edu.nju.cs/ctao4bpel/aspect/unit-test.wsdl", "HelloPortType")));
+		assertNotNull(dr.getDefinitionForPortType(new QName("http://cn.edu.nju.cs/tcao4bpel/aspect/unit-test.wsdl", "HelloPortType")));
 	}
 	@Test
 	public void  testCompile(){

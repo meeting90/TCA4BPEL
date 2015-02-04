@@ -57,9 +57,9 @@ import cn.edu.nju.cs.tcao4bpel.o.OPreCondition;
  * 
  * @author Mingzhu Yuan @ cs.nju.edu.cn
  * 2015-1-7 2015
- * CTAO4BPELAspectCompiler.java
+ * TCAO4BPELAspectCompiler.java
  */
-public class CTAO4BPELAspectCompiler extends BpelCompiler20{
+public class TCAO4BPELAspectCompiler extends BpelCompiler20{
 	
 	
 	private ProcessStore processStore;
@@ -71,7 +71,7 @@ public class CTAO4BPELAspectCompiler extends BpelCompiler20{
 		}
 	};
 
-	public CTAO4BPELAspectCompiler(ProcessStore processStore) throws Exception {
+	public TCAO4BPELAspectCompiler(ProcessStore processStore) throws Exception {
 		super();
 		this.processStore = processStore;
 	}

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
 xmlns:ext="http://ode.apache.org/activityRecovery" 
-targetNamespace="http://cn.nju.edu.cs/ctao4bpel/schemas/dd/2015/01" 
-xmlns:tns="http://cn.nju.edu.cs/ctao4bpel/schemas/dd/2015/01"
+targetNamespace="http://cn.nju.edu.cs/tcao4bpel/schemas/dd/2015/01" 
+xmlns:tns="http://cn.nju.edu.cs/tcao4bpel/schemas/dd/2015/01"
 xmlns:dd="http://www.apache.org/ode/schemas/dd/2007/03"
 elementFormDefault="qualified">
 

@@ -20,8 +20,8 @@ import org.apache.ode.bpel.iapi.ProcessStore;
 import org.apache.ode.store.Messages;
 import org.apache.ode.utils.msg.MessageBundle;
 
-import cn.edu.nju.cs.ctao4bpel.dd.DeployAspectDocument;
-import cn.edu.nju.cs.ctao4bpel.dd.TDeploymentAspect;
+import cn.edu.nju.cs.tcao4bpel.dd.DeployAspectDocument;
+import cn.edu.nju.cs.tcao4bpel.dd.TDeploymentAspect;
 import cn.edu.nju.cs.tcao4bpel.o.OAspect;
 /**
  * 

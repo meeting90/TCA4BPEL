@@ -17,11 +17,11 @@ xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
 	targetNamespace="http://cs.nju.edu.cn/tcao4bpel/2.0/aspect/example" 
 	xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:test="http://cn.edu.nju.cs/ctao4bpel/aspect/unit-test.wsdl"
+    xmlns:test="http://cn.edu.nju.cs/tcao4bpel/aspect/unit-test.wsdl"
     queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"
     expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"
 	>
-		<bpel:import location="HelloWorld2.wsdl" namespace="http://cn.edu.nju.cs/ctao4bpel/aspect/unit-test.wsdl" importType="http://schemas.xmlsoap.org/wsdl/" />
+		<bpel:import location="HelloWorld2.wsdl" namespace="http://cn.edu.nju.cs/tcao4bpel/aspect/unit-test.wsdl" importType="http://schemas.xmlsoap.org/wsdl/" />
 
    <bpel:partnerLinks>
       <bpel:partnerLink name="helloPartnerLink" 

@@ -16,7 +16,7 @@ import org.apache.ode.bpel.iapi.Endpoint;
 import org.apache.ode.bpel.iapi.ProcessConf.PartnerRoleConfig;
 import org.apache.ode.bpel.o.OFailureHandling;
 
-import cn.edu.nju.cs.ctao4bpel.dd.TDeploymentAspect;
+import cn.edu.nju.cs.tcao4bpel.dd.TDeploymentAspect;
 import cn.edu.nju.cs.tcao4bpel.o.OAspect;
 /**
  * 

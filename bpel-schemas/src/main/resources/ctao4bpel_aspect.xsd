@@ -8,7 +8,7 @@
     
     <xsd:annotation>
         <xsd:documentation>
-            Schema for CTAO4BPEL 2.0 Aspects
+            Schema for TCAO4BPEL 2.0 Aspects
             Last modified date: 3th December, 2014
         </xsd:documentation>
     </xsd:annotation>
@@ -20,7 +20,7 @@
     <xsd:element name="aspect" type="tAspect">
         <xsd:annotation>
             <xsd:documentation>
-                This is the root element for a CTAO4BPEL 2.0 aspect.
+                This is the root element for a TCAO4BPEL 2.0 aspect.
             </xsd:documentation>
         </xsd:annotation>
     </xsd:element>

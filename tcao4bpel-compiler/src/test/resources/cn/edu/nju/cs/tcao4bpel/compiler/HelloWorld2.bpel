@@ -21,14 +21,14 @@
     targetNamespace="http://ode/bpel/unit-test"
     xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
     xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
-    xmlns:tns="http://cn.edu.nju.cs/ctao4bpel/aspect/unit-test"
+    xmlns:tns="http://cn.edu.nju.cs/tcao4bpel/aspect/unit-test"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:test="http://cn.edu.nju.cs/ctao4bpel/aspect/unit-test.wsdl"
+    xmlns:test="http://cn.edu.nju.cs/tcao4bpel/aspect/unit-test.wsdl"
     queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"
     expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
 
   <import location="HelloWorld2.wsdl"
-     namespace="http://cn.edu.nju.cs/ctao4bpel/aspect/unit-test.wsdl"
+     namespace="http://cn.edu.nju.cs/tcao4bpel/aspect/unit-test.wsdl"
      importType="http://schemas.xmlsoap.org/wsdl/" />
 
    <partnerLinks>

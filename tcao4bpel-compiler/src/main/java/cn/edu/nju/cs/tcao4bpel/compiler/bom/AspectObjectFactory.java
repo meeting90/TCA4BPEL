@@ -33,13 +33,13 @@ public class AspectObjectFactory extends BpelObjectFactory{
 	private static final Log _log=LogFactory.getLog(BpelObjectFactory.class);
 	public AspectObjectFactory(){
 		super();
-		_mappings.put(CTAO4BPEL20QNames.ASPECT, Aspect.class);
-		_mappings.put(CTAO4BPEL20QNames.ADVICE, Advice.class);
-		_mappings.put(CTAO4BPEL20QNames.PLACE, Place.class);
-		_mappings.put(CTAO4BPEL20QNames.POINTCUT,Pointcut.class);
-		_mappings.put(CTAO4BPEL20QNames.POSTCONDITION,PostCondition.class);
-		_mappings.put(CTAO4BPEL20QNames.PRECONDITION,PreCondition.class);
-		_mappings.put(CTAO4BPEL20QNames.SKIP, Skip.class);
+		_mappings.put(TCAO4BPEL20QNames.ASPECT, Aspect.class);
+		_mappings.put(TCAO4BPEL20QNames.ADVICE, Advice.class);
+		_mappings.put(TCAO4BPEL20QNames.PLACE, Place.class);
+		_mappings.put(TCAO4BPEL20QNames.POINTCUT,Pointcut.class);
+		_mappings.put(TCAO4BPEL20QNames.POSTCONDITION,PostCondition.class);
+		_mappings.put(TCAO4BPEL20QNames.PRECONDITION,PreCondition.class);
+		_mappings.put(TCAO4BPEL20QNames.SKIP, Skip.class);
 		
 		
 	}
@@ -53,7 +53,7 @@ public class AspectObjectFactory extends BpelObjectFactory{
         resolver.register(Bpel11QNames.NS_BPEL4WS_2003_03, getClass().getResource("/bpel4ws_1_1-fivesight.xsd"));
         resolver.register(Bpel20QNames.NS_WSBPEL2_0, getClass().getResource("/wsbpel_main-draft-Apr-29-2006.xsd"));
         resolver.register(Bpel20QNames.NS_WSBPEL2_0_FINAL_ABSTRACT, getClass().getResource("/ws-bpel_abstract_common_base.xsd"));
-        resolver.register(CTAO4BPEL20QNames.NS_CTAO4BPEL2_0_ASPECT, getClass().getResource("/ctao4bpel_aspect.xsd"));
+        resolver.register(TCAO4BPEL20QNames.NS_TCAO4BPEL2_0_ASPECT, getClass().getResource("/tcao4bpel_aspect.xsd"));
         resolver.register(Bpel20QNames.NS_WSBPEL2_0_FINAL_PLINK, getClass().getResource("/ws-bpel_plnktype.xsd"));
         resolver.register(Bpel20QNames.NS_WSBPEL2_0_FINAL_SERVREF, getClass().getResource("/ws-bpel_serviceref.xsd"));
         resolver.register(Bpel20QNames.NS_WSBPEL2_0_FINAL_VARPROP, getClass().getResource("/ws-bpel_varprop.xsd"));

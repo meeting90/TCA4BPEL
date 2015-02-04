@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.Set;
 
 import junit.framework.TestCase;
-import cn.edu.nju.cs.tcao4bpel.compiler.CTAO4BPELAspectCompiler;
+import cn.edu.nju.cs.tcao4bpel.compiler.TCAO4BPELAspectCompiler;
 import cn.edu.nju.cs.tcao4bpel.o.OAdvice;
 import cn.edu.nju.cs.tcao4bpel.o.OAspect;
 import cn.edu.nju.cs.tcao4bpel.o.OPlace;
@@ -15,21 +15,21 @@ import cn.edu.nju.cs.tcao4bpel.o.OPreCondition;
  * 
  * @author Mingzhu Yuan @ cs.nju.edu.cn
  * 2015-1-7 2015
- * CTAO4BPELAspectCompilerTestCase.java
+ * TCAO4BPELAspectCompilerTestCase.java
  */
-public class CTAO4BPELAspectCompilerTestCase extends TestCase {
+public class TCAO4BPELAspectCompilerTestCase extends TestCase {
 
 	
-	private CTAO4BPELAspectCompiler  _compiler;
+	private TCAO4BPELAspectCompiler  _compiler;
 	private String name;
 	private int idx=0;
 	private URL _aspectURL;
 	
-	public CTAO4BPELAspectCompilerTestCase(String name){
+	public TCAO4BPELAspectCompilerTestCase(String name){
 		super();
 		this.name = name;
 	}
-	public CTAO4BPELAspectCompilerTestCase(String name, int idx){
+	public TCAO4BPELAspectCompilerTestCase(String name, int idx){
 		super();
 		this.name=name;
 		this.idx = idx;
@@ -39,7 +39,7 @@ public class CTAO4BPELAspectCompilerTestCase extends TestCase {
 		super.setUp();
 		
 		
-		_compiler = new CTAO4BPELAspectCompiler(null);
+		_compiler = new TCAO4BPELAspectCompiler(null);
 		String filename = name + ((idx >0) ? Integer.toString(idx): "");
 		_aspectURL = getClass().getResource(filename + ".aspect");
 		

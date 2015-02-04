@@ -38,6 +38,6 @@
   </extensions>
   <extensions>
     <extendedObject href="HelloWorld2.bpel#/"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1420708257000"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1423035873000"/>
   </extensions>
 </extensionmodel:ExtensionMap>
