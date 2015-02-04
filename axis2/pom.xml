@@ -78,6 +78,16 @@
             <groupId>org.apache.ode</groupId>
             <artifactId>ode-utils</artifactId>
         </dependency>
+
+        <!-- dependencies of cn.edu.nju.cs group -->
+
+        <dependency>
+            <groupId>cn.edu.nju.cs.tcao4bpel</groupId>
+            <artifactId>tcao4bpel-store</artifactId>
+        </dependency>
+
+        <!-- denpendencies of jar -->
+        
         <dependency>
             <groupId>org.apache.axis2</groupId>
             <artifactId>axis2-adb</artifactId>

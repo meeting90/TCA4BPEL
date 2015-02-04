@@ -21,8 +21,8 @@
 <project>
     <modelVersion>1.0.0</modelVersion>
     <groupId>cn.edu.nju.cs.tcao4bpel</groupId>
-    <artifactId>tcao4bpel-store</artifactId>
-    <name>TCAODE :: Aspect Store</name>
+    <artifactId>tcao4bpel-compiler</artifactId>
+    <name>TCAODE :: Aspect Compiler</name>
     <parent>
         <groupId>org.apache.ode</groupId>
         <artifactId>ode</artifactId>
@@ -32,57 +32,51 @@
 
     <dependencies>
         <!-- project dependencies of ode group -->
-        <dependency>
+       <dependency>
             <groupId>org.apache.ode</groupId>
             <artifactId>ode-bpel-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-compiler</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.ode</groupId>
             <artifactId>ode-bpel-obj</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-schemas</artifactId>
+            <artifactId>ode-bpel-compiler</artifactId>
+        </dependency>
+       <dependency>
+            <groupId>org.apache.ode</groupId>
+            <artifactId>ode-bpel-obj</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
             <artifactId>ode-bpel-store</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>org.apach.ode</groupId>
+            <groupId>org.apache.ode</groupId>
             <artifactId>ode-utils</artifactId>
         </dependency>
 
         <!-- project dependencies of cn.edu.nju.cs group -->
         <dependency>
             <groupId>cn.edu.nju.cs.tcao4bpel</groupId>
-            <artifactId>tcao4bpel-compiler</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.edu.nju.cs.tcao4bpel></groupId>
             <artifactId>tcao4bpel-obj</artifactId>
         </dependency>
+        
         <!-- jar dependencies -->
- 
+
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
         </dependency>
         <dependency>
-          <groupId>org.apache.xmlbeans</groupId>
-          <artifactId>xmlbeans</artifactId>
+            <groupId>xalan</groupId>
+            <artifactId>xalan</artifactId>
+        </dependency>        <dependency>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
         </dependency>
-        <dependency>
-          <groupId>wsdl4j</groupId>
-          <artifactId>wsdl4j</artifactId>
-        </dependency>
-  
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -93,6 +87,6 @@
     </dependencies>
 
 
-    
+
 
 </project>

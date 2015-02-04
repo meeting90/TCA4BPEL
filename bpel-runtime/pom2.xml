@@ -50,6 +50,25 @@
             <groupId>org.apache.ode</groupId>
             <artifactId>ode-bpel-dao</artifactId>
         </dependency>
+
+
+        <!-- dependencies of cn.edu.nju.cs group -->
+        <dependency>
+            <groupId>cn.edu.nju.cs.tcao4bpel</groupId>
+            <artifactId>tcao4bpel-obj</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.edu.nju.cs.tcao4bpel</groupId>
+            <artifactId>tcao4bpel-compiler</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.edu.nju.cs.tcao4bpel</groupId>
+            <artifactId>tcao4bpel-store</artifactId>
+        </dependency>
+
+
+        <!-- denpendencies of jar -->
+
         <dependency>
           <groupId>commons-collections</groupId>
           <artifactId>commons-collections</artifactId>
@@ -114,8 +133,12 @@
         <dependency>
           <groupId>junit</groupId>
           <artifactId>junit</artifactId>
-      <scope>test</scope>
+          <scope>test</scope>
         </dependency>
+
+
+        
+
     </dependencies>
 
 
