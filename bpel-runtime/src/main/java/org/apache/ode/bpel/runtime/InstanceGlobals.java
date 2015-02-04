@@ -34,5 +34,5 @@ import org.apache.ode.bpel.runtime.channels.ReadWriteLock;
 public class InstanceGlobals implements Serializable {
     
     /** Variable locks. Used by isolated scopes. */
-    Map<OScope.Variable, ReadWriteLock> _varLocks = new HashMap<OScope.Variable, ReadWriteLock>();
+    public Map<OScope.Variable, ReadWriteLock> _varLocks = new HashMap<OScope.Variable, ReadWriteLock>();
 }

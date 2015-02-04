@@ -41,6 +41,8 @@ import org.apache.ode.jacob.Synch;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 
 /**
  * Message event handler.
@@ -305,7 +307,7 @@ class EH_EVENT extends BpelJacobRunnable {
                                 ehScopeFrame,
                                 _comps,
                                 _fault);
-                            instance(new SCOPE(child, innerScopeFrame, lf));
+                            instance(new SCOPE(child, innerScopeFrame, lf, new AspectFrame(null)));
 
                             // If we previously terminated the other activiites, then we do the same
                             // here; this is easier then undoing the receive.

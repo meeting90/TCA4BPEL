@@ -43,6 +43,8 @@ import org.apache.ode.jacob.Synch;
 import org.apache.ode.jacob.Val;
 import org.w3c.dom.Element;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 /**
  * A scope activity. The scope activity creates a new scope frame and proceeeds using the {@link SCOPE} template.
  */
@@ -51,8 +53,8 @@ public class SCOPEACT extends ACTIVITY {
     
     private static final long serialVersionUID = -4593029783757994939L;
 
-    public SCOPEACT(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        super(self, scopeFrame, linkFrame);
+    public SCOPEACT(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame,AspectFrame aspectFrame) {
+        super(self, scopeFrame, linkFrame, aspectFrame);
     }
 
     public void run() {
@@ -76,7 +78,7 @@ public class SCOPEACT extends ACTIVITY {
             } else
                 linkframe = _linkFrame;
             
-            instance(new SCOPE(_self, newFrame, linkframe));
+            instance(new SCOPE(_self, newFrame, linkframe, _aspectFrame));
         }
 
     }
@@ -241,7 +243,7 @@ public class SCOPEACT extends ACTIVITY {
                 instance(new UNLOCKER(_self.parent, parent, _synchChannel, _locksAcquired, lsi));
                 LinkFrame linkframe = createInterceptorLinkFrame();
                 instance(new LINKSTATUSINTERCEPTOR(lsi,linkframe));
-                instance(new SCOPE(_self, newFrame, linkframe));
+                instance(new SCOPE(_self, newFrame, linkframe, _aspectFrame));
                 return;
             } else {
                 if (__log.isDebugEnabled()) {

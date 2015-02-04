@@ -47,7 +47,7 @@ import javax.xml.namespace.QName;
 /**
  * N-tuple representing a scope "frame" (as in stack frame).
  */
-class ScopeFrame implements Serializable {
+public class ScopeFrame implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final Log __log = LogFactory.getLog(ScopeFrame.class);
 
@@ -58,7 +58,7 @@ class ScopeFrame implements Serializable {
     final ScopeFrame parent;
 
     /** Database scope instance identifier. */
-    final Long scopeInstanceId;
+    public final Long scopeInstanceId;
 
     Set<CompensationHandler> availableCompensations;
 

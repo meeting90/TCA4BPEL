@@ -34,10 +34,13 @@ class CompensateScopeGenerator extends DefaultActivityGenerator {
     private static final CompensateGeneratorMessages __cmsgs = MessageBundle.getMessages(CompensateGeneratorMessages.class);
 
     public void compile(OActivity output, Activity src) {
+    	super.compile(output, src);
         CompensateScopeActivity compSrc = (CompensateScopeActivity) src;
+        
         if (compSrc.getScopeToCompensate() == null)
             throw new CompilationException(__cmsgs.errScopeToCompensateUnspecfied());
         ((OCompensate)output).compensatedScope = _context.resolveCompensatableScope(compSrc.getScopeToCompensate());
+        output.setXpath(compSrc.getXpath());
     }
 
     public OActivity newInstance(Activity src) {

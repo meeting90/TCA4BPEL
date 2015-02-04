@@ -18,6 +18,9 @@
  */
 package org.apache.ode.bpel.runtime;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.ode.bpel.evt.ProcessInstanceStartedEvent;
@@ -34,6 +37,13 @@ import org.apache.ode.jacob.ReceiveProcess;
 import org.apache.ode.jacob.Synch;
 import org.w3c.dom.Element;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.ASPECT;
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectInfo;
+import cn.edu.nju.cs.tcao4bpel.store.AspectConfImpl;
+import cn.edu.nju.cs.tcao4bpel.store.AspectStore;
+import cn.edu.nju.cs.tcao4bpel.store.AspectStoreImpl;
+
 public class PROCESS extends BpelJacobRunnable {
     private static final long serialVersionUID = 1L;
     private OProcess _oprocess;
@@ -45,6 +55,8 @@ public class PROCESS extends BpelJacobRunnable {
 
     public void run() {
         BpelRuntimeContext ntive = getBpelRuntimeContext();
+        
+        
         Long scopeInstanceId = ntive.createScopeInstance(null, _oprocess.procesScope);
 
         createGlobals();
@@ -57,7 +69,10 @@ public class PROCESS extends BpelJacobRunnable {
             _oprocess.procesScope,
             newChannel(Termination.class), newChannel(ParentScope.class));
         ScopeFrame processFrame = new ScopeFrame(_oprocess.procesScope, scopeInstanceId, null, null,_globals);
-        instance(new SCOPE(child, processFrame, new LinkFrame(null)));
+        // create aspect
+        AspectFrame aspectFrame= createAspects(processFrame);
+        instance(new SCOPE(child, processFrame, new LinkFrame(null), aspectFrame));
+        
 
         object(new ReceiveProcess() {
             private static final long serialVersionUID = -8564969578471906493L;
@@ -98,5 +113,21 @@ public class PROCESS extends BpelJacobRunnable {
                 _globals._varLocks.put(var, vlock);
             }
         }
+    }
+
+
+    //for create aspect instance of _oprocess
+    public AspectFrame createAspects(ScopeFrame scopeFrame){
+    	AspectStore aspectStore = AspectStoreImpl.getInstance();
+    	Collection<AspectConfImpl> aspects= aspectStore.getAspects(_oprocess.getQName());
+    	List<AspectInfo> aspectInfos =new ArrayList<AspectInfo>(); 
+    	for(AspectConfImpl aspect: aspects){
+    		AspectInfo aspectInfo = new AspectInfo(aspect.getOaspect());
+    		aspectInfos.add(new AspectInfo(aspect.getOaspect()));
+    		instance(new ASPECT(aspectInfo, scopeFrame));
+    	}
+    	
+    	AspectFrame aspectFrame =new AspectFrame(aspectInfos);
+    	return aspectFrame;
     }
 }

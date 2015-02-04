@@ -83,4 +83,17 @@ public class OBase implements Serializable {
     public String digest() {
         return "";
     }
+    
+    
+    /**Get Xpath **/
+    private String xpath;
+    
+    public String getXpath() {
+		return xpath;
+	}
+
+	public void setXpath(String xpath) {
+		this.xpath = xpath;
+	}
+
 }

@@ -25,18 +25,18 @@ import org.apache.ode.bpel.runtime.channels.ParentScope;
 import org.apache.ode.bpel.runtime.channels.Termination;
 
 
-class ActivityInfo implements Serializable {
+public class ActivityInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     /** Activity instance identifier */
     long aId;
 
     /** Activity definition. */
-    OActivity o;
-    Termination self;
-    ParentScope parent;
+    public OActivity o;
+    public Termination self;
+    public ParentScope parent;
 
-    ActivityInfo(long aid, OActivity o, Termination self, ParentScope parent) {
+    public ActivityInfo(long aid, OActivity o, Termination self, ParentScope parent) {
         assert o != null;
         assert self != null;
         assert parent != null;

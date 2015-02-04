@@ -32,6 +32,8 @@ import org.apache.ode.bpel.runtime.channels.TimerResponse;
 import org.apache.ode.jacob.ReceiveProcess;
 import org.apache.ode.utils.xsd.Duration;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 import static org.apache.ode.jacob.ProcessUtil.compose;
 
 
@@ -42,8 +44,8 @@ class WAIT extends ACTIVITY {
     private static final long serialVersionUID = 1L;
     private static final Log __log = LogFactory.getLog(WAIT.class);
 
-    WAIT(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        super(self, scopeFrame, linkFrame);
+    WAIT(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        super(self, scopeFrame, linkFrame, aspectFrame);
     }
 
     public final void run() {

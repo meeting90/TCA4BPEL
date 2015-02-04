@@ -29,6 +29,8 @@ import java.util.Iterator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 
 /**
  * Runtime implementation of the <code>&lt;switch&gt;</code> activity.
@@ -37,8 +39,8 @@ class SWITCH extends ACTIVITY {
     private static final long serialVersionUID = 1L;
     private static final Log __log = LogFactory.getLog(SWITCH.class);
 
-  public SWITCH(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-    super(self, scopeFrame, linkFrame);
+  public SWITCH(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame,AspectFrame aspectFrame) {
+    super(self, scopeFrame, linkFrame, aspectFrame);
   }
 
   public final void run() {
@@ -84,7 +86,7 @@ class SWITCH extends ACTIVITY {
     } else /* matched case */ {
       // Re-use our current channels.
       ActivityInfo child = new ActivityInfo(genMonotonic(),matchedOCase.activity, _self.self, _self.parent);
-      instance(createChild(child,_scopeFrame,_linkFrame));
+      instance(createChild(child,_scopeFrame,_linkFrame, _aspectFrame));
     }
   }
 }

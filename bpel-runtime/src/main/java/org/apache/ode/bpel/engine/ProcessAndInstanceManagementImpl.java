@@ -1121,8 +1121,9 @@ public class ProcessAndInstanceManagementImpl implements InstanceManagement, Pro
             // if event generation was enabled
             if(events!=null && events.size() >0) {
                 ActivityStateDocumentBuilder b = new ActivityStateDocumentBuilder();
-                for (BpelEvent e : events)
+                for (BpelEvent e : events){
                     b.onEvent(e);
+                }
                 for (ActivityInfoDocument ai : b.getActivities()) {
                     for (ActivityRecoveryDAO recovery : recoveries) {
                         if (String.valueOf(recovery.getActivityId()).equals(ai.getActivityInfo().getAiid())) {

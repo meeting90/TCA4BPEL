@@ -77,7 +77,7 @@ if (!isMultipart) {
                             byte[] encodedBytes  = Base64.encodeBase64(bytes);
                             String encodedString = new String(encodedBytes);
                             Options opts = new Options();
-                            opts.setAction("http://www.apache.org/ode/deployapi/DeploymentPortType/deployRequest");
+                            opts.setAction("http://www.apache.org/ctaode/deployapi/DeploymentPortType/deployRequest");
                             opts.setSoapVersionURI(SOAP12Constants.SOAP_ENVELOPE_NAMESPACE_URI);
                             opts.setProperty(Constants.Configuration.HTTP_METHOD,
                                 Constants.Configuration.HTTP_METHOD_POST);

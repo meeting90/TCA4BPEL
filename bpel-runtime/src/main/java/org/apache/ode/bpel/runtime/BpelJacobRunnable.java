@@ -30,6 +30,8 @@ import org.apache.ode.jacob.JacobRunnable;
 import org.apache.ode.jacob.vpu.JacobVPU;
 import org.w3c.dom.Element;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 import javax.xml.namespace.QName;
 
 /**
@@ -66,8 +68,8 @@ public abstract class BpelJacobRunnable extends JacobRunnable {
     }
 
 
-    protected JacobRunnable createChild(ActivityInfo childInfo, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        return new ACTIVITYGUARD(childInfo, scopeFrame, linkFrame);
+    protected JacobRunnable createChild(ActivityInfo childInfo, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        return new ACTIVITYGUARD(childInfo, scopeFrame, linkFrame, aspectFrame);
     }
 
     protected void initializeCorrelation(CorrelationSetInstance cset, VariableInstance variable)

@@ -51,6 +51,7 @@ class ReplyGenerator extends DefaultActivityGenerator  {
     }
 
     public void compile(OActivity output, Activity src) {
+    	super.compile(output, src);
         org.apache.ode.bpel.compiler.bom.ReplyActivity replyDef = (org.apache.ode.bpel.compiler.bom.ReplyActivity) src;
         OReply oreply = (OReply) output;
 

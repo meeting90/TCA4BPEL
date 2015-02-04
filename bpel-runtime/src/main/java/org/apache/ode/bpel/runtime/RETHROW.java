@@ -22,6 +22,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ode.bpel.runtime.channels.FaultData;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 
 /**
  * FaultActivity
@@ -30,8 +32,8 @@ class RETHROW extends ACTIVITY {
   private static final long serialVersionUID = -6433171659586530126L;
   private static final Log __log = LogFactory.getLog(RETHROW.class);
 
-  RETHROW(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-    super(self, scopeFrame, linkFrame);
+  RETHROW(ActivityInfo self,  ScopeFrame scopeFrame, LinkFrame linkFrame,AspectFrame aspectFrame) {
+    super(self, scopeFrame, linkFrame,aspectFrame);
   }
 
   public void run() {

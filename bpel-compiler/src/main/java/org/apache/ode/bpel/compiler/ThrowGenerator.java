@@ -37,6 +37,7 @@ class ThrowGenerator extends DefaultActivityGenerator {
     }
 
     public void compile(OActivity output, Activity src) {
+    	super.compile(output, src);
         ThrowActivity throwDef = (ThrowActivity)src;
         OThrow othrow = (OThrow) output;
 

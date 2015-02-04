@@ -29,6 +29,7 @@ import org.apache.ode.bpel.o.OCompensate;
 class CompensateGenerator extends DefaultActivityGenerator {
 
     public void compile(OActivity output, Activity src) {
+    	super.compile(output, src);
     }
 
     public OActivity newInstance(Activity src) {

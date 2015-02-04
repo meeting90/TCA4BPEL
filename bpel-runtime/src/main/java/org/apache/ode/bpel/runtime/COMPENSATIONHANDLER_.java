@@ -32,6 +32,8 @@ import org.apache.ode.jacob.ReceiveProcess;
 import org.apache.ode.jacob.Synch;
 import org.w3c.dom.Element;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 /**
  * A scope that has completed succesfully, and may possibly have a compensation handler.
  */
@@ -72,7 +74,7 @@ class COMPENSATIONHANDLER_ extends BpelJacobRunnable {
                     _completedChildren);
 
                 // Create the compensation handler scope.
-                instance(new SCOPE(ai,compHandlerScopeFrame, new LinkFrame(null)));
+                instance(new SCOPE(ai,compHandlerScopeFrame, new LinkFrame(null), new AspectFrame(null)));
 
                 object(new ReceiveProcess() {
                     private static final long serialVersionUID = 8044120498580711546L;

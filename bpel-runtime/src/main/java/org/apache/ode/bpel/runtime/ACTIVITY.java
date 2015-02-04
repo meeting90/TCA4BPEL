@@ -25,6 +25,7 @@ import java.util.Iterator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ode.bpel.common.FaultException;
+import org.apache.ode.bpel.evt.ActivityDisabledEvent;
 import org.apache.ode.bpel.evt.ActivityEvent;
 import org.apache.ode.bpel.evt.EventContext;
 import org.apache.ode.bpel.evt.ScopeEvent;
@@ -40,10 +41,13 @@ import org.apache.ode.bpel.evar.ExternalVariableModuleException;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+import cn.edu.nju.cs.tcao4bpel.runtime.ProcessStateMonitor;
+
 /**
  * Base template for activities.
  */
-abstract class ACTIVITY extends BpelJacobRunnable implements IndexedObject {
+public abstract class ACTIVITY extends BpelJacobRunnable implements IndexedObject {
     private static final Log __log = LogFactory.getLog(ACTIVITY.class);
     protected ActivityInfo _self;
 
@@ -55,8 +59,10 @@ abstract class ACTIVITY extends BpelJacobRunnable implements IndexedObject {
     protected ScopeFrame _scopeFrame;
 
     protected LinkFrame _linkFrame;
+    
+    protected AspectFrame _aspectFrame;
 
-    public ACTIVITY(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
+    public ACTIVITY(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame) {
         assert self != null;
         assert scopeFrame != null;
         assert linkFrame != null;
@@ -64,6 +70,8 @@ abstract class ACTIVITY extends BpelJacobRunnable implements IndexedObject {
         _self = self;
         _scopeFrame = scopeFrame;
         _linkFrame = linkFrame;
+        _aspectFrame = aspectFrame;
+        
     }
 
     public Object getKey() {
@@ -78,6 +86,7 @@ abstract class ACTIVITY extends BpelJacobRunnable implements IndexedObject {
     }
 
     protected void sendEvent(ActivityEvent event) {
+    	
         event.setActivityName(_self.o.name);
         event.setActivityType(_self.o.getType());
         event.setActivityDeclarationId(_self.o.getId());
@@ -86,6 +95,10 @@ abstract class ACTIVITY extends BpelJacobRunnable implements IndexedObject {
             event.setLineNo(getLineNo());
         }
         sendEvent((ScopeEvent) event);
+       
+        
+        ProcessStateMonitor monitor = ProcessStateMonitor.getInstance();
+        monitor.routeEvent(event, this._aspectFrame, this._self.o);
     }
 
     protected void sendEvent(ScopeEvent event) {
@@ -131,6 +144,10 @@ abstract class ACTIVITY extends BpelJacobRunnable implements IndexedObject {
         dpe(activity.sourceLinks);
         dpe(activity.outgoingLinks);
         // TODO: register listeners for target / incoming links
+        
+        //send activity disabled event
+        ActivityDisabledEvent event =new  ActivityDisabledEvent();
+        sendEvent(event);
     }
 
     protected EvaluationContext getEvaluationContext() {

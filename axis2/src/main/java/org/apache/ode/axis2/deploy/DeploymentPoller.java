@@ -38,21 +38,21 @@
 
 package org.apache.ode.axis2.deploy;
 
+import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.xml.namespace.QName;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ode.axis2.ODEServer;
 import org.apache.ode.bpel.engine.cron.CronScheduler;
 import org.apache.ode.bpel.engine.cron.SystemSchedulesConfig;
 import org.apache.ode.utils.WatchDog;
-
-import javax.xml.namespace.QName;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Polls a directory for the deployment of a new deployment unit.
@@ -128,7 +128,7 @@ public class DeploymentPoller {
      * the actual deployment (or undeployment).
      */
     @SuppressWarnings("unchecked")
-    private void check() {
+    protected void check() {
         File[] files = _deployDir.listFiles(_fileFilter);
 
         // Checking for new deployment directories
@@ -197,7 +197,7 @@ public class DeploymentPoller {
             }
         }
 
-        checkSystemCronConfigWatchDog(_systemCronConfigWatchDog);
+        checkSystemCronConfigWatchDog();
     }
 
     @SuppressWarnings("unchecked")
@@ -235,8 +235,8 @@ public class DeploymentPoller {
     }
 
     @SuppressWarnings("unchecked")
-    protected void checkSystemCronConfigWatchDog(WatchDog ddWatchDog) {
-        ddWatchDog.check();
+    protected void checkSystemCronConfigWatchDog() {
+    	_systemCronConfigWatchDog.check();
     }
 
     /**

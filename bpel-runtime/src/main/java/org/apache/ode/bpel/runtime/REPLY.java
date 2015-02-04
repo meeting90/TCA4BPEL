@@ -30,12 +30,14 @@ import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 class REPLY extends ACTIVITY {
     private static final long serialVersionUID = 3040651951885161304L;
     private static final Log __log = LogFactory.getLog(REPLY.class);
 
-    REPLY(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        super(self, scopeFrame, linkFrame);
+    REPLY(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame ) {
+        super(self, scopeFrame, linkFrame, aspectFrame);
     }
 
     public void run() {

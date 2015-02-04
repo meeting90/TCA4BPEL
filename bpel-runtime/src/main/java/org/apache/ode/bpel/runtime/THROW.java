@@ -27,6 +27,8 @@ import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 
 /**
  * Throw BPEL fault activity.
@@ -37,8 +39,8 @@ class THROW extends ACTIVITY {
 
     private OThrow _othrow;
 
-    public THROW(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        super(self, scopeFrame, linkFrame);
+    public THROW(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        super(self, scopeFrame, linkFrame, aspectFrame);
         _othrow = (OThrow) self.o;
     }
 

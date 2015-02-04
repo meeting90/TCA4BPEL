@@ -28,13 +28,13 @@ import java.util.Map;
  * Link stack frame allowing resolution of {@link OLink} objects to the
  * current {@link LinkInfo} in context.
  */
-class LinkFrame implements Serializable {
+public class LinkFrame implements Serializable {
 
     private static final long serialVersionUID = 1L;
     LinkFrame next;
   Map<OLink, LinkInfo> links = new HashMap<OLink, LinkInfo>();
 
-  LinkFrame(LinkFrame next) {
+  public LinkFrame(LinkFrame next) {
     this.next = next;
   }
 

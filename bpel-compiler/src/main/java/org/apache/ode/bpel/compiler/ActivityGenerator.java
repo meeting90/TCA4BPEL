@@ -40,4 +40,6 @@ public interface ActivityGenerator {
     public void compile(OActivity output, Activity src);
 
     public OActivity newInstance(Activity src);
+    
+    
 }

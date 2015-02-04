@@ -37,6 +37,7 @@ class PickGenerator extends PickReceiveGenerator {
     }
 
     public void compile(OActivity output, Activity src) {
+    	super.compile(output, src);
         OPickReceive opick = (OPickReceive) output;
         PickActivity pickDef = (PickActivity) src;
 

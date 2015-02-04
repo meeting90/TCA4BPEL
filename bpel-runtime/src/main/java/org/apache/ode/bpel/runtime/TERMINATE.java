@@ -18,6 +18,8 @@
  */
 package org.apache.ode.bpel.runtime;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 /**
  * JacobRunnable that performs the work of the <code>empty</code> activity.
  */
@@ -25,8 +27,8 @@ class TERMINATE extends ACTIVITY {
 
     private static final long serialVersionUID = 1L;
 
-    public TERMINATE(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        super(self, scopeFrame, linkFrame);
+    public TERMINATE(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        super(self, scopeFrame, linkFrame, aspectFrame);
     }
 
     public final void run() {

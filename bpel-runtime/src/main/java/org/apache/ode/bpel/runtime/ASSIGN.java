@@ -53,6 +53,8 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 import javax.xml.namespace.QName;
 
 import java.io.IOException;
@@ -73,8 +75,8 @@ class ASSIGN extends ACTIVITY {
     private static final ASSIGNMessages __msgs = MessageBundle
             .getMessages(ASSIGNMessages.class);
 
-    public ASSIGN(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        super(self, scopeFrame, linkFrame);
+    public ASSIGN(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        super(self, scopeFrame, linkFrame, aspectFrame);
     }
 
     public void run() {

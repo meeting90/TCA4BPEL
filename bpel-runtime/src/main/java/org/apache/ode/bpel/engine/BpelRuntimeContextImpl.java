@@ -1114,6 +1114,9 @@ public class BpelRuntimeContextImpl implements BpelRuntimeContext {
 
         // saving
         _bpelProcess.saveEvent(event, _dao, scopeNames);
+        
+        //log
+        __log.debug(event.toString());
     }
 
     public static String debugInfoToString(org.apache.ode.bpel.o.DebugInfo debugInfo) {

@@ -29,6 +29,7 @@ import org.apache.ode.bpel.o.OTerminate;
 class TerminateGenerator extends DefaultActivityGenerator
 {
     public void compile(OActivity output, Activity src) {
+    	super.compile(output, src);
     }
 
     public OActivity newInstance(Activity src) {

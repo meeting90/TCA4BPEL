@@ -21,6 +21,8 @@ package org.apache.ode.bpel.runtime;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 
 /**
  * JacobRunnable that performs the work of the <code>empty</code> activity.
@@ -29,8 +31,8 @@ class EMPTY extends ACTIVITY {
     private static final long serialVersionUID = 1L;
     private static final Log __log = LogFactory.getLog(EMPTY.class);
 
-  public EMPTY(ActivityInfo self, ScopeFrame frame, LinkFrame linkFrame) {
-    super(self, frame, linkFrame);
+  public EMPTY(ActivityInfo self, ScopeFrame frame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+    super(self, frame, linkFrame, aspectFrame);
   }
 
   public final void run() {

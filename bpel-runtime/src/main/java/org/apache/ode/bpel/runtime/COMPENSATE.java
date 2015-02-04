@@ -23,6 +23,8 @@ import org.apache.ode.bpel.o.OScope;
 import org.apache.ode.jacob.ReceiveProcess;
 import org.apache.ode.jacob.Synch;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 
 /**
  * Runtime implementation of the <code>&lt;compensate&gt;</code> activity.
@@ -31,8 +33,8 @@ class COMPENSATE extends ACTIVITY {
     private static final long serialVersionUID = -467758076635337675L;
     private OCompensate _ocompact;
 
-    public COMPENSATE(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        super(self, scopeFrame, linkFrame);
+    public COMPENSATE(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        super(self, scopeFrame, linkFrame, aspectFrame);
         _ocompact = (OCompensate) self.o;
     }
 

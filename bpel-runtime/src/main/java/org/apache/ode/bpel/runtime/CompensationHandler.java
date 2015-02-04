@@ -61,7 +61,7 @@ public class CompensationHandler implements Serializable, Comparable<Compensatio
     return buf.toString();
   }
 
-  static Set<CompensationHandler> emptySet() {
+  public static Set<CompensationHandler> emptySet() {
     return Collections.emptySet();
   }
 

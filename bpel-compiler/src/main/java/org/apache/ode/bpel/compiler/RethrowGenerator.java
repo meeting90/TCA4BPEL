@@ -25,6 +25,7 @@ import org.apache.ode.bpel.o.ORethrow;
 class RethrowGenerator extends DefaultActivityGenerator {
 
     public void compile(OActivity output, Activity src) {
+    	super.compile(output, src);
     }
 
     public OActivity newInstance(Activity src) {

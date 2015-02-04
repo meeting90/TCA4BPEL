@@ -41,6 +41,7 @@ class SequenceGenerator extends DefaultActivityGenerator {
     }
 
     public void compile(OActivity output, Activity src)  {
+    	super.compile(output, src);
         OSequence oseq = (OSequence) output;
         compileChildren(oseq, (SequenceActivity) src);
     }

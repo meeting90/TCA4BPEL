@@ -40,6 +40,7 @@ class IfGenerator extends DefaultActivityGenerator {
     }
 
     public void compile(OActivity output, Activity src) {
+    	super.compile(output, src);
         OSwitch oswitch = (OSwitch) output;
         IfActivity switchDef = (IfActivity)src;
 

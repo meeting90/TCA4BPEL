@@ -50,6 +50,8 @@ import org.apache.ode.utils.xsd.Duration;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 import static org.apache.ode.jacob.ProcessUtil.compose;
 
 
@@ -67,8 +69,8 @@ class PICK extends ACTIVITY {
     // the shortest absolute time until firing.
     private OPickReceive.OnAlarm _alarm = null;
 
-    public PICK(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        super(self, scopeFrame, linkFrame);
+    public PICK(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        super(self, scopeFrame, linkFrame, aspectFrame);
         _opick = (OPickReceive) self.o;
     }
 
@@ -355,7 +357,7 @@ class PICK extends ACTIVITY {
                     // re-use our control
                     // channels for the child.
                     ActivityInfo child = new ActivityInfo(genMonotonic(), onMessage.activity, _self.self, _self.parent);
-                    instance(createChild(child, _scopeFrame, _linkFrame));
+                    instance(createChild(child, _scopeFrame, _linkFrame, _aspectFrame));
                 }
 
                 public void onTimeout() {
@@ -369,7 +371,7 @@ class PICK extends ACTIVITY {
                     // re-use our control
                     // channels for the child.
                     ActivityInfo child = new ActivityInfo(genMonotonic(), _alarm.activity, _self.self, _self.parent);
-                    instance(createChild(child, _scopeFrame, _linkFrame));
+                    instance(createChild(child, _scopeFrame, _linkFrame, _aspectFrame));
                 }
 
                 public void onCancel() {

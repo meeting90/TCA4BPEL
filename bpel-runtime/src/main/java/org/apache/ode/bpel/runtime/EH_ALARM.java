@@ -39,6 +39,8 @@ import org.apache.ode.jacob.ReceiveProcess;
 import org.apache.ode.jacob.Synch;
 import org.w3c.dom.Element;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 import static org.apache.ode.jacob.ProcessUtil.compose;
 
 
@@ -178,7 +180,7 @@ class EH_ALARM extends BpelJacobRunnable {
                 ActivityInfo child = new ActivityInfo(genMonotonic(),
                     _oalarm.activity,
                     newChannel(Termination.class), newChannel(ParentScope.class));
-                instance(createChild(child, _scopeFrame, new LinkFrame(null) ));
+                instance(createChild(child, _scopeFrame, new LinkFrame(null), new AspectFrame(null) ));
                 instance(new ACTIVE(child));
             }
         }
@@ -195,7 +197,7 @@ class EH_ALARM extends BpelJacobRunnable {
             ActivityInfo child = new ActivityInfo(genMonotonic(),
                 _oalarm.activity,
                 newChannel(Termination.class), newChannel(ParentScope.class));
-            instance(createChild(child, _scopeFrame, new LinkFrame(null) ));
+            instance(createChild(child, _scopeFrame, new LinkFrame(null), new AspectFrame(null) ));
             instance(new ACTIVE(child));
         }
     }

@@ -34,6 +34,8 @@ import org.apache.ode.jacob.ReceiveProcess;
 import org.apache.ode.jacob.Synch;
 import org.w3c.dom.Element;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 import static org.apache.ode.jacob.ProcessUtil.compose;
 
 
@@ -44,15 +46,15 @@ public class REPEATUNTIL extends ACTIVITY {
 
     private Set<CompensationHandler> _compHandlers = new HashSet<CompensationHandler>();
 
-    public REPEATUNTIL(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        super(self, scopeFrame, linkFrame);
+    public REPEATUNTIL(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        super(self, scopeFrame, linkFrame, aspectFrame);
     }
 
     public void run() {
         ActivityInfo child = new ActivityInfo(genMonotonic(),
                 getORepeatUntil().activity,
                 newChannel(Termination.class), newChannel(ParentScope.class));
-        instance(createChild(child, _scopeFrame, _linkFrame));
+        instance(createChild(child, _scopeFrame, _linkFrame, _aspectFrame));
         instance(new WAITER(child));
     }
 

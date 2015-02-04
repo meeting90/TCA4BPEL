@@ -34,6 +34,7 @@ public class SwitchGenerator extends DefaultActivityGenerator {
   }
 
   public void compile(OActivity output, Activity src) {
+	super.compile(output, src);
     OSwitch oswitch = (OSwitch) output;
     SwitchActivity switchDef = (SwitchActivity)src;
 

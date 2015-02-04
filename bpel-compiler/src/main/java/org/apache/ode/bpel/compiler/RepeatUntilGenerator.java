@@ -32,6 +32,7 @@ class RepeatUntilGenerator extends DefaultActivityGenerator {
     }
 
     public void compile(OActivity output, Activity srcx)  {
+    	super.compile(output, srcx);
         ORepeatUntil oru = (ORepeatUntil) output;
         RepeatUntilActivity src = (RepeatUntilActivity)srcx;
         oru.untilCondition = _context.compileExpr(src.getCondition());

@@ -60,6 +60,7 @@ class AssignGenerator extends DefaultActivityGenerator {
     }
 
     public void compile(OActivity dest, Activity source) {
+    	super.compile(dest, source);
         OAssign oassign = (OAssign) dest;
         AssignActivity ad = (AssignActivity) source;
         for (Copy scopy : ad.getCopies()) {

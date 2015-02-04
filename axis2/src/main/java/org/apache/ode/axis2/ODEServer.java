@@ -53,6 +53,7 @@ import org.apache.commons.httpclient.util.IdleConnectionTimeoutThread;
 import org.apache.commons.httpclient.params.HttpConnectionManagerParams;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.ode.axis2.deploy.AspectDeploymentPoller;
 import org.apache.ode.axis2.deploy.DeploymentPoller;
 import org.apache.ode.axis2.service.DeploymentWebService;
 import org.apache.ode.axis2.service.ManagementService;
@@ -80,6 +81,9 @@ import org.apache.ode.scheduler.simple.SimpleScheduler;
 import org.apache.ode.store.ProcessStoreImpl;
 import org.apache.ode.utils.GUID;
 import org.apache.ode.utils.fs.TempFileManager;
+
+import cn.edu.nju.cs.tcao4bpel.store.AspectStore;
+import cn.edu.nju.cs.tcao4bpel.store.AspectStoreImpl;
 
 /**
  * Server class called by our Axis hooks to handle all ODE lifecycle management.
@@ -120,6 +124,9 @@ public class ODEServer {
     protected Database _db;
 
     private DeploymentPoller _poller;
+    
+    //TCAO4BPEL
+    private AspectDeploymentPoller _aspectPoller;
 
     private BpelServerConnector _connector;
 
@@ -214,13 +221,18 @@ public class ODEServer {
         if( _poller == null ) {
             _poller = new DeploymentPoller(_store.getDeployDir(), this);
         }
+        
+        //TCAO4BPEL init aspectStore
+        AspectStore aspectStore = AspectStoreImpl.getInstance();
+        aspectStore.setDeployDir(new File(_workRoot, "aspects")); // deploy aspect under aspects directory
+        _aspectPoller = new AspectDeploymentPoller(aspectStore.getDeployDir(), this);
 
         _mgtService = new ManagementService();
         _mgtService.enableService(_axisConfig, _bpelServer, _store, _appRoot.getAbsolutePath());
 
         try {
             __log.debug("Initializing Deployment Web Service");
-            new DeploymentWebService().enableService(_axisConfig, _store, _poller, _appRoot.getAbsolutePath(), _workRoot.getAbsolutePath());
+            new DeploymentWebService().enableService(_axisConfig, _store, _poller, _aspectPoller, _appRoot.getAbsolutePath(), _workRoot.getAbsolutePath());
         } catch (Exception e) {
             throw new ServletException(e);
         }
@@ -232,6 +244,8 @@ public class ODEServer {
         initConnector();
 
         _poller.start();
+        // TCAO4BPEL: start Poller
+        _aspectPoller.start();
         __log.info(__msgs.msgPollingStarted(_store.getDeployDir().getAbsolutePath()));
         __log.info(__msgs.msgOdeStarted());
     }
@@ -309,6 +323,14 @@ public class ODEServer {
                 } catch (Throwable t) {
                     __log.debug("Error stopping poller.", t);
                 }
+            if(_aspectPoller != null)
+            	try{
+            		__log.debug("shutting down aspect poller");
+            		_aspectPoller.stop();
+            		_aspectPoller =null;
+            	}catch(Throwable t){
+            		__log.debug("Error stopping aspect poller.", t);
+            	}
 
             if (_bpelServer != null)
                 try {

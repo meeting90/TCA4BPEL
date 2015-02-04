@@ -27,6 +27,7 @@ import org.apache.ode.bpel.o.OPickReceive;
 class ReceiveGenerator extends PickReceiveGenerator {
 
   public void compile(OActivity output, Activity src) {
+	super.compile(output, src);
     OPickReceive opick = (OPickReceive) output;
     ReceiveActivity rcvDef = (ReceiveActivity) src;
 

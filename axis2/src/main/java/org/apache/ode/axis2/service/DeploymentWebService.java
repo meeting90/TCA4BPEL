@@ -47,23 +47,25 @@ import org.apache.axiom.soap.SOAPFactory;
 import org.apache.axis2.AxisFault;
 import org.apache.axis2.context.MessageContext;
 import org.apache.axis2.description.AxisService;
-import org.apache.axis2.description.AxisOperation;
 import org.apache.axis2.engine.AxisConfiguration;
 import org.apache.axis2.engine.AxisEngine;
 import org.apache.axis2.receivers.AbstractMessageReceiver;
 import org.apache.axis2.util.Utils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.commons.lang.StringUtils;
 import org.apache.ode.axis2.OdeFault;
+import org.apache.ode.axis2.deploy.AspectDeploymentPoller;
 import org.apache.ode.axis2.deploy.DeploymentPoller;
 import org.apache.ode.axis2.hooks.ODEAxisService;
-import org.apache.ode.bpel.iapi.BpelServer;
 import org.apache.ode.bpel.iapi.ProcessConf;
 import org.apache.ode.bpel.iapi.ProcessStore;
 import org.apache.ode.il.OMUtils;
-import org.apache.ode.utils.fs.FileUtils;
 import org.apache.ode.utils.Namespaces;
+import org.apache.ode.utils.fs.FileUtils;
+
+import cn.edu.nju.cs.tcao4bpel.store.AspectStore;
+import cn.edu.nju.cs.tcao4bpel.store.AspectStoreImpl;
 
 /**
  * Axis wrapper for process deployment.
@@ -78,6 +80,13 @@ public class DeploymentWebService {
     private File _deployPath;
     private DeploymentPoller _poller;
     private ProcessStore _store;
+    
+    // TCAO4BPEL: aspectStore
+    private AspectStore _aspectStore= AspectStoreImpl.getInstance();
+    //TCAO4BPEL: aspectDeployPath
+    private File _aspectsDeployPath;
+    //TCAO4BPEL: aspect deployment poller
+    private AspectDeploymentPoller _aspectPoller;
 
 
     public DeploymentWebService() {
@@ -86,10 +95,15 @@ public class DeploymentWebService {
     }
 
     public void enableService(AxisConfiguration axisConfig, ProcessStore store,
-                              DeploymentPoller poller, String rootpath, String workPath) throws AxisFault, WSDLException {
+                              DeploymentPoller poller, AspectDeploymentPoller aspectPoller, String rootpath, String workPath) throws AxisFault, WSDLException {
         _deployPath = new File(workPath, "processes");
+        //TCAO4BPEL 
+        _aspectsDeployPath= new File(workPath, "aspects");
         _store = store;
         _poller = poller;
+        
+        //TCAO4BPEL 
+        _aspectPoller = aspectPoller;
 
         Definition def;
         WSDLReader wsdlReader = WSDLFactory.newInstance().newWSDLReader();
@@ -111,97 +125,104 @@ public class DeploymentWebService {
             boolean unknown = false;
 
             try {
-                if (operation.equals("deploy")) {
+            	
+            	
+            	//TCAO4BPEL: Aspect Deployment
+            	if(operation.equals("deployAspect")){
+        			__log.debug("TCAO4BPEL: Deploying ASPECT!");
+        			OMElement deployElement= messageContext.getEnvelope().getBody().getFirstElement();
+        			OMElement namePart = fetchPart(messageContext, deployElement, "name");
+        			OMElement packagePart = fetchPart(messageContext, deployElement, "package");
+        			OMElement zip = fetchPart(messageContext, packagePart, "zip");
+        			String bundleName = namePart.getText().trim();
+        			validBundleName(namePart.getText());
+        			OMText binaryNode = fetchBinaryNode(zip);
+        			try{
+                    	
+                        _aspectPoller.hold();
+        				File dest = buildDeployDir(_aspectsDeployPath, bundleName + "-" + _aspectStore.getCurrentVersion());
+        				unzip(dest, (DataHandler) binaryNode.getDataHandler());
+        				// Check that we have a deploy.xml
+        				checkDeployXml( dest);
+                        Collection<QName> deployed = _aspectStore.deployAspect(dest, "true.", _store);
+                        createDeployMarker(_deployPath, dest.getName() + ".deployed");
+                        // Telling the poller what we deployed so that it doesn't try to deploy it again
+                        _aspectPoller.markAsDeployed(dest);
+                        __log.info("Deployment of artifact " + dest.getName() + " successful.");
+                        OMElement response = buildDeployResponse(factory, dest, deployed);
+                        sendResponse(factory, messageContext, "aspectDeployResponse", response);
+        			}finally{
+        				_aspectPoller.release();
+        			}
+        			
+            	}else if(operation.equals("undeployAspect")){
+            		OMElement part = messageContext.getEnvelope().getBody().getFirstElement().getFirstElement();
+            		if(part == null) throw new OdeFault("Missing bundle name in undeploy message.");
+            		String pkg = part.getText().trim();
+            		validBundleName(pkg);
+            		File deploymentDir = findeDeployedDir(_aspectsDeployPath, pkg);
+            		try{
+            			_aspectPoller.hold();
+            			Collection<QName> undeployed = _aspectStore.undeployAspect(deploymentDir);
+            			deleateDeployMarker(deploymentDir);
+            			FileUtils.deepDelete(deploymentDir);
+            			 
+            			OMElement response = factory.createOMElement("response",null);
+            			response.setText("" + (undeployed.size() >0));
+            			sendResponse(factory, messageContext, "aspectUndeployResponse", response);
+            			_aspectPoller.markAsUndeployed(deploymentDir);
+            		}finally{
+            			_aspectPoller.release();
+            		}
+            	}else if(operation.equals("listDeployedAspectPackages")){
+            		Collection< String> packageNames= _aspectStore.getAspectPackages();
+            		OMElement response  = factory.createOMElement("deployedAspectPackages",null);
+            		for(String name: packageNames){
+            			OMElement nameElement = factory.createOMElement("name", _deployapi);
+            			nameElement.setText(name);
+            			response.addChild(nameElement);
+            		}
+            		sendResponse(factory, messageContext, "listDeployedAspectPackagesResponse", response);
+            	}else if(operation.equals("listAspects")){
+            		OMElement namePart = messageContext.getEnvelope().getBody().getFirstElement().getFirstElement();
+            		List<QName> aspectIds = _aspectStore.listAspects(namePart.getText());
+            		if(aspectIds == null)
+            			throw new OdeFault("Couldn't find aspect package :"  + namePart.getText());
+            		OMElement response = factory.createOMElement("aspectIds", null);
+            		for(QName qname: aspectIds){
+            			OMElement nameElement =factory.createOMElement("id",_deployapi);
+            			nameElement.setText(qname);
+            			response.addChild(nameElement);
+            		}
+            		sendResponse(factory, messageContext, "listAspectsResponse", response);
+            	}
+            	
+            	//BPEL  Process deployment
+            	
+            	else if (operation.equals("deploy")) {
                     OMElement deployElement = messageContext.getEnvelope().getBody().getFirstElement();
-                    OMElement namePart = deployElement.getFirstChildWithName(new QName(null, "name"));
-                    // "be liberal in what you accept from others"
-                    if (namePart == null) {
-                       namePart = OMUtils.getFirstChildWithName(deployElement, "name");
-                       if( namePart == null ) {
-                               throw new OdeFault("The name part is missing");
-                       } else if (__log.isWarnEnabled()) {
-                            __log.warn("Invalid incoming request detected for operation " + messageContext.getAxisOperation().getName() + ". Name part should have no namespace but has " + namePart.getQName().getNamespaceURI());
-                        }
-                    }
-
-                    OMElement packagePart = deployElement.getFirstChildWithName(new QName(null, "package"));
-
-                    // "be liberal in what you accept from others"
-                    if (packagePart == null) {
-                        packagePart = OMUtils.getFirstChildWithName(deployElement, "package");
-                        if (packagePart != null && __log.isWarnEnabled()) {
-                            __log.warn("Invalid incoming request detected for operation " + messageContext.getAxisOperation().getName() + ". Package part should have no namespace but has " + packagePart.getQName().getNamespaceURI());
-                        }
-                    }
-
-                    OMElement zip = null;
-                    if (packagePart != null) {
-                        zip = packagePart.getFirstChildWithName(new QName(Namespaces.ODE_DEPLOYAPI_NS, "zip"));
-                        // "be liberal in what you accept from others"
-                        if (zip == null) {
-                            zip = OMUtils.getFirstChildWithName(packagePart, "zip");
-                            if (zip != null && __log.isWarnEnabled()) {
-                                String ns = zip.getQName().getNamespaceURI() == null || zip.getQName().getNamespaceURI().length() == 0 ? "empty" : zip.getQName().getNamespaceURI();
-                                __log.warn("Invalid incoming request detected for operation " + messageContext.getAxisOperation().getName() + ". <zip/> element namespace should be " + Namespaces.ODE_DEPLOYAPI_NS + " but was " + ns);
-                            }
-                        }
-                    }
-
-                    if (zip == null || packagePart == null)
-                        throw new OdeFault("Your message should contain an element named 'package' with a 'zip' element");
-
+                    OMElement namePart = fetchPart(messageContext, deployElement, "name");
+                    OMElement packagePart = fetchPart(messageContext, deployElement, "package");
+                    OMElement zip = fetchPart(messageContext, packagePart, "zip");
                     String bundleName = namePart.getText().trim();
-                    if (!validBundleName(namePart.getText()))
-                        throw new OdeFault("Invalid bundle name, only non empty alpha-numerics and _ strings are allowed.");
-
-                    OMText binaryNode = (OMText) zip.getFirstOMChild();
-                    if (binaryNode == null) {
-                        throw new OdeFault("Empty binary node under <zip> element");
-                    }
-                    binaryNode.setOptimize(true);
+                    validBundleName(bundleName);
+                    OMText binaryNode = fetchBinaryNode(zip);
                     try {
                         // We're going to create a directory under the deployment root and put
                         // files in there. The poller shouldn't pick them up so we're asking
                         // it to hold on for a while.
                         _poller.hold();
-
-                        File dest = new File(_deployPath, bundleName + "-" + _store.getCurrentVersion());
-                        boolean createDir = dest.mkdir();
-                        if(!createDir){
-                        	throw new OdeFault("Error while creating file " + dest.getName());
-                        }
+                        File dest = buildDeployDir(_deployPath, bundleName + "-" + _store.getCurrentVersion());
                         unzip(dest, (DataHandler) binaryNode.getDataHandler());
-
                         // Check that we have a deploy.xml
-                        File deployXml = new File(dest, "deploy.xml");
-                        if (!deployXml.exists())
-                            throw new OdeFault("The deployment doesn't appear to contain a deployment " +
-                                    "descriptor in its root directory named deploy.xml, aborting.");
-
+                        checkDeployXml(dest);
                         Collection<QName> deployed = _store.deploy(dest);
-
-                        File deployedMarker = new File(_deployPath, dest.getName() + ".deployed");
-                        if(!deployedMarker.createNewFile()) {
-                        	throw new OdeFault("Error while creating file " + deployedMarker.getName() + "deployment failed");
-                        }
-
+                        createDeployMarker(_deployPath, dest.getName() + ".deployed");
                         // Telling the poller what we deployed so that it doesn't try to deploy it again
                         _poller.markAsDeployed(dest);
                         __log.info("Deployment of artifact " + dest.getName() + " successful.");
 
-                        OMElement response = factory.createOMElement("response", null);
-
-                        if (__log.isDebugEnabled()) __log.debug("Deployed package: "+dest.getName());
-                        OMElement d = factory.createOMElement("name", _deployapi);
-                        d.setText(dest.getName());
-                        response.addChild(d);
-
-                        for (QName pid : deployed) {
-                            if (__log.isDebugEnabled()) __log.debug("Deployed PID: "+pid);
-                            d = factory.createOMElement("id", _deployapi);
-                            d.setText(pid);
-                            response.addChild(d);
-                        }
+                        OMElement response = buildDeployResponse(factory, dest, deployed);
                         sendResponse(factory, messageContext, "deployResponse", response);
                     } finally {
                         _poller.release();
@@ -211,27 +232,15 @@ public class DeploymentWebService {
                     if (part == null) throw new OdeFault("Missing bundle name in undeploy message.");
 
                     String pkg = part.getText().trim();
-                    if (!validBundleName(pkg)) {
-                        throw new OdeFault("Invalid bundle name, only non empty alpha-numerics and _ strings are allowed.");
-                    }
-
-                    File deploymentDir = new File(_deployPath, pkg);
-                    if (!deploymentDir.exists())
-                        throw new OdeFault("Couldn't find deployment package " + pkg + " in directory " + _deployPath);
-
+                    validBundleName(pkg); 
+                    File deploymentDir = findeDeployedDir(_deployPath, pkg);
                     try {
                         // We're going to delete files & directories under the deployment root.
                         // Put the poller on hold to avoid undesired side effects
                         _poller.hold();
-
                         Collection<QName> undeployed = _store.undeploy(deploymentDir);
 
-                        File deployedMarker = new File(deploymentDir + ".deployed");
-                        boolean isDeleted = deployedMarker.delete();
-
-                        if (!isDeleted)
-                            __log.error("Error while deleting file " + deployedMarker.getName());
-
+                        deleateDeployMarker(deploymentDir);
                         FileUtils.deepDelete(deploymentDir);
 
                         OMElement response = factory.createOMElement("response", null);
@@ -332,15 +341,93 @@ public class DeploymentWebService {
             AxisEngine.send(outMsgContext);
         }
 
-        private boolean validBundleName(String bundle) {
+        private void validBundleName(String bundle) throws OdeFault {
             boolean valid;
             if (StringUtils.isBlank(bundle)) valid = false;
             else valid = bundle.matches("[\\p{L}0-9_\\-]*");
             if (__log.isDebugEnabled()) {
                 __log.debug("Validating bundle " + bundle + " valid: " + valid);
             }
-            return valid;
+            if(!valid)
+            	throw new OdeFault("Invalid bundle name, only non empty alpha-numerics and _ strings are allowed.");
         }
+    
+        private void checkDeployXml(File dest) throws OdeFault {
+    		File deployXml = new File(dest, "deploy.xml");
+            if (!deployXml.exists())
+                throw new OdeFault("The deployment doesn't appear to contain a deployment " +
+                        "descriptor in its root directory named deploy.xml, aborting.");
+    		
+    	}
+
+    	private OMElement fetchPart(MessageContext context,OMElement deployElement, String key) throws OdeFault{
+    		OMElement part = deployElement.getFirstChildWithName(new QName(Namespaces.ODE_DEPLOYAPI_NS, key));
+    		if(part == null)
+    			part = OMUtils.getFirstChildWithName(deployElement, key);
+    			if(part == null)
+    				throw new OdeFault("The "+ key+ "part is missing");
+    			else if(__log.isWarnEnabled())
+    				__log.warn("Invalid incoming request detected for operation " + context.getAxisOperation().getName() + ". " + key + "part should have no namespace but has " + part.getQName().getNamespaceURI());
+    		return part;
+    	}
+    	
+    	private OMText fetchBinaryNode(OMElement zip) throws OdeFault{
+    		OMText binaryNode = (OMText) zip.getFirstOMChild();
+    		if(binaryNode == null)
+    			throw new OdeFault("Empty binary node under <zip> element");
+    		binaryNode.setOptimize(true);
+    		return binaryNode;
+    	}
+    	
+    	private OMElement buildDeployResponse(SOAPFactory factory, File dest, Collection<QName> deployed){
+    		
+    		OMElement response = factory.createOMElement("response", null);
+
+            if (__log.isDebugEnabled()) __log.debug("Deployed aspect package: "+dest.getName());
+            OMElement d = factory.createOMElement("name", _deployapi);
+            d.setText(dest.getName());
+            response.addChild(d);
+
+            for (QName pid : deployed) {
+                if (__log.isDebugEnabled()) __log.debug("Deployed PID: "+pid);
+                d = factory.createOMElement("id", _deployapi);
+                d.setText(pid);
+                response.addChild(d);
+            }
+            return response;
+    	}
+    
+    	private File buildDeployDir(File deployPath, String bundleName) throws OdeFault{
+    		//
+    		//
+    		File dest = new File(deployPath, bundleName);
+            boolean createDir = dest.mkdir();
+            if(!createDir){
+            	throw new OdeFault("Error while creating file " + dest.getName());
+            }
+            return dest;
+    	}
+   
+    	
+    	private File findeDeployedDir(File deployPath, String pkg) throws OdeFault{
+    		 File deploymentDir = new File(_deployPath, pkg);
+             if (!deploymentDir.exists())
+                 throw new OdeFault("Couldn't find deployment package " + pkg + " in directory " + _deployPath);
+             return deploymentDir;
+    	}
+    
+    	private void createDeployMarker(File deployPath,String name) throws IOException{
+    		File deployedMarker = new File(deployPath, name);
+            if(!deployedMarker.createNewFile()) {
+              throw new OdeFault("Error while creating file " + deployedMarker.getName() + "deployment failed");
+            }
+    	}
+    	private void deleateDeployMarker(File deploymentDir){
+    		 File deployedMarker = new File(deploymentDir + ".deployed");
+             boolean isDeleted = deployedMarker.delete();
+             if (!isDeleted)
+                 __log.error("Error while deleting file " + deployedMarker.getName());
+    	}
     }
 
     private static void copyInputStream(InputStream in, OutputStream out)
@@ -351,6 +438,13 @@ public class DeploymentWebService {
             out.write(buffer, 0, len);
         out.close();
     }
+
+    
+	
+	
+	
+	
+	
 
 
 

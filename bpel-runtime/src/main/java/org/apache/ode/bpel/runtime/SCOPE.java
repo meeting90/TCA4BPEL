@@ -55,6 +55,8 @@ import org.apache.ode.jacob.ReceiveProcess;
 import org.apache.ode.jacob.Synch;
 import org.w3c.dom.Element;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 
 /**
  * An active scope.
@@ -69,8 +71,8 @@ class SCOPE extends ACTIVITY {
     private Set<EventHandlerInfo> _eventHandlers = new HashSet<EventHandlerInfo>();
 
     /** Constructor. */
-    public SCOPE(ActivityInfo self, ScopeFrame frame, LinkFrame linkFrame) {
-        super(self, frame, linkFrame);
+    public SCOPE(ActivityInfo self, ScopeFrame frame, LinkFrame linkFrame,AspectFrame aspectFrame) {
+        super(self, frame, linkFrame,aspectFrame);
         _oscope = (OScope) self.o;
         assert _oscope.activity != null;
     }
@@ -81,7 +83,7 @@ class SCOPE extends ACTIVITY {
         _child = new ActivityInfo(genMonotonic(),
             _oscope.activity,
             newChannel(Termination.class), newChannel(ParentScope.class));
-        instance(createChild(_child, _scopeFrame, _linkFrame));
+        instance(createChild(_child, _scopeFrame, _linkFrame, _aspectFrame));
 
         if (_oscope.eventHandler != null) {
             for (Iterator<OEventHandler.OAlarm> i = _oscope.eventHandler.onAlarms.iterator(); i.hasNext(); ) {
@@ -134,7 +136,7 @@ class SCOPE extends ACTIVITY {
         private boolean _childTermRequested;
 
         ACTIVE() {
-            super(SCOPE.this._self, SCOPE.this._scopeFrame, SCOPE.this._linkFrame);
+            super(SCOPE.this._self, SCOPE.this._scopeFrame, SCOPE.this._linkFrame, SCOPE.this._aspectFrame);
             _startTime = System.currentTimeMillis();
         }
 
@@ -289,7 +291,7 @@ class SCOPE extends ACTIVITY {
                                 _scopeFrame, CompensationHandler.emptySet(), (FaultData)null);
                         
                         // Create the temination handler scope.
-                        instance(new SCOPE(terminationHandlerActivity,terminationHandlerScopeFrame, SCOPE.this._linkFrame));
+                        instance(new SCOPE(terminationHandlerActivity,terminationHandlerScopeFrame, SCOPE.this._linkFrame, SCOPE.this._aspectFrame));
 
                         object(new ReceiveProcess() {
                             private static final long serialVersionUID = -6009078124717125270L;
@@ -368,7 +370,7 @@ class SCOPE extends ACTIVITY {
                         }
 
                         // Create the fault handler scope.
-                        instance(new SCOPE(faultHandlerActivity,faultHandlerScopeFrame, SCOPE.this._linkFrame));
+                        instance(new SCOPE(faultHandlerActivity,faultHandlerScopeFrame, SCOPE.this._linkFrame, SCOPE.this._aspectFrame));
 
                         object(new ReceiveProcess() {
                             private static final long serialVersionUID = -6009078124717125270L;

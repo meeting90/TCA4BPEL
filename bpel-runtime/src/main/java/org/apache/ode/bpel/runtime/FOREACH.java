@@ -46,6 +46,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 public class FOREACH extends ACTIVITY {
 
     private static final long serialVersionUID = 1L;
@@ -60,8 +62,8 @@ public class FOREACH extends ACTIVITY {
     private int _completedCounter = 0;
     private int _completionCounter = -1;
 
-    public FOREACH(ActivityInfo self, ScopeFrame frame, LinkFrame linkFrame) {
-        super(self,frame, linkFrame);
+    public FOREACH(ActivityInfo self, ScopeFrame frame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        super(self,frame, linkFrame, aspectFrame);
         _oforEach = (OForEach) self.o;
     }
 
@@ -242,7 +244,7 @@ public class FOREACH extends ACTIVITY {
             se.setLineNo(_oforEach.debugInfo.startLine);
         sendEvent(se);
 
-        instance(new SCOPE(child.activity, newFrame, _linkFrame));
+        instance(new SCOPE(child.activity, newFrame, _linkFrame, _aspectFrame));
     }
 
     public String toString() {

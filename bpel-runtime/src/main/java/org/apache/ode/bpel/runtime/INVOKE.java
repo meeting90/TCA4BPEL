@@ -38,6 +38,8 @@ import org.apache.ode.utils.DOMUtils;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 import static org.apache.ode.jacob.ProcessUtil.compose;
 
 
@@ -58,8 +60,8 @@ public class INVOKE extends ACTIVITY {
     // Data associated with failure.
     private Element _failureData;
 
-    public INVOKE(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        super(self, scopeFrame, linkFrame);
+    public INVOKE(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        super(self, scopeFrame, linkFrame,aspectFrame);
         _oinvoke = (OInvoke) _self.o;
         _invoked = 0;
     }

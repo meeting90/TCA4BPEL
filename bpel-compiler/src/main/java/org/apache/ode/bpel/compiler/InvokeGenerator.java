@@ -51,6 +51,7 @@ class InvokeGenerator extends DefaultActivityGenerator {
     }
 
     public void compile(OActivity output, Activity srcx) {
+    	super.compile(output, srcx);
         InvokeActivity src = (InvokeActivity) srcx;
         final OInvoke oinvoke = (OInvoke) output;
 

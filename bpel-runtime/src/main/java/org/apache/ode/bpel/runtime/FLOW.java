@@ -39,6 +39,8 @@ import org.apache.ode.utils.stl.FilterIterator;
 import org.apache.ode.utils.stl.MemberOfFunction;
 import org.w3c.dom.Element;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 class FLOW extends ACTIVITY {
     private static final long serialVersionUID = 1L;
 
@@ -46,8 +48,8 @@ class FLOW extends ACTIVITY {
 
     private Set<ChildInfo> _children = new HashSet<ChildInfo>();
 
-    public FLOW(ActivityInfo self, ScopeFrame frame, LinkFrame linkFrame) {
-        super(self,frame, linkFrame);
+    public FLOW(ActivityInfo self, ScopeFrame frame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        super(self,frame, linkFrame, aspectFrame);
         _oflow = (OFlow) self.o;
     }
 
@@ -66,7 +68,7 @@ class FLOW extends ACTIVITY {
                                  newChannel(Termination.class), newChannel(ParentScope.class)));
             _children.add(childInfo);
 
-            instance(createChild(childInfo.activity,_scopeFrame, myLinkFrame));
+            instance(createChild(childInfo.activity,_scopeFrame, myLinkFrame, _aspectFrame));
         }
         instance(new ACTIVE());
     }

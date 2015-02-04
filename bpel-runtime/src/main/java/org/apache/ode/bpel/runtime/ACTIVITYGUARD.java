@@ -32,6 +32,7 @@ import org.apache.ode.bpel.evt.ActivityEnabledEvent;
 import org.apache.ode.bpel.evt.ActivityExecEndEvent;
 import org.apache.ode.bpel.evt.ActivityExecStartEvent;
 import org.apache.ode.bpel.evt.ActivityFailureEvent;
+import org.apache.ode.bpel.evt.ActivityFinishedEvent;
 import org.apache.ode.bpel.evt.ActivityRecoveryEvent;
 import org.apache.ode.bpel.explang.EvaluationException;
 import org.apache.ode.bpel.o.OActivity;
@@ -51,10 +52,13 @@ import org.apache.ode.jacob.ReceiveProcess;
 import org.apache.ode.jacob.Synch;
 import org.w3c.dom.Element;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.ASPECTWAPPER;
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 import static org.apache.ode.jacob.ProcessUtil.compose;
 
 
-class ACTIVITYGUARD extends ACTIVITY {
+public class ACTIVITYGUARD extends ACTIVITY {
     private static final long serialVersionUID = 1L;
 
     private static final Log __log = LogFactory.getLog(ACTIVITYGUARD.class);
@@ -70,8 +74,8 @@ class ACTIVITYGUARD extends ACTIVITY {
 
     private ActivityFailure _failure;
 
-    public ACTIVITYGUARD(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        super(self, scopeFrame, linkFrame);
+    public ACTIVITYGUARD(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        super(self, scopeFrame, linkFrame, aspectFrame);
         _oactivity = self.o;
     }
 
@@ -88,7 +92,8 @@ class ACTIVITYGUARD extends ACTIVITY {
                 sendEvent(aese);
                 // intercept completion channel in order to execute transition conditions.
                 ActivityInfo activity = new ActivityInfo(genMonotonic(),_self.o,_self.self, newChannel(ParentScope.class));
-                instance(createActivity(activity));
+                //instance(createActivity(activity));
+                instance(createAspectWapper(activity));
                 instance(new TCONDINTERCEPT(activity.parent));
             } else {
                 if (_oactivity.suppressJoinFailure) {
@@ -169,12 +174,17 @@ class ACTIVITYGUARD extends ACTIVITY {
         }
     }
 
-    private static ACTIVITY createActivity(ActivityInfo activity, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        return __activityTemplateFactory.createInstance(activity.o,activity, scopeFrame, linkFrame);
+    private static ACTIVITY createActivity(ActivityInfo activity, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        return __activityTemplateFactory.createInstance(activity.o,activity, scopeFrame, linkFrame, aspectFrame);
     }
 
     private ACTIVITY createActivity(ActivityInfo activity) {
-        return createActivity(activity,_scopeFrame, _linkFrame);
+        return createActivity(activity,_scopeFrame, _linkFrame, _aspectFrame);
+    	
+    }
+    
+    private ACTIVITY createAspectWapper(ActivityInfo activity){
+    	return new ASPECTWAPPER(activity, _scopeFrame, _linkFrame, _aspectFrame);
     }
 
     private void startGuardedActivity() {
@@ -228,6 +238,7 @@ class ACTIVITYGUARD extends ACTIVITY {
                         }
                         _self.parent.completed(fault, compensations);
                     }
+                   
                 }
 
                 public void cancelled() {
@@ -236,6 +247,7 @@ class ACTIVITYGUARD extends ACTIVITY {
                     dpe(_oactivity.sourceLinks);
                     // Implicit scope can tell the difference between cancelled and completed.
                     _self.parent.cancelled();
+                   
                 }
 
                 private OFailureHandling getFailureHandling() {

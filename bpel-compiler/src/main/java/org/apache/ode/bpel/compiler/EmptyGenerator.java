@@ -28,6 +28,7 @@ import org.apache.ode.bpel.o.OEmpty;
 class EmptyGenerator extends DefaultActivityGenerator {
 
     public void compile(OActivity output, Activity src) {
+    	super.compile(output, src);
     }
 
     public OActivity newInstance(Activity src) {

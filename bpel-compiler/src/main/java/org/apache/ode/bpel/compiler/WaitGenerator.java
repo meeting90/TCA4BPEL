@@ -38,6 +38,7 @@ class WaitGenerator extends DefaultActivityGenerator {
     }
 
     public void compile(OActivity output, Activity src) {
+    	super.compile(output, src);
         WaitActivity waitDef = (WaitActivity)src;
         OWait owait = (OWait)output;
         if (waitDef.getFor() != null && waitDef.getUntil() == null) {

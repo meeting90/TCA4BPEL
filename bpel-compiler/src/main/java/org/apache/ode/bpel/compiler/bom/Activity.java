@@ -20,8 +20,10 @@ package org.apache.ode.bpel.compiler.bom;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Stack;
 
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 /**
  * Interface common to all BPEL activities. This interface provides methods for
@@ -86,4 +88,71 @@ public class Activity extends JoinFailureSuppressor {
         return targets.getChildren(LinkTarget.class);
 
     }
+    /** generate xpath of activity  **/
+    public String getXpath(){
+    	Node parent = null;
+		Stack<Node> stack = new Stack<Node>();
+		StringBuffer buffer = new StringBuffer();
+	
+		stack.push(this.getElement());
+		
+		parent = this.getElement().getParentNode();
+		
+		while(null != parent && parent.getNodeType() != Node.DOCUMENT_NODE){
+			stack.push(parent);
+			parent = parent.getParentNode();
+		}
+		
+		Node currentNode = null;
+		while(! stack.isEmpty() && null != (currentNode = stack.pop())){
+			boolean handled = false;
+			if(currentNode.getNodeType() == Node.ELEMENT_NODE){
+				Element e = (Element) currentNode;
+				//root element
+				if(buffer.length() == 0){
+					buffer.append(currentNode.getLocalName());
+					if(currentNode.hasAttributes()){
+						if(e.hasAttribute("name")){
+							buffer.append("[@name = '" + e.getAttribute("name") + "']");
+						}
+					}
+				}else{
+					// child element - append slash and element name
+					buffer.append("/");
+					buffer.append(currentNode.getLocalName());
+					if(currentNode.hasAttributes()){
+						// see if the element has a name or id attribute
+						if(e.hasAttribute("id")){
+							// id attribute found - use that
+							buffer.append("[@id='" + e.getAttribute("id") + "']");
+							handled = true;
+						}else if(e.hasAttribute("name")){
+							// name attribute found - use that
+							buffer.append("[@name='" + e.getAttribute("name") + "']");
+							handled = true;
+						}
+					}
+				}
+				if(!handled){
+					// no known attribute we could use - get sibling index
+					int pre_siblings = 1;
+					Node pre_sibling = currentNode.getPreviousSibling();
+					while(null != pre_sibling){
+						if(pre_sibling.getNodeType() == currentNode.getNodeType()){
+							if(pre_sibling.getLocalName().equalsIgnoreCase(currentNode.getLocalName())){
+								pre_siblings ++;
+							}
+						}
+						pre_sibling = pre_sibling.getPreviousSibling();
+					}
+					buffer.append("[" + pre_siblings + "]");
+				}
+				
+				
+			}
+		}
+		
+		return buffer.toString();
+	}
+    
 }

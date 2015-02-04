@@ -35,6 +35,8 @@ import org.apache.ode.jacob.ReceiveProcess;
 import org.apache.ode.jacob.Synch;
 import org.w3c.dom.Element;
 
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
+
 import static org.apache.ode.jacob.ProcessUtil.compose;
 
 
@@ -46,16 +48,17 @@ class SEQUENCE extends ACTIVITY {
     private final List<OActivity> _remaining;
     private final Set<CompensationHandler> _compensations;
 
-    SEQUENCE(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame) {
-        this(self, scopeFrame, linkFrame, ((OSequence)self.o).sequence, CompensationHandler.emptySet());
+    SEQUENCE(ActivityInfo self, ScopeFrame scopeFrame, LinkFrame linkFrame, AspectFrame aspectFrame) {
+        this(self, scopeFrame, linkFrame, aspectFrame,((OSequence)self.o).sequence, CompensationHandler.emptySet());
     }
 
     SEQUENCE(ActivityInfo self,
              ScopeFrame scopeFrame,
              LinkFrame linkFrame,
+             AspectFrame aspectFrame,
              List<OActivity> remaining,
              Set<CompensationHandler> compensations) {
-        super(self, scopeFrame, linkFrame);
+        super(self, scopeFrame, linkFrame, aspectFrame);
         _remaining = Collections.unmodifiableList(remaining);
         _compensations =Collections.unmodifiableSet(compensations);
     }
@@ -64,7 +67,7 @@ class SEQUENCE extends ACTIVITY {
         final ActivityInfo child = new  ActivityInfo(genMonotonic(),
             _remaining.get(0),
             newChannel(Termination.class), newChannel(ParentScope.class));
-        instance(createChild(child, _scopeFrame, _linkFrame));
+        instance(createChild(child, _scopeFrame, _linkFrame, _aspectFrame));
         instance(new ACTIVE(child));
     }
 
@@ -109,7 +112,7 @@ class SEQUENCE extends ACTIVITY {
                     } else /* !fault && ! terminateRequested && !remaining.isEmpty */ {
                         ArrayList<OActivity> remaining = new ArrayList<OActivity>(_remaining);
                         remaining.remove(0);
-                        instance(new SEQUENCE(_self, _scopeFrame, _linkFrame, remaining, comps));
+                        instance(new SEQUENCE(_self, _scopeFrame, _linkFrame, _aspectFrame,remaining, comps));
                     }
                 }
 

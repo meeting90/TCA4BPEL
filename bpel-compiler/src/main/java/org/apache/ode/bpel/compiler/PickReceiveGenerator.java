@@ -131,5 +131,10 @@ abstract class PickReceiveGenerator extends DefaultActivityGenerator {
 
         return onMessage;
     }
+   
+    @Override
+    public void compile(OActivity output, Activity src) {
+    	super.compile(output, src);
+    }
 
 }
