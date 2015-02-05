@@ -45,8 +45,8 @@ public class AspectConfImpl {
 		initPartnerLinks();
 	}
 	private void initPartnerLinks() {
-		if(_ainfo.getInvokeList() != null){
-			for(TInvoke invoke : _ainfo.getInvokeList()){
+		if(_ainfo.getInvokeArray() != null){
+			for(TInvoke invoke : _ainfo.getInvokeArray()){
 				String plinkName = invoke.getPartnerLink();
 				TService service = invoke.getService();
 				if(service == null)

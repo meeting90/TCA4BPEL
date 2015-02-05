@@ -80,7 +80,7 @@ define "ode" do
   desc "ODE Axis Integration Layer"
   define "axis2" do
     compile.with projects("bpel-api", "bpel-connector", "bpel-dao", "bpel-epr", "bpel-runtime",
-      "scheduler-simple", "bpel-schemas", "bpel-store", "utils", "agents", "tcao4bpel-store"),
+      "scheduler-simple", "bpel-schemas", "bpel-store", "utils", "agents", "tcao4bpel-store" ),
       AXIOM, AXIS2_ALL, COMMONS.lang, COMMONS.collections, COMMONS.httpclient, COMMONS.lang,
       DERBY, GERONIMO.kernel, GERONIMO.transaction, JAVAX.activation, JAVAX.servlet, JAVAX.stream,
       JAVAX.transaction, JENCKS, WSDL4J, WS_COMMONS, XMLBEANS, AXIS2_MODULES.libs, SLF4J, LOG4J
@@ -96,7 +96,7 @@ define "ode" do
     libs = projects("axis2", "bpel-api", "bpel-compiler", "bpel-connector", "bpel-dao",
       "bpel-epr", "bpel-obj", "bpel-ql", "bpel-runtime", "scheduler-simple",
       "bpel-schemas", "bpel-store", "dao-hibernate", "jca-ra", "jca-server",
-      "utils", "dao-jpa", "agents"),
+      "utils", "dao-jpa", "agents", "tcao4bpel-store", "tcao4bpel-compiler","tcao4bpel-obj"),
       AXIS2_ALL, ANNONGEN, BACKPORT, COMMONS.codec, COMMONS.collections, COMMONS.fileupload, COMMONS.io, COMMONS.httpclient, COMMONS.beanutils,
       COMMONS.lang, COMMONS.pool, DERBY, DERBY_TOOLS, JACOB, JAXEN, JAVAX.activation, JAVAX.ejb, JAVAX.javamail,
       JAVAX.connector, JAVAX.jms, JAVAX.persistence, JAVAX.transaction, JAVAX.stream,  JIBX,
@@ -219,37 +219,7 @@ define "ode" do
     package :jar
   end
 
-  # begin define extended projects 
-  desc "TCAO4BPEL Aspect Object"
-  define "tcao4bpel-obj" do 
-    compile.with projects("bpel-obj")
-    package :jar
-  end
-
-
-  desc "TCAO4BPEL Aspect Compiler"
-  define "tcao4bpel-compiler"  do
-    compile.with projects("bpel-api", "bpel-obj", "bpel-compiler", "bpel-store", "utils",
-      "tcao4bpel-obj"), COMMONS.logging, XALAN, WSDL4J
-
-    test.with projects("bpel-api", "bpel-obj", "bpel-compiler", "bpel-store", "utils",
-      "tcao4bpel-obj"), COMMONS.logging, XALAN, WSDL4J
-
-    package :jar 
-
-
-  end
-
-  desc "TCAO4BPEL Store"
-  define "tcao4bpel-store" do
-    compile.with projects("bpel-api", "bpel-obj", "bpel-compiler", "bpel-schemas","bpel-store","utils",
-      "tcao4bpel-compiler","tcao4bpel-obj"), COMMONS.logging, XMLBEANS, WSDL4J
-    test.with projects("bpel-api", "bpel-obj","bpel-compiler", "bpel-schemas","bpel-store","utils",
-      "tcao4bpel-compiler","tcao4bpel-obj"), COMMONS.logging, XMLBEANS, WSDL4J
-    package :jar
-  end
-
-  # end define extended projects
+ 
 
   desc "ODE Runtime Engine"
   define "bpel-runtime" do
@@ -290,6 +260,40 @@ define "ode" do
     package :jar
   end
 
+
+ # begin define extended projects 
+  desc "TCAO4BPEL Aspect Object"
+  define "tcao4bpel-obj" do 
+    compile.with projects("bpel-obj")
+    package :jar
+  end
+
+
+  desc "TCAO4BPEL Aspect Compiler"
+  define "tcao4bpel-compiler"  do
+    compile.with projects("bpel-api", "bpel-obj", "bpel-compiler", "bpel-store", "utils",
+      "tcao4bpel-obj"), COMMONS.logging, XALAN, WSDL4J
+
+    test.with projects("bpel-api", "bpel-obj", "bpel-compiler", "bpel-store", "utils",
+      "tcao4bpel-obj"), COMMONS.logging, XALAN, WSDL4J
+
+    package :jar 
+
+
+  end
+
+  desc "TCAO4BPEL Store"
+  define "tcao4bpel-store" do
+    compile.with projects("bpel-api", "bpel-obj", "bpel-compiler", "bpel-schemas","bpel-store","utils",
+      "tcao4bpel-compiler","tcao4bpel-obj"), COMMONS.logging, XMLBEANS, WSDL4J
+    test.with projects("bpel-api", "bpel-obj","bpel-compiler", "bpel-schemas","bpel-store","utils",
+      "tcao4bpel-compiler","tcao4bpel-obj"), COMMONS.logging, XMLBEANS, WSDL4J
+    package :jar
+  end
+
+  # end define extended projects
+  
+
   desc "ODE Process Store"
   define "bpel-store" do
     compile.with projects("bpel-api", "bpel-compiler", "bpel-dao", "bpel-obj", "bpel-schemas", "bpel-epr",
@@ -327,15 +331,15 @@ define "ode" do
     resources hibernate_doclet(:package=>"org.apache.ode.daohib.bpel.hobj", :excludedtags=>"@version,@author,@todo")
 
     # doclet does not support not-found="ignore"
-    #task "hbm-hack" do |task|
-    #  process_instance_hbm_file = project.path_to("target/classes/org/apache/ode/daohib/bpel/hobj/HProcessInstance.hbm.xml")
-    #  process_instance_hbm = File.read(process_instance_hbm_file)
-    #  if !process_instance_hbm.include? "not-found=\"ignore\""
-    #    process_instance_hbm.insert(process_instance_hbm.index("class=\"org.apache.ode.daohib.bpel.hobj.HProcess\"") - 1, "not-found=\"ignore\" ")
-    #    File.open(process_instance_hbm_file, "w") { |f| f << process_instance_hbm }
-    #  end
-    #end
-    #task "compile" => "hbm-hack"
+    task "hbm-hack" do |task|
+      process_instance_hbm_file = project.path_to("target/classes/org/apache/ode/daohib/bpel/hobj/HProcessInstance.hbm.xml")
+      #process_instance_hbm = File.read(process_instance_hbm_file)
+      #if !process_instance_hbm.include? "not-found=\"ignore\""
+      #  process_instance_hbm.insert(process_instance_hbm.index("class=\"org.apache.ode.daohib.bpel.hobj.HProcess\"") - 1, "not-found=\"ignore\" ")
+      #  File.open(process_instance_hbm_file, "w") { |f| f << process_instance_hbm }
+      #end
+    end
+    task "compile" => "hbm-hack"
 
     test.with project("bpel-epr"), BACKPORT, COMMONS.collections, COMMONS.lang, DERBY, COMMONS.pool, COMMONS.dbcp,
       GERONIMO.transaction, GERONIMO.kernel, GERONIMO.connector, JAVAX.connector, JAVAX.ejb, SPRING, SPRING_TEST
@@ -448,7 +452,7 @@ define "ode" do
       jbi.bootstrap :class_name=>"org.apache.ode.jbi.OdeBootstrap", :libs=>libs
       jbi.merge project("dao-hibernate-db").package(:zip)
       jbi.merge project("dao-jpa-ojpa-derby").package(:zip)
-      jbi.include path_to("src/main/jbi/jbi.properties")
+      jbi.include path_to("src/main/jbi/ode-jbi.properties")
     end
 
     test.using :properties=>{ "java.naming.factory.initial" => "org.apache.xbean.spring.jndi.SpringInitialContextFactory", "org.apache.ode.autoRetireProcess"=>"true"}, :java_args=>ENV['TEST_JVM_ARGS']
@@ -464,7 +468,7 @@ define "ode" do
       test.setup unzip(_("target/test/smx/ode")=>project("dao-jpa-ojpa-derby").package(:zip))
       test.setup unzip(_("target/test/smx/ode")=>project("dao-hibernate-db").package(:zip))
       test.setup task(:prepare_jbi_tests) do |task|
-      cp _("src/test/jbi/jbi.properties"), _("target/test/smx/ode")
+      cp _("src/test/jbi/ode-jbi.properties"), _("target/test/smx/ode")
       cp _("src/main/jbi/hibernate.properties"), _("target/test/smx/ode")
       rm_rf Dir["target/test/resources"]
       cp_r _("src/test/resources"), _("target/test/")

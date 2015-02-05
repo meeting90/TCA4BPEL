@@ -72,8 +72,8 @@ public class AspectStoreImpl  implements AspectStore{
 			_log.error(errmsg);
 			throw new ContextException(errmsg);
 		}
-		_log.debug("deploying aspects defined in DD: " + dd.getDeployAspect().getAspectList() );
-		for(TDeploymentAspect.Aspect aspectDD: dd.getDeployAspect().getAspectList()){
+		_log.debug("deploying aspects defined in DD: " + dd.getDeployAspect().getAspectArray() );
+		for(TDeploymentAspect.Aspect aspectDD: dd.getDeployAspect().getAspectArray()){
 			QName aid = aspectDD.getName();
 			if(_aspects.containsKey(aid)){
 				String errmsg= _msgs.msgDeployFailDuplicatePID(aid, du.getName());
