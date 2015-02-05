@@ -21,7 +21,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-bpel-connector</artifactId>
+    <artifactId>bpel-connector</artifactId>
     <name>ODE :: JCA Connector Implementation</name>
     <parent>
         <groupId>org.apache.ode</groupId>
@@ -32,23 +32,23 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-api</artifactId>
+            <artifactId>bpel-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-api-jca</artifactId>
+            <artifactId>bpel-api-jca</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-runtime</artifactId>
+            <artifactId>bpel-runtime</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-jca-ra</artifactId>
+            <artifactId>jca-ra</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-jca-server</artifactId>
+            <artifactId>jca-server</artifactId>
         </dependency>
     </dependencies>
 </project>

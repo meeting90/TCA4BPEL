@@ -48,7 +48,7 @@
 
   <modules>
     <module>common</module>
-    <module>ode-su</module>
+    <module>su</module>
     <module>http-su</module>
     <module>sa</module>
   </modules>

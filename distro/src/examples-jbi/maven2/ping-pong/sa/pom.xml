@@ -33,7 +33,7 @@
   <dependencies>
     <dependency>
       <groupId>org.apache.ode.ping-pong</groupId>
-      <artifactId>ping-pong-ode-su-${processRevision}</artifactId>
+      <artifactId>ping-pong-su-${processRevision}</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>

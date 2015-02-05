@@ -20,7 +20,7 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.apache.ode</groupId>
-  <artifactId>ode-dao-jpa</artifactId>
+  <artifactId>dao-jpa</artifactId>
   <name>ODE :: OpenJPA DAO Impl</name>
 
   <parent>
@@ -57,15 +57,15 @@
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-api</artifactId>
+      <artifactId>bpel-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-dao</artifactId>
+      <artifactId>bpel-dao</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-utils</artifactId>
+      <artifactId>utils</artifactId>
     </dependency>
     <dependency>
       <groupId>xerces</groupId>

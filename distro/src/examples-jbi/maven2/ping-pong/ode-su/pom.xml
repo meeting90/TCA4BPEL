@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.ode.ping-pong</groupId>
-    <artifactId>ping-pong-ode-su-${processRevision}</artifactId>
+    <artifactId>ping-pong-su-${processRevision}</artifactId>
     <packaging>jbi-service-unit</packaging>
 
     <dependencies>

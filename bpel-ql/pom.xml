@@ -20,7 +20,7 @@
 
 <project>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-bpel-ql</artifactId>
+    <artifactId>bpel-ql</artifactId>
     <name>ODE :: BPEL Query Language</name>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
@@ -34,7 +34,7 @@
   <dependencies>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-compiler</artifactId>
+      <artifactId>bpel-compiler</artifactId>
     </dependency>
     <dependency>
       <groupId>junit</groupId>

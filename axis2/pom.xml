@@ -21,7 +21,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-axis2</artifactId>
+    <artifactId>axis2</artifactId>
     <name>ODE :: AXIS2</name>
     <parent>
         <groupId>org.apache.ode</groupId>
@@ -36,47 +36,47 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-compiler</artifactId>
+            <artifactId>bpel-compiler</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-connector</artifactId>
+            <artifactId>bpel-connector</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-dao</artifactId>
+            <artifactId>bpel-dao</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-api</artifactId>
+            <artifactId>bpel-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-epr</artifactId>
+            <artifactId>bpel-epr</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-runtime</artifactId>
+            <artifactId>bpel-runtime</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-tools</artifactId>
+            <artifactId>tools</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-scheduler-simple</artifactId>
+            <artifactId>scheduler-simple</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-store</artifactId>
+            <artifactId>bpel-store</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-schemas</artifactId>
+            <artifactId>bpel-schemas</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-utils</artifactId>
+            <artifactId>utils</artifactId>
         </dependency>
 
         <!-- dependencies of cn.edu.nju.cs group -->

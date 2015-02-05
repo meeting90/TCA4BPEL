@@ -20,7 +20,7 @@
 
 <project>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-bpel-scripts</artifactId>
+    <artifactId>bpel-scripts</artifactId>
     <name>ODE :: BPEL Test Script Files</name>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>

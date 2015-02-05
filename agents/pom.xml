@@ -20,7 +20,7 @@
 
 <project>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-agents</artifactId>
+    <artifactId>agents</artifactId>
     <name>ODE :: Agents</name>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>

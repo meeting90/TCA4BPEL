@@ -21,7 +21,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-dao-hibernate-db</artifactId>
+    <artifactId>dao-hibernate-db</artifactId>
     <name>ODE :: Hibernate DAO DDL Generation</name>
 
     <parent>
@@ -57,7 +57,7 @@
     </dependency>
     <dependency>
         <groupId>org.apache.ode</groupId>
-        <artifactId>ode-dao-hibernate</artifactId>
+        <artifactId>dao-hibernate</artifactId>
     </dependency>
     <dependency>
         <groupId>com.h2database</groupId>
@@ -117,13 +117,13 @@
             </goals>
             <configuration>
               <driver>org.h2.Driver</driver>
-              <url>jdbc:h2:file:${basedir}/target/h2/hibdb/ode-hib-h2;create=true</url>
+              <url>jdbc:h2:file:${basedir}/target/h2/hibdb/hib-h2;create=true</url>
               <username>sa</username>
               <password />
               <autocommit>true</autocommit>
               <onError>continue</onError>
               <srcFiles>
-                <srcFile>src/schema/ode-hib-h2.sql</srcFile>
+                <srcFile>src/schema/hib-h2.sql</srcFile>
               </srcFiles>
             </configuration>
           </execution>          

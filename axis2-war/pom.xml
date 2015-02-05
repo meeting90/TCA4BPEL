@@ -21,7 +21,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-axis2-war</artifactId>
+    <artifactId>axis2-war</artifactId>
     <name>ODE :: Axis2 Based Web Application</name>
     <packaging>pom</packaging>
 
@@ -46,55 +46,55 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-compiler</artifactId>
+            <artifactId>bpel-compiler</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-connector</artifactId>
+            <artifactId>bpel-connector</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-dao</artifactId>
+            <artifactId>bpel-dao</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-api</artifactId>
+            <artifactId>bpel-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-epr</artifactId>
+            <artifactId>bpel-epr</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-runtime</artifactId>
+            <artifactId>bpel-runtime</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-scheduler-simple</artifactId>
+            <artifactId>scheduler-simple</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-store</artifactId>
+            <artifactId>bpel-store</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-schemas</artifactId>
+            <artifactId>bpel-schemas</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-utils</artifactId>
+            <artifactId>utils</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-dao-jpa</artifactId>
+            <artifactId>dao-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-ql</artifactId>
+            <artifactId>bpel-ql</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-axis2</artifactId>
+            <artifactId>axis2</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.axis2</groupId>
@@ -361,7 +361,7 @@
               <goal>single</goal>
             </goals>
             <configuration>
-              <finalName>ode-axis2-war-${project.version}</finalName>
+              <finalName>axis2-war-${project.version}</finalName>
               <appendAssemblyId>false</appendAssemblyId>
               <descriptors>
                 <descriptor>src/main/assembly/bin.xml</descriptor>

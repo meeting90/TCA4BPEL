@@ -21,7 +21,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-bpel-test</artifactId>
+    <artifactId>bpel-test</artifactId>
     <name>ODE :: BPEL Tests</name>
     <parent>
         <groupId>org.apache.ode</groupId>
@@ -32,54 +32,54 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-api</artifactId>
+            <artifactId>bpel-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-compiler</artifactId>
+            <artifactId>bpel-compiler</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-dao</artifactId>
+            <artifactId>bpel-dao</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-store</artifactId>
+            <artifactId>bpel-store</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-utils</artifactId>
+            <artifactId>utils</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-epr</artifactId>
+            <artifactId>bpel-epr</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-dao-jpa</artifactId>
+            <artifactId>dao-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-runtime</artifactId>
+            <artifactId>bpel-runtime</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-jacob</artifactId>
+            <artifactId>jacob</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-schemas</artifactId>
+            <artifactId>bpel-schemas</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-scripts</artifactId>
+            <artifactId>bpel-scripts</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-scheduler-simple</artifactId>
+            <artifactId>scheduler-simple</artifactId>
         </dependency>
         <dependency>
           <groupId>commons-collections</groupId>

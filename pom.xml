@@ -8,12 +8,14 @@
     </parent>
 
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode</artifactId>
+    <artifactId>tcaode</artifactId>
     <packaging>pom</packaging>
-    <version>1.4-SNAPSHOT</version>
+    <version>1.0.0</version>
     
-    <name>ODE</name>
-    <description>Apache ODE (Orchestration Director Engine) executes business processes written following the WS-BPEL standard. It talks to web services, sending and receiving messages, handling data manipulation and error recovery as described by your process definition. It supports both long and short living process executions to orchestrate all the services that are part of your application.</description>
+    <name>TCAODE</name>
+    <description>Apache ODE (Orchestration Director Engine) executes business processes written following the WS-BPEL standard. It talks to web services, sending and receiving messages, handling data manipulation and error recovery as described by your process definition. It supports both long and short living process executions to orchestrate all the services that are part of your application. 
+        TCAODE is an extension of ODE to support aspect weaving.
+    </description>
     <url>http://ode.apache.org</url>
     <issueManagement>
         <system>jira</system>
@@ -60,6 +62,7 @@
               as the maven-release-plugin will not update this value.
         -->
         <ode.version>1.4-SNAPSHOT</ode.version>
+        <tcaode.version>1.0.0</tcaode.version>
         
         <activation.version>1.1</activation.version>
         <annogen.version>0.1.0</annogen.version>
@@ -165,6 +168,10 @@
         <module>jbi-karaf-pmapi-httpbinding</module>
         <module>axis2-war</module>
         <module>bpel-itest</module>
+        <!-- tcao4bpel  moudle-->
+        <module>tcao4bpel-compiler</module>
+        <module>tcao4bpel-obj</module>
+        <module>tcao4bpel-store</module>
     </modules>
 
     <build>
@@ -365,124 +372,144 @@
         <dependencies>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-agents</artifactId>
+                <artifactId>agents</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-bpel-runtime</artifactId>
+                <artifactId>bpel-runtime</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-bpel-ql</artifactId>
+                <artifactId>bpel-ql</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-bpel-schemas</artifactId>
+                <artifactId>bpel-schemas</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-bpel-api</artifactId>
+                <artifactId>bpel-api</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-bpel-dao</artifactId>
+                <artifactId>bpel-dao</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-bpel-api-jca</artifactId>
+                <artifactId>bpel-api-jca</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-bpel-compiler</artifactId>
+                <artifactId>bpel-compiler</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-bpel-obj</artifactId>
+                <artifactId>bpel-obj</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-bpel-scripts</artifactId>
+                <artifactId>bpel-scripts</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-bpel-store</artifactId>
+                <artifactId>bpel-store</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-bpel-connector</artifactId>
+                <artifactId>bpel-connector</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-dao-hibernate</artifactId>
+                <artifactId>dao-hibernate</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-jacob</artifactId>
+                <artifactId>jacob</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-jbi</artifactId>
+                <artifactId>jbi</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-bpel-epr</artifactId>
+                <artifactId>bpel-epr</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-dao-jpa</artifactId>
+                <artifactId>dao-jpa</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-jca-ra</artifactId>
+                <artifactId>jca-ra</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-jca-server</artifactId>
+                <artifactId>jca-server</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-tools</artifactId>
+                <artifactId>tools</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-utils</artifactId>
+                <artifactId>utils</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-scheduler-simple</artifactId>
+                <artifactId>scheduler-simple</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-bpel-test</artifactId>
+                <artifactId>bpel-test</artifactId>
                 <version>${ode.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ode</groupId>
-                <artifactId>ode-axis2</artifactId>
+                <artifactId>axis2</artifactId>
                 <version>${ode.version}</version>
             </dependency>
+
+
+            
+            <!-- dependencies of cn.edu.nju.cs group -->
+            <dependency>
+                <groupId>cn.edu.nju.cs.tcao4bpel</groupId>
+                <artifactId>tcao4bpel-obj</artifactId>
+                <version>${tcaode.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.edu.nju.cs.tcao4bpel</groupId>
+                <artifactId>tcao4bpel-compiler</artifactId>
+                <version>${tcaode.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.edu.nju.cs.tcao4bpel</groupId>
+                <artifactId>tcao4bpel-store</artifactId>
+                <version>${tcaode.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>xalan</groupId>
                 <artifactId>xalan</artifactId>
@@ -1052,6 +1079,11 @@
             <module>axis2-war</module>
             <module>bpel-itests</module>
             <module>distro</module>
+
+             <!-- tcao4bpel  module-->
+            <module>tcao4bpel-compiler</module>
+            <module>tcao4bpel-obj</module>
+            <module>tcao4bpel-store</module>
           </modules>
        </profile>
     </profiles>

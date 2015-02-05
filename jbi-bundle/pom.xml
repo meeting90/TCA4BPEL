@@ -21,7 +21,7 @@
     -->
 
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-jbi-bundle</artifactId>
+    <artifactId>jbi-bundle</artifactId>
     <name>ODE :: JBI Bundle</name>
     <packaging>bundle</packaging>
     <modelVersion>4.0.0</modelVersion>
@@ -76,8 +76,8 @@
                         <DynamicImport-Package>*</DynamicImport-Package>
 <Include-Resource>
 src/main/resources,
-@../dao-jpa-ojpa-derby/target/ode-dao-jpa-ojpa-derby-${project.version}.zip,
-@../dao-hibernate-db/target/ode-dao-hibernate-db-${project.version}.zip,
+@../dao-jpa-ojpa-derby/target/dao-jpa-ojpa-derby-${project.version}.zip,
+@../dao-hibernate-db/target/dao-hibernate-db-${project.version}.zip,
 </Include-Resource>
 
                     </instructions>
@@ -89,27 +89,27 @@ src/main/resources,
 
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-jbi</artifactId>
+            <artifactId>jbi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-schemas</artifactId>
+            <artifactId>bpel-schemas</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-dao-hibernate</artifactId>
+            <artifactId>dao-hibernate</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-dao-jpa</artifactId>
+            <artifactId>dao-jpa</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-jbi</artifactId>
+            <artifactId>jbi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

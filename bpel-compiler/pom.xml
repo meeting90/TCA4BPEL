@@ -21,7 +21,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-bpel-compiler</artifactId>
+    <artifactId>bpel-compiler</artifactId>
     <name>ODE :: BPEL Compiler</name>
     <parent>
         <groupId>org.apache.ode</groupId>
@@ -32,15 +32,15 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-utils</artifactId>
+            <artifactId>utils</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-api</artifactId>
+            <artifactId>bpel-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-schemas</artifactId>
+            <artifactId>bpel-schemas</artifactId>
         </dependency>
         <dependency>
           <groupId>commons-collections</groupId>
@@ -124,7 +124,7 @@
                   <artifactItems>
                     <artifactItem>
                        <groupId>org.apache.ode</groupId>
-                       <artifactId>ode-bpel-scripts</artifactId>
+                       <artifactId>bpel-scripts</artifactId>
                        <outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
                     </artifactItem>
                   </artifactItems>

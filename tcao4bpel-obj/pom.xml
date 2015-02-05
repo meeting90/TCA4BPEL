@@ -35,7 +35,7 @@
        
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-obj</artifactId>
+            <artifactId>bpel-obj</artifactId>
         </dependency>
 
         

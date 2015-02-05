@@ -20,7 +20,7 @@
 
 <project>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-bpel-runtime</artifactId>
+    <artifactId>bpel-runtime</artifactId>
     <name>ODE :: Runtime Engine</name>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
@@ -43,73 +43,73 @@
      </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-api</artifactId>
+      <artifactId>bpel-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-compiler</artifactId>
+      <artifactId>bpel-compiler</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-dao</artifactId>
+      <artifactId>bpel-dao</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-schemas</artifactId>
+      <artifactId>bpel-schemas</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-store</artifactId>
+      <artifactId>bpel-store</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-jacob</artifactId>
+      <artifactId>jacob</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-utils</artifactId>
+      <artifactId>utils</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-epr</artifactId>
+      <artifactId>bpel-epr</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-scheduler-simple</artifactId>
+      <artifactId>scheduler-simple</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-dao-jpa</artifactId>
+      <artifactId>dao-jpa</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-dao-hibernate</artifactId>
+      <artifactId>dao-hibernate</artifactId>
       <scope>test</scope>
     </dependency>
 
 
     <dependency>
         <groupId>org.apache.ode</groupId>
-        <artifactId>ode-agents</artifactId>
+        <artifactId>agents</artifactId>
     </dependency>
 
     <dependency>
         <groupId>org.apache.ode</groupId>
-        <artifactId>ode-jacob</artifactId>
+        <artifactId>jacob</artifactId>
     </dependency>
     <dependency>
         <groupId>org.apache.ode</groupId>
-        <artifactId>ode-utils</artifactId>
+        <artifactId>utils</artifactId>
     </dependency>
     <dependency>
         <groupId>org.apache.ode</groupId>
-        <artifactId>ode-bpel-api</artifactId>
+        <artifactId>bpel-api</artifactId>
     </dependency>
     <dependency>
         <groupId>org.apache.ode</groupId>
-        <artifactId>ode-bpel-dao</artifactId>
+        <artifactId>bpel-dao</artifactId>
     </dependency>
 
 
@@ -259,7 +259,7 @@
 			<dependencies>
 			   <dependency>
 			      <groupId>org.apache.ode</groupId>
-			      <artifactId>ode-jacob-ap</artifactId>
+			      <artifactId>jacob-ap</artifactId>
 			      <version>${project.version}</version>
 			   </dependency>
 			 </dependencies>

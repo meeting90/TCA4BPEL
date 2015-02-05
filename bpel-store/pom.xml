@@ -20,7 +20,7 @@
 
 <project>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-bpel-store</artifactId>
+    <artifactId>bpel-store</artifactId>
     <name>ODE :: Process Store</name>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
@@ -34,35 +34,35 @@
   <dependencies>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-api</artifactId>
+      <artifactId>bpel-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-compiler</artifactId>
+      <artifactId>bpel-compiler</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-dao</artifactId>
+      <artifactId>bpel-dao</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-schemas</artifactId>
+      <artifactId>bpel-schemas</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-bpel-epr</artifactId>
+      <artifactId>bpel-epr</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-dao-hibernate</artifactId>
+      <artifactId>dao-hibernate</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-dao-jpa</artifactId>
+      <artifactId>dao-jpa</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.ode</groupId>
-      <artifactId>ode-utils</artifactId>
+      <artifactId>utils</artifactId>
     </dependency>
     <dependency>
       <groupId>commons-logging</groupId>

@@ -21,7 +21,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-scheduler-simple</artifactId>
+    <artifactId>scheduler-simple</artifactId>
     <name>ODE :: BPEL Scheduler Simple</name>
     <parent>
         <groupId>org.apache.ode</groupId>
@@ -32,11 +32,11 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-api</artifactId>
+            <artifactId>bpel-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-utils</artifactId>
+            <artifactId>utils</artifactId>
         </dependency>
         <dependency>
           <groupId>commons-collections</groupId>

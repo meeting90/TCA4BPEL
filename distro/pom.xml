@@ -21,7 +21,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-distro</artifactId>
+    <artifactId>distro</artifactId>
     <name>ODE :: Distribution</name>
     <packaging>pom</packaging>
 
@@ -37,27 +37,27 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-utils</artifactId>
+            <artifactId>utils</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-tools</artifactId>
+            <artifactId>tools</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-compiler</artifactId>
+            <artifactId>bpel-compiler</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-api</artifactId>
+            <artifactId>bpel-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-runtime</artifactId>
+            <artifactId>bpel-runtime</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-schemas</artifactId>
+            <artifactId>bpel-schemas</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-pool</groupId>
@@ -92,7 +92,7 @@
               <goal>single</goal>
             </goals>
             <configuration>
-              <finalName>apache-ode-war-${project.version}</finalName>
+              <finalName>apache-war-${project.version}</finalName>
               <appendAssemblyId>false</appendAssemblyId>
               <descriptors>
                 <descriptor>src/main/assembly/war.xml</descriptor>
@@ -107,7 +107,7 @@
               <goal>single</goal>
             </goals>
             <configuration>
-              <finalName>apache-ode-jbi-${project.version}</finalName>
+              <finalName>apache-jbi-${project.version}</finalName>
               <appendAssemblyId>false</appendAssemblyId>
               <descriptors>
                 <descriptor>src/main/assembly/jbi.xml</descriptor>

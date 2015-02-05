@@ -21,7 +21,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-runtimes</artifactId>
+    <artifactId>runtimes</artifactId>
     <name>ODE :: BPEL Runtimes</name>
     <parent>
         <groupId>org.apache.ode</groupId>
@@ -32,23 +32,23 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-jacob</artifactId>
+            <artifactId>jacob</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-jacob-ap</artifactId>
+            <artifactId>jacob-ap</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-utils</artifactId>
+            <artifactId>utils</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-api</artifactId>
+            <artifactId>bpel-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-dao</artifactId>
+            <artifactId>bpel-dao</artifactId>
         </dependency>
 
 
@@ -163,7 +163,7 @@
         <dependencies>
            <dependency>
               <groupId>org.apache.ode</groupId>
-              <artifactId>ode-jacob-ap</artifactId>
+              <artifactId>jacob-ap</artifactId>
               <version>${project.version}</version>
            </dependency>
          </dependencies>

@@ -21,7 +21,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.ode</groupId>
-    <artifactId>ode-jbi</artifactId>
+    <artifactId>jbi</artifactId>
     <name>ODE :: JBI Distribution</name>
     <parent>
         <groupId>org.apache.ode</groupId>
@@ -42,11 +42,11 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-api</artifactId>
+            <artifactId>bpel-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-compiler</artifactId>
+            <artifactId>bpel-compiler</artifactId>
             <exclusions>
              <exclusion>
                <groupId>xml-apis</groupId>
@@ -72,15 +72,15 @@
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-connector</artifactId>
+            <artifactId>bpel-connector</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-dao</artifactId>
+            <artifactId>bpel-dao</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-epr</artifactId>
+            <artifactId>bpel-epr</artifactId>
             <exclusions>
              <exclusion>
                <groupId>org.apache.geronimo.components</groupId>
@@ -106,23 +106,23 @@
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-agents</artifactId>
+            <artifactId>agents</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-obj</artifactId>
+            <artifactId>bpel-obj</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-runtime</artifactId>
+            <artifactId>bpel-runtime</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-scheduler-simple</artifactId>
+            <artifactId>scheduler-simple</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-store</artifactId>
+            <artifactId>bpel-store</artifactId>
             <exclusions>
              <exclusion>
                <groupId>org.hibernate</groupId>
@@ -144,11 +144,11 @@
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-schemas</artifactId>
+            <artifactId>bpel-schemas</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-utils</artifactId>
+            <artifactId>utils</artifactId>
             <exclusions>
              <exclusion>
                <groupId>org.apache.axis2</groupId>
@@ -202,7 +202,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.ode</groupId>
-            <artifactId>ode-bpel-ql</artifactId>
+            <artifactId>bpel-ql</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.servicemix.specs</groupId>
@@ -212,7 +212,7 @@
         </dependency>
         <dependency>
           <groupId>org.apache.ode</groupId>
-          <artifactId>ode-dao-jpa</artifactId>
+          <artifactId>dao-jpa</artifactId>
           <exclusions>
              <exclusion>
                <groupId>xerces</groupId>
@@ -226,7 +226,7 @@
         </dependency>
         <dependency>
           <groupId>org.apache.ode</groupId>
-          <artifactId>ode-dao-hibernate</artifactId>
+          <artifactId>dao-hibernate</artifactId>
         </dependency>
         <dependency>
           <groupId>org.hibernate</groupId>
@@ -235,19 +235,19 @@
         </dependency>
         <dependency>
           <groupId>org.apache.ode</groupId>
-          <artifactId>ode-bpel-api-jca</artifactId>
+          <artifactId>bpel-api-jca</artifactId>
         </dependency>
         <dependency>
           <groupId>org.apache.ode</groupId>
-          <artifactId>ode-jca-ra</artifactId>
+          <artifactId>jca-ra</artifactId>
         </dependency>
         <dependency>
           <groupId>org.apache.ode</groupId>
-          <artifactId>ode-jca-server</artifactId>
+          <artifactId>jca-server</artifactId>
         </dependency>
         <dependency>
           <groupId>org.apache.ode</groupId>
-          <artifactId>ode-jacob</artifactId>
+          <artifactId>jacob</artifactId>
         </dependency>
         <dependency>
             <groupId>xerces</groupId>
@@ -429,7 +429,7 @@
               <org.apache.ode.autoRetireProcess>true</org.apache.ode.autoRetireProcess>
             </systemPropertyVariables>
             <excludes>
-                <!-- FIXME: these two tests failed in jdk6, ODE-860 -->
+                <!-- FIXME: these two tests failed in jdk6, 860 -->
             	<exclude>**/DigestJbiTest.java</exclude>
             	<exclude>**/OnEventAlarmJbiTest.java</exclude>
             </excludes>
@@ -446,7 +446,7 @@
               <goal>single</goal>
             </goals>
             <configuration>
-              <finalName>ode-jbi-${project.version}</finalName>
+              <finalName>jbi-${project.version}</finalName>
               <appendAssemblyId>false</appendAssemblyId>
               <descriptors>
                 <descriptor>src/main/assembly/bin.xml</descriptor>
