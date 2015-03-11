@@ -97,8 +97,7 @@ public abstract class ACTIVITY extends BpelJacobRunnable implements IndexedObjec
         sendEvent((ScopeEvent) event);
        
         
-        ProcessStateMonitor monitor = ProcessStateMonitor.getInstance();
-        monitor.routeEvent(event, this._aspectFrame, this._self.o);
+        ProcessStateMonitor.routeEvent(event, this._aspectFrame, this._self.o);
     }
 
     protected void sendEvent(ScopeEvent event) {

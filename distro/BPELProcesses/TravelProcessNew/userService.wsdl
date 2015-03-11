@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://user.webservices.cs.nju.edu.cn" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://user.webservices.cs.nju.edu.cn">
+    <wsdl:documentation>UserService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://user.webservices.cs.nju.edu.cn">
+            <xs:element name="login">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loginResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getBalance">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getBalanceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateBalance">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="change" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateBalanceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="updateBalanceRequest">
+        <wsdl:part name="parameters" element="ns:updateBalance"/>
+    </wsdl:message>
+    <wsdl:message name="updateBalanceResponse">
+        <wsdl:part name="parameters" element="ns:updateBalanceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getBalanceRequest">
+        <wsdl:part name="parameters" element="ns:getBalance"/>
+    </wsdl:message>
+    <wsdl:message name="getBalanceResponse">
+        <wsdl:part name="parameters" element="ns:getBalanceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="loginRequest">
+        <wsdl:part name="parameters" element="ns:login"/>
+    </wsdl:message>
+    <wsdl:message name="loginResponse">
+        <wsdl:part name="parameters" element="ns:loginResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="userServicePortType">
+        <wsdl:operation name="updateBalance">
+            <wsdl:input message="ns:updateBalanceRequest" wsaw:Action="urn:updateBalance"/>
+            <wsdl:output message="ns:updateBalanceResponse" wsaw:Action="urn:updateBalanceResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getBalance">
+            <wsdl:input message="ns:getBalanceRequest" wsaw:Action="urn:getBalance"/>
+            <wsdl:output message="ns:getBalanceResponse" wsaw:Action="urn:getBalanceResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <wsdl:input message="ns:loginRequest" wsaw:Action="urn:login"/>
+            <wsdl:output message="ns:loginResponse" wsaw:Action="urn:loginResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="userServiceSoap11Binding" type="ns:userServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="updateBalance">
+            <soap:operation soapAction="urn:updateBalance" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getBalance">
+            <soap:operation soapAction="urn:getBalance" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <soap:operation soapAction="urn:login" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="userServiceSoap12Binding" type="ns:userServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="updateBalance">
+            <soap12:operation soapAction="urn:updateBalance" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getBalance">
+            <soap12:operation soapAction="urn:getBalance" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <soap12:operation soapAction="urn:login" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="userServiceHttpBinding" type="ns:userServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="updateBalance">
+            <http:operation location="updateBalance"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getBalance">
+            <http:operation location="getBalance"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <http:operation location="login"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="userService">
+        <wsdl:port name="userServiceHttpSoap11Endpoint" binding="ns:userServiceSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/userService.userServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="userServiceHttpSoap12Endpoint" binding="ns:userServiceSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/userService.userServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="userServiceHttpEndpoint" binding="ns:userServiceHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/userService.userServiceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

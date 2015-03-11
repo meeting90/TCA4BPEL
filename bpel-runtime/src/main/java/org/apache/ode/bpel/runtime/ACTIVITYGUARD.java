@@ -113,7 +113,9 @@ public class ACTIVITYGUARD extends ACTIVITY {
             CompositeProcess mlset = compose(new ReceiveProcess() {
                 private static final long serialVersionUID = 5094153128476008961L;
             }.setChannel(_self.self).setReceiver(new Termination() {
-                public void terminate() {
+				private static final long serialVersionUID = -4051028859892443286L;
+
+				public void terminate() {
                     // Complete immediately, without faulting or registering any comps.
                     _self.parent.completed(null, CompensationHandler.emptySet());
                     // Dead-path activity
@@ -124,7 +126,9 @@ public class ACTIVITYGUARD extends ACTIVITY {
                 mlset.or(new ReceiveProcess() {
                     private static final long serialVersionUID = 1024137371118887935L;
                 }.setChannel(_linkFrame.resolve(link).sub).setReceiver(new LinkStatus() {
-                    public void linkStatus(boolean value) {
+					private static final long serialVersionUID = 5525061718682424164L;
+
+					public void linkStatus(boolean value) {
                         _linkVals.put(link, Boolean.valueOf(value));
                         instance(ACTIVITYGUARD.this);
                     }
@@ -179,11 +183,14 @@ public class ACTIVITYGUARD extends ACTIVITY {
     }
 
     private ACTIVITY createActivity(ActivityInfo activity) {
-        return createActivity(activity,_scopeFrame, _linkFrame, _aspectFrame);
+        //return createActivity(activity,_scopeFrame, _linkFrame, _aspectFrame);
+    	return new ASPECTWAPPER(activity,_scopeFrame,_linkFrame, _aspectFrame);
     	
     }
     
     private ACTIVITY createAspectWapper(ActivityInfo activity){
+    	__log.debug(activity);
+    	__log.debug(activity.o);
     	return new ASPECTWAPPER(activity, _scopeFrame, _linkFrame, _aspectFrame);
     }
 

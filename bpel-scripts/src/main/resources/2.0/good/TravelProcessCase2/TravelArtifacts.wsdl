@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<definitions name="Travel"
+        targetNamespace="http://cs.nju.edu.cn/tcao4bpel/travel"
+        xmlns:tns="http://cs.nju.edu.cn/tcao4bpel/travel"
+        xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:user="http://user.webservices.cs.nju.edu.cn"
+        xmlns:flight="http://flight.webservices.cs.nju.edu.cn"
+        xmlns:hotel="http://hotel.webservices.cs.nju.edu.cn" 
+        xmlns:common="http://xsd.webservices.cs.nju.edu.cn/xsd">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TYPE DEFINITION - List of services participating in this BPEL process 
+     The default output of the BPEL designer uses strings as input and 
+     output to the BPEL Process. But you can define or import any XML 
+     Schema type and us them as part of the message types.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->   
+     <import location="HotelService.wsdl" namespace="http://hotel.webservices.cs.nju.edu.cn"></import>
+     <import namespace="http://flight.webservices.cs.nju.edu.cn" location="FlightService.wsdl"></import>
+     <import namespace="http://user.webservices.cs.nju.edu.cn" location="UserService.wsdl"></import>
+     
+     <types>  
+        <schema attributeFormDefault="unqualified"
+        	elementFormDefault="qualified"
+        	targetNamespace="http://cs.nju.edu.cn/tcao4bpel/travel"
+        	xmlns="http://www.w3.org/2001/XMLSchema">
+
+
+        	<import schemaLocation="common.xsd" namespace="http://xsd.webservices.cs.nju.edu.cn/xsd"></import>
+        	<element name="TravelRequest">
+        		<complexType>
+        			<sequence>
+        				<element name="username" type="string" />
+        				<element name="password" type="string" />
+        				<element name="fromlocation" type="string" />
+        				<element name="destination" type="string" />
+        				<element name="startDate" type="date" />
+                        <element name="endDate" type="date" />
+        				<element name="phoneNumber" type="string" />
+        			</sequence>
+        		</complexType>
+        	</element>
+
+        	<element name="TravelResponse">
+        		<complexType>
+        			<sequence>
+        				<element name="success" type="boolean" />
+        				<element name="hotelInfo"
+        					type="common:HotelInfo" minOccurs="0" maxOccurs="1" />
+        				<element name="flightInfo"
+        					type="common:FlightInfo" minOccurs="0" maxOccurs="1" />
+        			</sequence>
+        		</complexType>
+        	</element>
+
+        </schema>
+
+     </types>
+  
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     MESSAGE TYPE DEFINITION - Definition of the message types used as 
+     part of the port type defintions
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <message name="TravelRequestMessage">
+        <part name="payload" element="tns:TravelRequest"/>
+    </message>
+    
+    <message name="TravelResponseMessage">
+        <part name="payload" element="tns:TravelResponse"/>
+    </message>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PORT TYPE DEFINITION - A port type groups a set of operations into
+     a logical service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- portType implemented by the Travel BPEL process -->
+    <portType name="Travel">
+        <operation name="travelOrder">
+            <input message="tns:TravelRequestMessage"/>
+            <output message="tns:TravelResponseMessage" />
+        </operation>
+    </portType>
+
+  
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PARTNER LINK TYPE DEFINITION
+         the Travel partnerLinkType binds the provider and
+         requester portType into an asynchronous conversation.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="Travel">
+        <plnk:role name="me" portType="tns:Travel"/>
+        <plnk:role name="TravelProvider" portType="tns:Travel"/>
+    </plnk:partnerLinkType>   
+
+    <plnk:partnerLinkType name="User">
+        <plnk:role name="UserProvider" portType="user:UserServicePortType"/>
+        
+    </plnk:partnerLinkType> 
+
+    <plnk:partnerLinkType name="Hotel">
+        <plnk:role name="HotelProvider" portType="hotel:HotelServicePortType"/>
+       
+    </plnk:partnerLinkType> 
+
+    <plnk:partnerLinkType name="Flight">
+        <plnk:role name="FlightProvider" portType="flight:FlightServicePortType"/>
+        
+    </plnk:partnerLinkType> 
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     BINDING DEFINITION - Defines the message format and protocol details
+     for a web service.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <binding name="TravelBinding" type="tns:Travel">
+        <soap:binding style="document"
+    		transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="travelOrder">
+            <soap:operation
+    			soapAction="http://cs.nju.edu.cn/tcao4bpel/travel/travelOrder"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+            	<soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     SERVICE DEFINITION - A service groups a set of ports into
+     a service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <service name="TravelServiceCase2">
+        <port name="TravelPortCase2" binding="tns:TravelBinding">
+    		<soap:address location="http://localhost:8080/ode/processes/TravelCase2"/>
+        </port>
+    </service>
+
+</definitions>

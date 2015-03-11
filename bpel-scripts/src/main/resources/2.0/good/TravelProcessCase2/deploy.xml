@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:flight.webservices.cs.nju.edu.cn="http://flight.webservices.cs.nju.edu.cn" xmlns:hotel.webservices.cs.nju.edu.cn="http://hotel.webservices.cs.nju.edu.cn" xmlns:travel="http://cs.nju.edu.cn/tcao4bpel/travel" xmlns:user.webservices.cs.nju.edu.cn="http://user.webservices.cs.nju.edu.cn">
+  <process name="travel:TravelCase2">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="travel:TravelServiceCase2" port="TravelPortCase2"/>
+    </provide>
+    <invoke partnerLink="user">
+      <service name="user.webservices.cs.nju.edu.cn:UserService" port="UserServiceHttpSoap11Endpoint"/>
+    </invoke>
+    <invoke partnerLink="flight">
+      <service name="flight.webservices.cs.nju.edu.cn:FlightService" port="FlightServiceHttpSoap11Endpoint"/>
+    </invoke>
+    <invoke partnerLink="hotel">
+      <service name="hotel.webservices.cs.nju.edu.cn:HotelService" port="HotelServiceHttpSoap11Endpoint"/>
+    </invoke>
+  </process>
+</deploy>

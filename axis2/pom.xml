@@ -23,11 +23,13 @@
     <groupId>org.apache.ode</groupId>
     <artifactId>axis2</artifactId>
     <name>ODE :: AXIS2</name>
-    <parent>
+  <parent>
         <groupId>org.apache.ode</groupId>
         <artifactId>ode</artifactId>
         <version>1.4-SNAPSHOT</version>
     </parent>
+    
+   
 
     <properties>
         <servlet.version>2.4</servlet.version>
@@ -183,4 +185,5 @@
         </plugins>
     </build>
 
+    <version>1</version>
 </project>

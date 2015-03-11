@@ -1,0 +1,37 @@
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  
+  xmlns:tns="http://xsd.webservices.cs.nju.edu.cn/xsd"
+  attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://xsd.webservices.cs.nju.edu.cn/xsd">
+            <xs:complexType name="FlightInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="airline" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arrival" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arrivalAirport" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arrivalTime" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="deloyTime" nillable="true" type="xs:int"/>
+                    <xs:element minOccurs="0" name="departure" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="departureAirport" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="departureTime" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="flightId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="price" nillable="true" type="xs:double"/>
+                    <xs:element minOccurs="0" name="punctuality" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="HotelList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="children" nillable="true" type="tns:HotelInfo"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="HotelInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="city" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="position" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="price" nillable="true" type="xs:double"/>
+                </xs:sequence>
+            </xs:complexType>
+            
+                 <xs:complexType name="FlightList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="children" nillable="true" type="tns:FlightInfo"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>

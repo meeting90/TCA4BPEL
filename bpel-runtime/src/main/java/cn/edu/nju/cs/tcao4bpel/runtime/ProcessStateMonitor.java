@@ -18,20 +18,14 @@ import cn.edu.nju.cs.tcao4bpel.o.OPlace;
  */
 public class ProcessStateMonitor {
 
-	/**
-	 * @return
-	 */
-	public static ProcessStateMonitor getInstance() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	/**
 	 * @param event
 	 * @param activity
 	 * @param _aspectFrame
 	 */
-	public void routeEvent(ActivityEvent event,
+	public static void routeEvent(ActivityEvent event,
 			AspectFrame aspectFrame, OActivity o) {		
 		for(AspectInfo aspectInfo: aspectFrame.getAspectInfos()){	
 			for (OPlace oplace: aspectInfo.oaspect.getPointcut().getPreCondition().getPlaces()){

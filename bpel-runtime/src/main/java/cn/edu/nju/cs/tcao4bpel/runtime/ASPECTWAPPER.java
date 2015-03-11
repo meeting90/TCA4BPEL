@@ -16,7 +16,6 @@ import org.apache.ode.bpel.runtime.ActivityTemplateFactory;
 import org.apache.ode.bpel.runtime.CompensationHandler;
 import org.apache.ode.bpel.runtime.LinkFrame;
 import org.apache.ode.bpel.runtime.ScopeFrame;
-import org.apache.ode.bpel.runtime.channels.ParentScope;
 import org.apache.ode.bpel.runtime.channels.Termination;
 import org.apache.ode.jacob.CompositeProcess;
 import org.apache.ode.jacob.JacobRunnable;
@@ -37,6 +36,7 @@ public class ASPECTWAPPER extends ACTIVITY{
 
 	AspectFrame _aspectFrame;
 	OActivity _oactivity;
+	
 	
 	
 	
@@ -63,7 +63,7 @@ public class ASPECTWAPPER extends ACTIVITY{
 	
 	@Override
 	public void run() {
-		ActivityInfo activity = new ActivityInfo(genMonotonic(),_self.o,_self.self, newChannel(ParentScope.class));
+		
 		Map<AspectInfo,OPlace> posts = new HashMap<AspectInfo,OPlace>();
 		for(AspectInfo aspectInfo: _aspectFrame.getAspectInfos()){
 			OPlace post= getRelatedPostContion(aspectInfo.oaspect);
@@ -72,13 +72,13 @@ public class ASPECTWAPPER extends ACTIVITY{
 			
 		}
 		if(posts.isEmpty()){//ready state of this activity is not related to the aspect; no need to wait 
-			 instance(createActivity(activity));
+			 instance(createActivity(_self));
 		}
 		else{ 
 			if(_postValues.keySet().containsAll(posts.values())){  
 				//check for all aspect if postcondition satisfied, 
 				//if yes continue running the activity ,else block until all postcondition satisfied
-				instance(createActivity(activity));
+				instance(createActivity(_self));
 			}else{  
 				// continue wait  
 				waitForAllPostCondition(posts);
@@ -88,15 +88,16 @@ public class ASPECTWAPPER extends ACTIVITY{
 	}
 	
 	
-	
-	/**
-	 * @param activity
-	 * @return
-	 */
-	private JacobRunnable createActivity(ActivityInfo activity) {
+
+	private ACTIVITY createActivity(ActivityInfo activity) {
+		
 		return __activityTemplateFactory.createInstance(activity.o, activity, _scopeFrame, _linkFrame, _aspectFrame);
 	}
 
+
+
+	
+	
 
 
 	private void waitForAllPostCondition(Map<AspectInfo,OPlace> posts){

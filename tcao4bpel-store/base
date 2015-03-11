@@ -1,0 +1,2118 @@
+<message><parameters><ns:searchHotelResponse xmlns:ns="http://hotel.webservices.cs.nju.edu.cn" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><ns:return xmlns:ax23="http://xsd.webservices.cs.nju.edu.cn/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax23:HotelList"><ax23:children xmlns:ax23="http://xsd.webservices.cs.nju.edu.cn/xsd" xsi:type="ax23:HotelInfo"><ax23:city>ShangHai</ax23:city><ax23:position>LuJiaZhui</ax23:position><ax23:price>620.0</ax23:price></ax23:children><ax23:children xmlns:ax23="http://xsd.webservices.cs.nju.edu.cn/xsd" xsi:type="ax23:HotelInfo"><ax23:city>ShangHai</ax23:city><ax23:position>Airport</ax23:position><ax23:price>378.0</ax23:price></ax23:children><ax23:children xmlns:ax23="http://xsd.webservices.cs.nju.edu.cn/xsd" xsi:type="ax23:HotelInfo"><ax23:city>ShangHai</ax23:city><ax23:position>BeiWaiTan</ax23:position><ax23:price>370.0</ax23:price></ax23:children></ns:return></ns:searchHotelResponse></parameters></message>
+16:07:10,786 INFO  [ExternalService] Response:
+<?xml version="1.0" encoding="UTF-8"?>
+<message><parameters><ns:searchFlightResponse xmlns:ns="http://flight.webservices.cs.nju.edu.cn" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><ns:return xmlns:ax21="http://xsd.webservices.cs.nju.edu.cn/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax21:FlightList"><ax21:children xmlns:ax21="http://xsd.webservices.cs.nju.edu.cn/xsd" xsi:type="ax21:FlightInfo"><ax21:airline>CA</ax21:airline><ax21:arrival>ShangHai</ax21:arrival><ax21:arrivalAirport>PuDong AirPort T2</ax21:arrivalAirport><ax21:arrivalTime>1970-01-01</ax21:arrivalTime><ax21:deloyTime>5</ax21:deloyTime><ax21:departure>Beijing</ax21:departure><ax21:departureAirport>Capital AirPort T3</ax21:departureAirport><ax21:departureTime>1970-01-01</ax21:departureTime><ax21:flightId>1883</ax21:flightId><ax21:price>440.0</ax21:price><ax21:punctuality>86</ax21:punctuality></ax21:children><ax21:children xmlns:ax21="http://xsd.webservices.cs.nju.edu.cn/xsd" xsi:type="ax21:FlightInfo"><ax21:airline>CA</ax21:airline><ax21:arrival>ShangHai</ax21:arrival><ax21:arrivalAirport>HongQiao AirPort T2</ax21:arrivalAirport><ax21:arrivalTime>1970-01-01</ax21:arrivalTime><ax21:deloyTime>5</ax21:deloyTime><ax21:departure>Beijing</ax21:departure><ax21:departureAirport>Capital AirPort T3</ax21:departureAirport><ax21:departureTime>1970-01-01</ax21:departureTime><ax21:flightId>1501</ax21:flightId><ax21:price>1138.0</ax21:price><ax21:punctuality>91</ax21:punctuality></ax21:children><ax21:children xmlns:ax21="http://xsd.webservices.cs.nju.edu.cn/xsd" xsi:type="ax21:FlightInfo"><ax21:airline>CZ</ax21:airline><ax21:arrival>ShangHai</ax21:arrival><ax21:arrivalAirport>HongQiao AirPort T2</ax21:arrivalAirport><ax21:arrivalTime>1970-01-01</ax21:arrivalTime><ax21:deloyTime>0</ax21:deloyTime><ax21:departure>Beijing</ax21:departure><ax21:departureAirport>Capital AirPort T2</ax21:departureAirport><ax21:departureTime>1970-01-01</ax21:departureTime><ax21:flightId>9738</ax21:flightId><ax21:price>560.0</ax21:price><ax21:punctuality>100</ax21:punctuality></ax21:children><ax21:children xmlns:ax21="http://xsd.webservices.cs.nju.edu.cn/xsd" xsi:type="ax21:FlightInfo"><ax21:airline>CZ</ax21:airline><ax21:arrival>ShangHai</ax21:arrival><ax21:arrivalAirport>HongQiao AirPort T2</ax21:arrivalAirport><ax21:arrivalTime>1970-01-01</ax21:arrivalTime><ax21:deloyTime>14</ax21:deloyTime><ax21:departure>Beijing</ax21:departure><ax21:departureAirport>Capital AirPort T2</ax21:departureAirport><ax21:departureTime>1970-01-01</ax21:departureTime><ax21:flightId>9736</ax21:flightId><ax21:price>545.0</ax21:price><ax21:punctuality>74</ax21:punctuality></ax21:children><ax21:children xmlns:ax21="http://xsd.webservices.cs.nju.edu.cn/xsd" xsi:type="ax21:FlightInfo"><ax21:airline>MU</ax21:airline><ax21:arrival>ShangHai</ax21:arrival><ax21:arrivalAirport>HongQiao AirPort T2</ax21:arrivalAirport><ax21:arrivalTime>1970-01-01</ax21:arrivalTime><ax21:deloyTime>0</ax21:deloyTime><ax21:departure>Beijing</ax21:departure><ax21:departureAirport>Capital AirPort T2</ax21:departureAirport><ax21:departureTime>1970-01-01</ax21:departureTime><ax21:flightId>5102</ax21:flightId><ax21:price>535.0</ax21:price><ax21:punctuality>100</ax21:punctuality></ax21:children><ax21:children xmlns:ax21="http://xsd.webservices.cs.nju.edu.cn/xsd" xsi:type="ax21:FlightInfo"><ax21:airline>MU</ax21:airline><ax21:arrival>ShangHai</ax21:arrival><ax21:arrivalAirport>PuDong AirPort T1</ax21:arrivalAirport><ax21:arrivalTime>1970-01-01</ax21:arrivalTime><ax21:deloyTime>8</ax21:deloyTime><ax21:departure>Beijing</ax21:departure><ax21:departureAirport>Nanyuan Airport</ax21:departureAirport><ax21:departureTime>1970-01-01</ax21:departureTime><ax21:flightId>3821</ax21:flightId><ax21:price>430.0</ax21:price><ax21:punctuality>86</ax21:punctuality></ax21:children></ns:return></ns:searchFlightResponse></parameters></message>
+16:07:10,810 DEBUG [BpelEventListener] 
+ProcessMessageExchangeEvent:
+	Operation = searchHotel
+	PortType = {http://hotel.webservices.cs.nju.edu.cn}HotelServicePortType
+	MessageExchangeId = hqejbhcnphra1c2u4a1orj
+	Aspect = 4
+	Type = instanceLifecycle
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = -1
+	Class = class org.apache.ode.bpel.evt.ProcessMessageExchangeEvent
+16:07:10,855 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = searchHotelResponse
+	ScopeId = 14076
+	ScopeDeclarationId = 199
+	ParentScopeId = 14073
+	ScopeName = searchHotel
+	ParentScopesNames = [searchHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 237
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:10,859 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 35
+	ActivityName = searchHotel
+	ActivityType = OInvoke
+	ActivityDeclarationId = 200
+	ScopeId = 14076
+	ScopeDeclarationId = 199
+	ParentScopeId = 14073
+	ScopeName = searchHotel
+	ParentScopesNames = [searchHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 237
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:10,861 DEBUG [BpelEventListener] 
+ScopeCompletionEvent:
+	Type = scopeHandling
+	ScopeId = 14076
+	ScopeDeclarationId = 199
+	ParentScopeId = 14073
+	ScopeName = searchHotel
+	ParentScopesNames = [searchHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 237
+	Class = class org.apache.ode.bpel.evt.ScopeCompletionEvent
+16:07:10,862 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 33
+	ActivityType = OScope
+	ActivityDeclarationId = 199
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 237
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:10,862 DEBUG [BpelEventListener] 
+CompensationHandlerRegistered:
+	Type = scopeHandling
+	ScopeId = 14076
+	ScopeDeclarationId = 199
+	ParentScopeId = 14073
+	ScopeName = searchHotel
+	ParentScopesNames = [searchHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 237
+	Class = class org.apache.ode.bpel.evt.CompensationHandlerRegistered
+16:07:10,863 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 20
+	ActivityName = searchHotelWrapper
+	ActivityType = OSequence
+	ActivityDeclarationId = 176
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 194
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:10,863 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 37
+	ActivityName = sequence-activity-line-239
+	ActivityType = OSequence
+	ActivityDeclarationId = 206
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 239
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:10,864 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 37
+	ActivityName = sequence-activity-line-239
+	ActivityType = OSequence
+	ActivityDeclarationId = 206
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 239
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:10,864 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 39
+	ActivityName = prepareSelectHotelInput
+	ActivityType = OAssign
+	ActivityDeclarationId = 207
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 240
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:10,865 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 39
+	ActivityName = prepareSelectHotelInput
+	ActivityType = OAssign
+	ActivityDeclarationId = 207
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 240
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:10,866 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = selectHotelRequest
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 241
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:10,867 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = searchHotelResponse
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 3
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:10,870 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = selectHotelRequest
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 257
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:10,871 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 39
+	ActivityName = prepareSelectHotelInput
+	ActivityType = OAssign
+	ActivityDeclarationId = 207
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 240
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:10,871 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 41
+	ActivityType = OScope
+	ActivityDeclarationId = 216
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 262
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:10,872 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 41
+	ActivityType = OScope
+	ActivityDeclarationId = 216
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 262
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:10,886 DEBUG [BpelEventListener] 
+ScopeStartEvent:
+	Type = scopeHandling
+	ScopeId = 14077
+	ScopeDeclarationId = 216
+	ParentScopeId = 14073
+	ScopeName = selectHotel
+	ParentScopesNames = [selectHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 262
+	Class = class org.apache.ode.bpel.evt.ScopeStartEvent
+16:07:10,887 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 43
+	ActivityName = selectHotel
+	ActivityType = OInvoke
+	ActivityDeclarationId = 217
+	ScopeId = 14077
+	ScopeDeclarationId = 216
+	ParentScopeId = 14073
+	ScopeName = selectHotel
+	ParentScopesNames = [selectHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 262
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:10,887 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 43
+	ActivityName = selectHotel
+	ActivityType = OInvoke
+	ActivityDeclarationId = 217
+	ScopeId = 14077
+	ScopeDeclarationId = 216
+	ParentScopeId = 14073
+	ScopeName = selectHotel
+	ParentScopesNames = [selectHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 262
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:10,888 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = selectHotelRequest
+	ScopeId = 14077
+	ScopeDeclarationId = 216
+	ParentScopeId = 14073
+	ScopeName = selectHotel
+	ParentScopesNames = [selectHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 262
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:10,899 DEBUG [BpelEventListener] 
+ProcessMessageExchangeEvent:
+	Operation = selectHotel
+	PortType = {http://hotel.webservices.cs.nju.edu.cn}HotelServicePortType
+	MessageExchangeId = hqejbhcnphra1c2u4a1oro
+	Aspect = 3
+	Type = instanceLifecycle
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = -1
+	Class = class org.apache.ode.bpel.evt.ProcessMessageExchangeEvent
+16:07:10,991 DEBUG [BpelEventListener] 
+ProcessMessageExchangeEvent:
+	Operation = searchFlight
+	PortType = {http://flight.webservices.cs.nju.edu.cn}FlightServicePortType
+	MessageExchangeId = hqejbhcnphra1c2u4a1org
+	Aspect = 4
+	Type = instanceLifecycle
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = -1
+	Class = class org.apache.ode.bpel.evt.ProcessMessageExchangeEvent
+16:07:11,000 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = searchFlightResponse
+	ScopeId = 14075
+	ScopeDeclarationId = 124
+	ParentScopeId = 14073
+	ScopeName = searchFlight
+	ParentScopesNames = [searchFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:10 CST 2015
+	LineNo = 116
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,003 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 29
+	ActivityName = searchFlight
+	ActivityType = OInvoke
+	ActivityDeclarationId = 125
+	ScopeId = 14075
+	ScopeDeclarationId = 124
+	ParentScopeId = 14073
+	ScopeName = searchFlight
+	ParentScopesNames = [searchFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 116
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,005 DEBUG [BpelEventListener] 
+ScopeCompletionEvent:
+	Type = scopeHandling
+	ScopeId = 14075
+	ScopeDeclarationId = 124
+	ParentScopeId = 14073
+	ScopeName = searchFlight
+	ParentScopesNames = [searchFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 116
+	Class = class org.apache.ode.bpel.evt.ScopeCompletionEvent
+16:07:11,005 DEBUG [BpelEventListener] 
+CompensationHandlerRegistered:
+	Type = scopeHandling
+	ScopeId = 14075
+	ScopeDeclarationId = 124
+	ParentScopeId = 14073
+	ScopeName = searchFlight
+	ParentScopesNames = [searchFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 116
+	Class = class org.apache.ode.bpel.evt.CompensationHandlerRegistered
+16:07:11,006 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 27
+	ActivityType = OScope
+	ActivityDeclarationId = 124
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 116
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,006 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 23
+	ActivityName = searchFlightWrapper
+	ActivityType = OSequence
+	ActivityDeclarationId = 101
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 61
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,007 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 45
+	ActivityName = sequence-activity-line-118
+	ActivityType = OSequence
+	ActivityDeclarationId = 131
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 118
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,008 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 45
+	ActivityName = sequence-activity-line-118
+	ActivityType = OSequence
+	ActivityDeclarationId = 131
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 118
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,008 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 47
+	ActivityName = prepareSelectFlightInput
+	ActivityType = OAssign
+	ActivityDeclarationId = 132
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 119
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,008 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 47
+	ActivityName = prepareSelectFlightInput
+	ActivityType = OAssign
+	ActivityDeclarationId = 132
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 119
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,010 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = selectFlightRequest
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 120
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,011 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = searchFlightResponse
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 3
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,013 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = selectFlightRequest
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 144
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,013 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 47
+	ActivityName = prepareSelectFlightInput
+	ActivityType = OAssign
+	ActivityDeclarationId = 132
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 119
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,014 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 49
+	ActivityType = OScope
+	ActivityDeclarationId = 141
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 149
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,014 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 49
+	ActivityType = OScope
+	ActivityDeclarationId = 141
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 149
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,017 DEBUG [BpelEventListener] 
+ScopeStartEvent:
+	Type = scopeHandling
+	ScopeId = 14078
+	ScopeDeclarationId = 141
+	ParentScopeId = 14073
+	ScopeName = selectFlight
+	ParentScopesNames = [selectFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 149
+	Class = class org.apache.ode.bpel.evt.ScopeStartEvent
+16:07:11,018 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 51
+	ActivityName = selectFlight
+	ActivityType = OInvoke
+	ActivityDeclarationId = 142
+	ScopeId = 14078
+	ScopeDeclarationId = 141
+	ParentScopeId = 14073
+	ScopeName = selectFlight
+	ParentScopesNames = [selectFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 149
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,018 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 51
+	ActivityName = selectFlight
+	ActivityType = OInvoke
+	ActivityDeclarationId = 142
+	ScopeId = 14078
+	ScopeDeclarationId = 141
+	ParentScopeId = 14073
+	ScopeName = selectFlight
+	ParentScopesNames = [selectFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 149
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,019 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = selectFlightRequest
+	ScopeId = 14078
+	ScopeDeclarationId = 141
+	ParentScopeId = 14073
+	ScopeName = selectFlight
+	ParentScopesNames = [selectFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 149
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,026 DEBUG [BpelEventListener] 
+ProcessMessageExchangeEvent:
+	Operation = selectFlight
+	PortType = {http://flight.webservices.cs.nju.edu.cn}FlightServicePortType
+	MessageExchangeId = hqejbhcnphra1c2u4a1orr
+	Aspect = 3
+	Type = instanceLifecycle
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = -1
+	Class = class org.apache.ode.bpel.evt.ProcessMessageExchangeEvent
+16:07:11,052 INFO  [ExternalService] Response:
+<?xml version="1.0" encoding="UTF-8"?>
+<message><parameters><ns:selectHotelResponse xmlns:ns="http://hotel.webservices.cs.nju.edu.cn" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><ns:return xmlns:ax23="http://xsd.webservices.cs.nju.edu.cn/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax23:HotelInfo"><ax23:city>ShangHai</ax23:city><ax23:position>LuJiaZhui</ax23:position><ax23:price>620.0</ax23:price></ns:return></ns:selectHotelResponse></parameters></message>
+16:07:11,114 INFO  [ExternalService] Response:
+<?xml version="1.0" encoding="UTF-8"?>
+<message><parameters><ns:selectFlightResponse xmlns:ns="http://flight.webservices.cs.nju.edu.cn" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><ns:return xmlns:ax21="http://xsd.webservices.cs.nju.edu.cn/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax21:FlightInfo"><ax21:airline>CA</ax21:airline><ax21:arrival>ShangHai</ax21:arrival><ax21:arrivalAirport>PuDong AirPort T2</ax21:arrivalAirport><ax21:arrivalTime>1970-01-01</ax21:arrivalTime><ax21:deloyTime>5</ax21:deloyTime><ax21:departure>Beijing</ax21:departure><ax21:departureAirport>Capital AirPort T3</ax21:departureAirport><ax21:departureTime>1970-01-01</ax21:departureTime><ax21:flightId>1883</ax21:flightId><ax21:price>440.0</ax21:price><ax21:punctuality>86</ax21:punctuality></ns:return></ns:selectFlightResponse></parameters></message>
+16:07:11,160 DEBUG [BpelEventListener] 
+ProcessMessageExchangeEvent:
+	Operation = selectHotel
+	PortType = {http://hotel.webservices.cs.nju.edu.cn}HotelServicePortType
+	MessageExchangeId = hqejbhcnphra1c2u4a1oro
+	Aspect = 4
+	Type = instanceLifecycle
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = -1
+	Class = class org.apache.ode.bpel.evt.ProcessMessageExchangeEvent
+16:07:11,176 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = selectHotelResponse
+	ScopeId = 14077
+	ScopeDeclarationId = 216
+	ParentScopeId = 14073
+	ScopeName = selectHotel
+	ParentScopesNames = [selectHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 262
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,180 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 43
+	ActivityName = selectHotel
+	ActivityType = OInvoke
+	ActivityDeclarationId = 217
+	ScopeId = 14077
+	ScopeDeclarationId = 216
+	ParentScopeId = 14073
+	ScopeName = selectHotel
+	ParentScopesNames = [selectHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 262
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,182 DEBUG [BpelEventListener] 
+ScopeCompletionEvent:
+	Type = scopeHandling
+	ScopeId = 14077
+	ScopeDeclarationId = 216
+	ParentScopeId = 14073
+	ScopeName = selectHotel
+	ParentScopesNames = [selectHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 262
+	Class = class org.apache.ode.bpel.evt.ScopeCompletionEvent
+16:07:11,183 DEBUG [BpelEventListener] 
+CompensationHandlerRegistered:
+	Type = scopeHandling
+	ScopeId = 14077
+	ScopeDeclarationId = 216
+	ParentScopeId = 14073
+	ScopeName = selectHotel
+	ParentScopesNames = [selectHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 262
+	Class = class org.apache.ode.bpel.evt.CompensationHandlerRegistered
+16:07:11,184 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 41
+	ActivityType = OScope
+	ActivityDeclarationId = 216
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 262
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,184 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 37
+	ActivityName = sequence-activity-line-239
+	ActivityType = OSequence
+	ActivityDeclarationId = 206
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 239
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,185 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 53
+	ActivityName = reserveHotelWrapper
+	ActivityType = OSequence
+	ActivityDeclarationId = 223
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 264
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,187 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 53
+	ActivityName = reserveHotelWrapper
+	ActivityType = OSequence
+	ActivityDeclarationId = 223
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 264
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,189 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 55
+	ActivityName = prepareReserveHotelInput
+	ActivityType = OAssign
+	ActivityDeclarationId = 224
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 265
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,190 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 55
+	ActivityName = prepareReserveHotelInput
+	ActivityType = OAssign
+	ActivityDeclarationId = 224
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 265
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,214 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = reserveHotelRequest
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 266
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,216 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = selectHotelResponse
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 3
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,218 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = reserveHotelRequest
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 282
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,219 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = input
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 3
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,222 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = reserveHotelRequest
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 286
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,223 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = input
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 3
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,225 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = reserveHotelRequest
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 290
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,226 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 55
+	ActivityName = prepareReserveHotelInput
+	ActivityType = OAssign
+	ActivityDeclarationId = 224
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 265
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,227 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 57
+	ActivityType = OScope
+	ActivityDeclarationId = 243
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 295
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,227 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 57
+	ActivityType = OScope
+	ActivityDeclarationId = 243
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 295
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,231 DEBUG [BpelEventListener] 
+ScopeStartEvent:
+	Type = scopeHandling
+	ScopeId = 14079
+	ScopeDeclarationId = 243
+	ParentScopeId = 14073
+	ScopeName = reserveHotel
+	ParentScopesNames = [reserveHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 295
+	Class = class org.apache.ode.bpel.evt.ScopeStartEvent
+16:07:11,232 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 59
+	ActivityName = reserveHotel
+	ActivityType = OInvoke
+	ActivityDeclarationId = 244
+	ScopeId = 14079
+	ScopeDeclarationId = 243
+	ParentScopeId = 14073
+	ScopeName = reserveHotel
+	ParentScopesNames = [reserveHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 295
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,232 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 59
+	ActivityName = reserveHotel
+	ActivityType = OInvoke
+	ActivityDeclarationId = 244
+	ScopeId = 14079
+	ScopeDeclarationId = 243
+	ParentScopeId = 14073
+	ScopeName = reserveHotel
+	ParentScopesNames = [reserveHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 295
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,233 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = reserveHotelRequest
+	ScopeId = 14079
+	ScopeDeclarationId = 243
+	ParentScopeId = 14073
+	ScopeName = reserveHotel
+	ParentScopesNames = [reserveHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 295
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,237 DEBUG [BpelEventListener] 
+ProcessMessageExchangeEvent:
+	Operation = reserveHotel
+	PortType = {http://hotel.webservices.cs.nju.edu.cn}HotelServicePortType
+	MessageExchangeId = hqejbhcnphra1c2u4a1orw
+	Aspect = 3
+	Type = instanceLifecycle
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = -1
+	Class = class org.apache.ode.bpel.evt.ProcessMessageExchangeEvent
+16:07:11,329 INFO  [ExternalService] Response:
+<?xml version="1.0" encoding="UTF-8"?>
+<message><parameters><ns:reserveHotelResponse xmlns:ns="http://hotel.webservices.cs.nju.edu.cn" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><ns:return>true</ns:return></ns:reserveHotelResponse></parameters></message>
+16:07:11,336 DEBUG [BpelEventListener] 
+ProcessMessageExchangeEvent:
+	Operation = selectFlight
+	PortType = {http://flight.webservices.cs.nju.edu.cn}FlightServicePortType
+	MessageExchangeId = hqejbhcnphra1c2u4a1orr
+	Aspect = 4
+	Type = instanceLifecycle
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = -1
+	Class = class org.apache.ode.bpel.evt.ProcessMessageExchangeEvent
+16:07:11,359 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = selectFlightResponse
+	ScopeId = 14078
+	ScopeDeclarationId = 141
+	ParentScopeId = 14073
+	ScopeName = selectFlight
+	ParentScopesNames = [selectFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 149
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,362 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 51
+	ActivityName = selectFlight
+	ActivityType = OInvoke
+	ActivityDeclarationId = 142
+	ScopeId = 14078
+	ScopeDeclarationId = 141
+	ParentScopeId = 14073
+	ScopeName = selectFlight
+	ParentScopesNames = [selectFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 149
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,364 DEBUG [BpelEventListener] 
+ScopeCompletionEvent:
+	Type = scopeHandling
+	ScopeId = 14078
+	ScopeDeclarationId = 141
+	ParentScopeId = 14073
+	ScopeName = selectFlight
+	ParentScopesNames = [selectFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 149
+	Class = class org.apache.ode.bpel.evt.ScopeCompletionEvent
+16:07:11,365 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 49
+	ActivityType = OScope
+	ActivityDeclarationId = 141
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 149
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,365 DEBUG [BpelEventListener] 
+CompensationHandlerRegistered:
+	Type = scopeHandling
+	ScopeId = 14078
+	ScopeDeclarationId = 141
+	ParentScopeId = 14073
+	ScopeName = selectFlight
+	ParentScopesNames = [selectFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 149
+	Class = class org.apache.ode.bpel.evt.CompensationHandlerRegistered
+16:07:11,365 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 45
+	ActivityName = sequence-activity-line-118
+	ActivityType = OSequence
+	ActivityDeclarationId = 131
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 118
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,366 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 61
+	ActivityName = bookFlightWrapper
+	ActivityType = OSequence
+	ActivityDeclarationId = 148
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 151
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,366 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 61
+	ActivityName = bookFlightWrapper
+	ActivityType = OSequence
+	ActivityDeclarationId = 148
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 151
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,367 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 63
+	ActivityName = prepareBookFlightInput
+	ActivityType = OAssign
+	ActivityDeclarationId = 149
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 152
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,367 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 63
+	ActivityName = prepareBookFlightInput
+	ActivityType = OAssign
+	ActivityDeclarationId = 149
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 152
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,368 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = bookFlightRequest
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 153
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,369 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = selectFlightResponse
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 3
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,371 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = bookFlightRequest
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 177
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,372 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = input
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 3
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,374 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = bookFlightRequest
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 181
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,375 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = input
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 3
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,377 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = bookFlightRequest
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 185
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,377 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 63
+	ActivityName = prepareBookFlightInput
+	ActivityType = OAssign
+	ActivityDeclarationId = 149
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 152
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,378 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 65
+	ActivityType = OScope
+	ActivityDeclarationId = 168
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 190
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,378 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 65
+	ActivityType = OScope
+	ActivityDeclarationId = 168
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 190
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,382 DEBUG [BpelEventListener] 
+ScopeStartEvent:
+	Type = scopeHandling
+	ScopeId = 14080
+	ScopeDeclarationId = 168
+	ParentScopeId = 14073
+	ScopeName = bookFlight
+	ParentScopesNames = [bookFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 190
+	Class = class org.apache.ode.bpel.evt.ScopeStartEvent
+16:07:11,382 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 67
+	ActivityName = bookFlight
+	ActivityType = OInvoke
+	ActivityDeclarationId = 169
+	ScopeId = 14080
+	ScopeDeclarationId = 168
+	ParentScopeId = 14073
+	ScopeName = bookFlight
+	ParentScopesNames = [bookFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 190
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,382 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 67
+	ActivityName = bookFlight
+	ActivityType = OInvoke
+	ActivityDeclarationId = 169
+	ScopeId = 14080
+	ScopeDeclarationId = 168
+	ParentScopeId = 14073
+	ScopeName = bookFlight
+	ParentScopesNames = [bookFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 190
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,383 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = bookFlightRequest
+	ScopeId = 14080
+	ScopeDeclarationId = 168
+	ParentScopeId = 14073
+	ScopeName = bookFlight
+	ParentScopesNames = [bookFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 190
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,392 DEBUG [BpelEventListener] 
+ProcessMessageExchangeEvent:
+	Operation = bookFlight
+	PortType = {http://flight.webservices.cs.nju.edu.cn}FlightServicePortType
+	MessageExchangeId = hqejbhcnphra1c2u4a1os2
+	Aspect = 3
+	Type = instanceLifecycle
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = -1
+	Class = class org.apache.ode.bpel.evt.ProcessMessageExchangeEvent
+16:07:11,457 INFO  [ExternalService] Response:
+<?xml version="1.0" encoding="UTF-8"?>
+<message><parameters><ns:bookFlightResponse xmlns:ns="http://flight.webservices.cs.nju.edu.cn" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><ns:return>true</ns:return></ns:bookFlightResponse></parameters></message>
+16:07:11,492 DEBUG [BpelEventListener] 
+ProcessMessageExchangeEvent:
+	Operation = reserveHotel
+	PortType = {http://hotel.webservices.cs.nju.edu.cn}HotelServicePortType
+	MessageExchangeId = hqejbhcnphra1c2u4a1orw
+	Aspect = 4
+	Type = instanceLifecycle
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = -1
+	Class = class org.apache.ode.bpel.evt.ProcessMessageExchangeEvent
+16:07:11,503 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = reserveHotelResponse
+	ScopeId = 14079
+	ScopeDeclarationId = 243
+	ParentScopeId = 14073
+	ScopeName = reserveHotel
+	ParentScopesNames = [reserveHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 295
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,508 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 59
+	ActivityName = reserveHotel
+	ActivityType = OInvoke
+	ActivityDeclarationId = 244
+	ScopeId = 14079
+	ScopeDeclarationId = 243
+	ParentScopeId = 14073
+	ScopeName = reserveHotel
+	ParentScopesNames = [reserveHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 295
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,509 DEBUG [BpelEventListener] 
+ScopeCompletionEvent:
+	Type = scopeHandling
+	ScopeId = 14079
+	ScopeDeclarationId = 243
+	ParentScopeId = 14073
+	ScopeName = reserveHotel
+	ParentScopesNames = [reserveHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 295
+	Class = class org.apache.ode.bpel.evt.ScopeCompletionEvent
+16:07:11,510 DEBUG [BpelEventListener] 
+CompensationHandlerRegistered:
+	Type = scopeHandling
+	ScopeId = 14079
+	ScopeDeclarationId = 243
+	ParentScopeId = 14073
+	ScopeName = reserveHotel
+	ParentScopesNames = [reserveHotel, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 295
+	Class = class org.apache.ode.bpel.evt.CompensationHandlerRegistered
+16:07:11,510 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 57
+	ActivityType = OScope
+	ActivityDeclarationId = 243
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 295
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,511 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 53
+	ActivityName = reserveHotelWrapper
+	ActivityType = OSequence
+	ActivityDeclarationId = 223
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 264
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,512 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 18
+	ActivityName = hotel
+	ActivityType = OSequence
+	ActivityDeclarationId = 175
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 193
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,547 DEBUG [BpelEventListener] 
+ProcessMessageExchangeEvent:
+	Operation = bookFlight
+	PortType = {http://flight.webservices.cs.nju.edu.cn}FlightServicePortType
+	MessageExchangeId = hqejbhcnphra1c2u4a1os2
+	Aspect = 4
+	Type = instanceLifecycle
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = -1
+	Class = class org.apache.ode.bpel.evt.ProcessMessageExchangeEvent
+16:07:11,556 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = bookFlightResponse
+	ScopeId = 14080
+	ScopeDeclarationId = 168
+	ParentScopeId = 14073
+	ScopeName = bookFlight
+	ParentScopesNames = [bookFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 190
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,560 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 67
+	ActivityName = bookFlight
+	ActivityType = OInvoke
+	ActivityDeclarationId = 169
+	ScopeId = 14080
+	ScopeDeclarationId = 168
+	ParentScopeId = 14073
+	ScopeName = bookFlight
+	ParentScopesNames = [bookFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 190
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,563 DEBUG [BpelEventListener] 
+ScopeCompletionEvent:
+	Type = scopeHandling
+	ScopeId = 14080
+	ScopeDeclarationId = 168
+	ParentScopeId = 14073
+	ScopeName = bookFlight
+	ParentScopesNames = [bookFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 190
+	Class = class org.apache.ode.bpel.evt.ScopeCompletionEvent
+16:07:11,563 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 65
+	ActivityType = OScope
+	ActivityDeclarationId = 168
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 190
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,564 DEBUG [BpelEventListener] 
+CompensationHandlerRegistered:
+	Type = scopeHandling
+	ScopeId = 14080
+	ScopeDeclarationId = 168
+	ParentScopeId = 14073
+	ScopeName = bookFlight
+	ParentScopesNames = [bookFlight, __PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 190
+	Class = class org.apache.ode.bpel.evt.CompensationHandlerRegistered
+16:07:11,564 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 61
+	ActivityName = bookFlightWrapper
+	ActivityType = OSequence
+	ActivityDeclarationId = 148
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 151
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,565 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 17
+	ActivityName = flight
+	ActivityType = OSequence
+	ActivityDeclarationId = 100
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 60
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,565 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 15
+	ActivityName = concurrent
+	ActivityType = OFlow
+	ActivityDeclarationId = 99
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 59
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,566 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 69
+	ActivityName = replyWrapper
+	ActivityType = OSequence
+	ActivityDeclarationId = 250
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 299
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,567 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 69
+	ActivityName = replyWrapper
+	ActivityType = OSequence
+	ActivityDeclarationId = 250
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 299
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,567 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 71
+	ActivityName = prepareReply
+	ActivityType = OAssign
+	ActivityDeclarationId = 251
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 300
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,568 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 71
+	ActivityName = prepareReply
+	ActivityType = OAssign
+	ActivityDeclarationId = 251
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 300
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,569 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = output
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 301
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,570 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = bookFlightResponse
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 3
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,572 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = output
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 329
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,581 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = selectFlightResponse
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 3
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,583 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = output
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 333
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,584 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = selectHotelResponse
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 3
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,586 DEBUG [BpelEventListener] 
+VariableModificationEvent:
+	NewValue = [message: null]
+	Type = dataHandling
+	VarName = output
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 337
+	Class = class org.apache.ode.bpel.evt.VariableModificationEvent
+16:07:11,590 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 71
+	ActivityName = prepareReply
+	ActivityType = OAssign
+	ActivityDeclarationId = 251
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 300
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,592 DEBUG [BpelEventListener] 
+ActivityEnabledEvent:
+	Type = activityLifecycle
+	ActivityId = 73
+	ActivityName = replyTravelOrder
+	ActivityType = OReply
+	ActivityDeclarationId = 270
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 342
+	Class = class org.apache.ode.bpel.evt.ActivityEnabledEvent
+16:07:11,592 DEBUG [BpelEventListener] 
+ActivityExecStartEvent:
+	Type = activityLifecycle
+	ActivityId = 73
+	ActivityName = replyTravelOrder
+	ActivityType = OReply
+	ActivityDeclarationId = 270
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 342
+	Class = class org.apache.ode.bpel.evt.ActivityExecStartEvent
+16:07:11,593 DEBUG [BpelEventListener] 
+VariableReadEvent:
+	Type = dataHandling
+	VarName = output
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 342
+	Class = class org.apache.ode.bpel.evt.VariableReadEvent
+16:07:11,602 DEBUG [BpelEventListener] 
+ProcessMessageExchangeEvent:
+	Operation = travelOrder
+	PortType = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Aspect = 1
+	Type = instanceLifecycle
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = -1
+	Class = class org.apache.ode.bpel.evt.ProcessMessageExchangeEvent
+16:07:11,602 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 73
+	ActivityName = replyTravelOrder
+	ActivityType = OReply
+	ActivityDeclarationId = 270
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 342
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,603 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 69
+	ActivityName = replyWrapper
+	ActivityType = OSequence
+	ActivityDeclarationId = 250
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 299
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,604 DEBUG [BpelEventListener] 
+ActivityExecEndEvent:
+	Type = activityLifecycle
+	ActivityId = 1
+	ActivityName = main
+	ActivityType = OSequence
+	ActivityDeclarationId = 72
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 33
+	Class = class org.apache.ode.bpel.evt.ActivityExecEndEvent
+16:07:11,604 DEBUG [BpelEventListener] 
+ScopeCompletionEvent:
+	Type = scopeHandling
+	ScopeId = 14073
+	ScopeDeclarationId = 3
+	ScopeName = __PROCESS_SCOPE:Travel
+	ParentScopesNames = [__PROCESS_SCOPE:Travel]
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = 3
+	Class = class org.apache.ode.bpel.evt.ScopeCompletionEvent
+16:07:11,605 DEBUG [BpelEventListener] 
+ProcessInstanceStateChangeEvent:
+	OldState = 20
+	NewState = 30
+	Type = instanceLifecycle
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = -1
+	Class = class org.apache.ode.bpel.evt.ProcessInstanceStateChangeEvent
+16:07:11,605 DEBUG [BpelEventListener] 
+ProcessCompletionEvent:
+	Type = instanceLifecycle
+	ProcessInstanceId = 12360
+	ProcessId = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel-87
+	ProcessName = {http://cs.nju.edu.cn/tcao4bpel/travel}Travel
+	Timestamp = Sun Feb 08 16:07:11 CST 2015
+	LineNo = -1
+	Class = class org.apache.ode.bpel.evt.ProcessCompletionEvent
