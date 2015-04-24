@@ -3,6 +3,8 @@
  */
 package cn.edu.nju.cs.tcao4bpel.runtime;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.ode.bpel.o.OBase;
 import org.apache.ode.bpel.o.OScope;
 import org.apache.ode.bpel.o.OScope.Variable;
@@ -29,6 +31,9 @@ public class ASPECT extends BpelJacobRunnable{
 	
 	private OAdvice _oadvice;
 	
+	
+	private static final Log __log = LogFactory.getLog(ASPECT.class);
+	
 	private ScopeFrame _baseProcessFrame;
 	private InstanceGlobals _globals;
 	
@@ -46,10 +51,13 @@ public class ASPECT extends BpelJacobRunnable{
 		 	BpelRuntimeContext ntive = getBpelRuntimeContext();
 	        Long scopeInstanceId = ntive.createScopeInstance(_baseProcessFrame.scopeInstanceId, _oadvice.procesScope);
 	        createGlobals();
+	        
+	    
 	        ActivityInfo child = new ActivityInfo(genMonotonic(),
-	            _oadvice.procesScope,
+	            _oadvice.procesScope.activity,
 	            newChannel(Termination.class), newChannel(ParentScope.class));
 			ScopeFrame adviceFrame = new ScopeFrame(_oadvice.procesScope, scopeInstanceId, _baseProcessFrame, null,_globals);
+			__log.debug("aspect is created!");
 	        instance(new ADVICE(child, _aspectInfo, adviceFrame));
 	}
 

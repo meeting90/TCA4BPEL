@@ -29,7 +29,7 @@ import java.util.Map;
  */
 public interface ExpressionCompiler {
 
-  /**
+  /**ExpressionCompiler
    * Set the compiler context (for resolving variables and such).
    * @param compilerContext compiler context
    */

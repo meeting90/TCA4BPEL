@@ -4,14 +4,18 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.script.CompiledScript;
 import javax.xml.namespace.QName;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.ode.bpel.compiler.BpelCompiler20;
 import org.apache.ode.bpel.compiler.DefaultResourceFinder;
 import org.apache.ode.bpel.compiler.ResourceFinder;
@@ -21,6 +25,8 @@ import org.apache.ode.bpel.compiler.bom.Activity;
 import org.apache.ode.bpel.compiler.bom.Bpel11QNames;
 import org.apache.ode.bpel.compiler.bom.Bpel20QNames;
 import org.apache.ode.bpel.compiler.bom.Import;
+import org.apache.ode.bpel.compiler.bom.PartnerLink;
+import org.apache.ode.bpel.compiler.bom.PartnerLinkType;
 import org.apache.ode.bpel.compiler.bom.Property;
 import org.apache.ode.bpel.compiler.bom.PropertyAlias;
 import org.apache.ode.bpel.compiler.wsdl.Definition4BPEL;
@@ -28,15 +34,18 @@ import org.apache.ode.bpel.iapi.ProcessConf;
 import org.apache.ode.bpel.iapi.ProcessStore;
 import org.apache.ode.bpel.o.OConstantVarType;
 import org.apache.ode.bpel.o.OExpressionLanguage;
+import org.apache.ode.bpel.o.OProcess;
 import org.apache.ode.bpel.o.OScope;
 import org.apache.ode.bpel.o.OVarType;
-import org.apache.ode.store.ProcessStoreImpl;
+import org.apache.ode.bpel.o.Serializer;
 import org.apache.ode.utils.GUID;
 import org.apache.ode.utils.StreamUtils;
 import org.apache.ode.utils.xsl.XslTransformHandler;
 import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
+import com.sun.org.apache.xpath.internal.operations.Variable;
 
 import cn.edu.nju.cs.tcao4bpel.compiler.bom.Advice;
 import cn.edu.nju.cs.tcao4bpel.compiler.bom.Aspect;
@@ -63,6 +72,8 @@ public class TCAO4BPELAspectCompiler extends BpelCompiler20{
 	
 	
 	private ProcessStore processStore;
+	
+	private static  Log __log= LogFactory.getLog(TCAO4BPELAspectCompiler.class);
 	
 	public static final FileFilter _bpelFilter = new FileFilter() {
 		@Override
@@ -121,9 +132,28 @@ public class TCAO4BPELAspectCompiler extends BpelCompiler20{
 		}
 		oaspect.setSkip(aspect.isSkip());
 		oaspect.setScope(scope);
+		
 		QName processId= this.getProcessId(aspect.getBpelUrl());
-		ProcessConf conf = this.processStore.getProcessConfiguration(processId);
+		__log.debug("processId:" + processId);
+		
+		ProcessConf conf = processStore.getProcessConfiguration(processId);
+		
+		__log.debug("ProccessConf:" + conf);
 		List<File> files = conf.getFiles();
+		InputStream is = conf.getCBPInputStream();
+		 OProcess compiledProcess = null;
+         Serializer ofh =null;
+         try {
+				ofh = new Serializer(is);
+				compiledProcess = ofh.readOProcess();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+            
+      
+		
 		File bpelFile =null;
 		for (File file : files){
             if (file.getPath().endsWith(conf.getBpelDocument())) {
@@ -131,24 +161,25 @@ public class TCAO4BPELAspectCompiler extends BpelCompiler20{
                 break;
             }
 		}
-		AspectValidator validator = new AspectValidator(aspectFile, bpelFile);
+		AspectValidator validator = new AspectValidator(aspect,aspectFile, bpelFile);
 		validator.validate();
 	
 		
 		
 		assert processId != null;
-		oaspect.setProcessId(processId);
+		oaspect.setProcessName(conf.getType());
 		OPointcut pointcut = compile(aspect.getPointcut());
 		oaspect.setPointcut(pointcut);
 		Advice advice = aspect.getAdvice();
-		OAdvice oadvice =  compile(advice, rf, getVersion(aspectFile.getParent()));
+		OAdvice oadvice =  compile(advice, compiledProcess, rf, getVersion(aspectFile.getParent()));
 		oaspect.setAdvice(oadvice);
+		
 		return oaspect;
 		
 	}
 	
 	
-    public OAdvice compile(final Advice advice, ResourceFinder rf, long version) throws CompilationException {
+    public OAdvice compile(final Advice advice, final OProcess compiledProcess,ResourceFinder rf, long version) throws CompilationException {
         if (advice == null)
             throw new NullPointerException("Null process parameter");
 
@@ -241,7 +272,7 @@ public class TCAO4BPELAspectCompiler extends BpelCompiler20{
 
         OScope procesScope = new OScope(_oprocess, null);
         procesScope.name = "__PROCESS_SCOPE:" + advice.getName();
-        procesScope.debugInfo = createDebugInfo(advice, null);
+        procesScope.debugInfo = createDebugInfo(advice, null);   
         _oprocess.procesScope = compileScope(procesScope, advice, new Runnable() {
             public void run() {
                 if (advice.getRootActivity() == null) {
@@ -262,6 +293,13 @@ public class TCAO4BPELAspectCompiler extends BpelCompiler20{
                             __log.debug("Compiled custom property variable " + ovar);
                     }
                 }
+                final OScope oscope = _structureStack.topScope();
+                //add variable reference
+                for(OScope.Variable variable: compiledProcess.procesScope.variables.values()){
+                	oscope.addLocalVariable(variable);
+                }
+                
+                
                 _structureStack.topScope().activity = compile(advice.getRootActivity());
             }
         });
@@ -271,6 +309,7 @@ public class TCAO4BPELAspectCompiler extends BpelCompiler20{
         boolean hasErrors = false;
         StringBuffer sb = new StringBuffer();
         for (CompilationMessage msg : _errors) {
+       
             if (msg.severity >= CompilationMessage.ERROR) {
                 hasErrors = true;
                 sb.append('\t');
@@ -284,6 +323,7 @@ public class TCAO4BPELAspectCompiler extends BpelCompiler20{
         _expressionValidatorFactory.getValidator().bpelCompilationCompleted(_processDef);
 
         if (hasErrors) {
+        	
             throw new CompilationException(__cmsgs.errCompilationErrors(_errors.size(), sb.toString()));
         }
 
@@ -298,11 +338,12 @@ public class TCAO4BPELAspectCompiler extends BpelCompiler20{
     }
 
 	private QName getProcessId(String bpelUrl) {
-		if(processStore ==null)
-			return null;
+		
+		__log.debug(bpelUrl);
 		List<QName> processIds= processStore.getProcesses();
+		__log.debug(processIds);
 		for(QName processId: processIds){
-			if(processId.toString().endsWith(bpelUrl))
+			if(processId.toString().startsWith(bpelUrl))
 				return processId;
 		}
 		return null;
@@ -335,7 +376,7 @@ public class TCAO4BPELAspectCompiler extends BpelCompiler20{
 	}
 	private OPlace compile(Place place, OCondition con) {
 		OPlace oplace = new OPlace(con);
-		if(place.getState().equals("ready"))
+		if(place.getState().equals("initial"))
 			oplace.setState(OPlace.State.READY);
 		else
 			oplace.setState(OPlace.State.FINISHED);

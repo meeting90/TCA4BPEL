@@ -41,7 +41,8 @@ public class AspectValidator {
 	protected static final ValidatorMessages _cmsgs = CompilationMessageBundle
 			.getMessages(ValidatorMessages.class);
 
-	public AspectValidator(File af, File pf) {
+	public AspectValidator(Aspect aspect,File af, File pf) {
+		this._aspect = aspect;
 		this._aspectFile = af;
 		this._processFile = pf;
 	}
@@ -65,18 +66,13 @@ public class AspectValidator {
 			this._process = BpelObjectFactory.getInstance().parse(pisrc,
 					_processFile.toURI());
 			
-			InputSource aisrc = new InputSource(new ByteArrayInputStream(
-					StreamUtils.read(_aspectFile.toURL())));
-			aisrc.setSystemId(_aspectFile.getAbsolutePath());
-			this._aspect = AspectObjectFactory.getInstance().parseAspect(aisrc,
-					_aspectFile.toURI());
-			
 			validateAdvice();
 			validatePointCut();
 
 		
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new CompilationException(_cmsgs.msgExceptionErr(e), e);
 		}
 

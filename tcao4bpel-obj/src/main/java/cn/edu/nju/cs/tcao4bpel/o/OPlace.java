@@ -63,6 +63,45 @@ public class OPlace implements Serializable{
 
 
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((parent == null) ? 0 : parent.hashCode());
+		result = prime * result + ((state == null) ? 0 : state.hashCode());
+		result = prime * result + ((xpaths == null) ? 0 : xpaths.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OPlace other = (OPlace) obj;
+		if (parent == null) {
+			if (other.parent != null)
+				return false;
+		} else if (!parent.equals(other.parent))
+			return false;
+		if (state != other.state)
+			return false;
+		if (xpaths == null) {
+			if (other.xpaths != null)
+				return false;
+		} else if (!xpaths.equals(other.xpaths))
+			return false;
+		return true;
+	}
+
+
+
+
+
+
 	/**
 	 * 
 	 */

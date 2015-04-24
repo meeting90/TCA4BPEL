@@ -103,6 +103,7 @@ public class AspectDeploymentUnitDir {
 				try {
 					TCAO4BPELAspectCompiler compiler = new TCAO4BPELAspectCompiler(
 							processStore);
+					
 					OAspect oaspect = compiler.compileAspect(aspectFile, scope);
 
 					AspectSerializer serializer = new AspectSerializer();

@@ -15,7 +15,7 @@ import javax.xml.namespace.QName;
 public class OAspect implements Serializable{
 
 	private static final long serialVersionUID = -1028076817167548777L;
-	private QName processId;
+	private QName processName;
 	
 	private String targetNamespace;
 	private String aspectName;
@@ -25,12 +25,12 @@ public class OAspect implements Serializable{
 	private String scope;
 	List<String> skippedActivities=new ArrayList<String>();
 	
-	public QName getProcessId() {
-		return processId;
+	public QName getProcessName() {
+		return processName;
 	}
 
-	public void setProcessId(QName processId) {
-		this.processId = processId;
+	public void setProcessName(QName processName) {
+		this.processName = processName;
 	}
 
 	

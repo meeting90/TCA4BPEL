@@ -21,10 +21,10 @@ public class TimeLogBpelEventListener extends DebugBpelEventListener {
 
 	@Override
 	public void onEvent(BpelEvent bpelEvent) {
-		if(bpelEvent instanceof ProcessInstanceStartedEvent)
-			__log.info(bpelEvent.toString());
-		if(bpelEvent instanceof ProcessCompletionEvent)
-			__log.info(bpelEvent.toString());	
+		
+			//__log.info(bpelEvent.toString());
+			//__log.info(bpelEvent.getTimestamp().getTime());
+		
 	}
 
 }

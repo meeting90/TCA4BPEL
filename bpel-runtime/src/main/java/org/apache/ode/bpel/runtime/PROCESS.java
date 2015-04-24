@@ -20,9 +20,13 @@ package org.apache.ode.bpel.runtime;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.ode.bpel.evt.ProcessInstanceStartedEvent;
 import org.apache.ode.bpel.o.OBase;
 import org.apache.ode.bpel.o.OFailureHandling;
@@ -37,7 +41,9 @@ import org.apache.ode.jacob.ReceiveProcess;
 import org.apache.ode.jacob.Synch;
 import org.w3c.dom.Element;
 
+import cn.edu.nju.cs.tcao4bpel.o.OPlace;
 import cn.edu.nju.cs.tcao4bpel.runtime.ASPECT;
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectConditionStatus;
 import cn.edu.nju.cs.tcao4bpel.runtime.AspectFrame;
 import cn.edu.nju.cs.tcao4bpel.runtime.AspectInfo;
 import cn.edu.nju.cs.tcao4bpel.store.AspectConfImpl;
@@ -48,6 +54,8 @@ public class PROCESS extends BpelJacobRunnable {
     private static final long serialVersionUID = 1L;
     private OProcess _oprocess;
     private InstanceGlobals _globals;
+    
+    private static final Log __log = LogFactory.getLog(ASPECT.class);
 
     public PROCESS(OProcess process) {
         _oprocess = process;
@@ -119,11 +127,29 @@ public class PROCESS extends BpelJacobRunnable {
     //for create aspect instance of _oprocess
     public AspectFrame createAspects(ScopeFrame scopeFrame){
     	AspectStore aspectStore = AspectStoreImpl.getInstance();
+    	
     	Collection<AspectConfImpl> aspects= aspectStore.getAspects(_oprocess.getQName());
     	List<AspectInfo> aspectInfos =new ArrayList<AspectInfo>(); 
     	for(AspectConfImpl aspect: aspects){
+    		
     		AspectInfo aspectInfo = new AspectInfo(aspect.getOaspect());
-    		aspectInfos.add(new AspectInfo(aspect.getOaspect()));
+    		Map<OPlace, AspectConditionStatus> pres= new HashMap<OPlace, AspectConditionStatus>();
+    		Map<OPlace, AspectConditionStatus> posts= new HashMap<OPlace, AspectConditionStatus>();
+    		for(OPlace pre :aspect.getOaspect().getPointcut().getPreCondition().getPlaces()){
+    			AspectConditionStatus acs =newChannel(AspectConditionStatus.class);
+    			pres.put(pre, acs);
+    		}
+    		
+    		for(OPlace post :aspect.getOaspect().getPointcut().getPostCondition().getPlaces()){
+    			AspectConditionStatus acs=newChannel(AspectConditionStatus.class);
+    			posts.put(post, acs);
+    		}
+    		aspectInfo.setPreConditions(pres);
+    		aspectInfo.setPostConditions(posts);
+    		
+    		
+    		
+    		aspectInfos.add(aspectInfo);
     		instance(new ASPECT(aspectInfo, scopeFrame));
     	}
     	

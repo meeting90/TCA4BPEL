@@ -63,7 +63,11 @@ public class ASPECTWAPPER extends ACTIVITY{
 	
 	@Override
 	public void run() {
-		
+		if(_aspectFrame == null){ // aspect itself
+			
+			instance(createActivity(_self));
+			return;
+		}
 		Map<AspectInfo,OPlace> posts = new HashMap<AspectInfo,OPlace>();
 		for(AspectInfo aspectInfo: _aspectFrame.getAspectInfos()){
 			OPlace post= getRelatedPostContion(aspectInfo.oaspect);

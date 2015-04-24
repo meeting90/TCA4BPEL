@@ -156,9 +156,9 @@ public class AspectStoreImpl  implements AspectStore{
 	}
 
 	@Override
-	public boolean hasAspect(QName processId) {
+	public boolean hasAspect(QName processName) {
 		for(AspectConfImpl aspect: _aspects.values()){
-			if(aspect.getOaspect().getProcessId().equals(processId))
+			if(aspect.getOaspect().getProcessName().equals(processName))
 				return true;
 		}
 		return false;
@@ -173,10 +173,18 @@ public class AspectStoreImpl  implements AspectStore{
 
 
 	@Override
-	public Collection<AspectConfImpl> getAspects(QName processId) {
+	public Collection<AspectConfImpl> getAspects(QName processName) {
 		Collection<AspectConfImpl> aspects= new ArrayList<AspectConfImpl>();
 		for(AspectConfImpl aspect: _aspects.values()){
-			if(aspect.getOaspect().getProcessId().equals(processId))
+			String lvalue= aspect.getOaspect().getProcessName().toString();
+			String rvalue = processName.toString();
+			
+			_log.debug("lvalue:"+ lvalue);
+			_log.debug("rvalue:"+ rvalue);
+			
+			
+			
+			if(aspect.getOaspect().getProcessName().equals(processName))
 				aspects.add(aspect);
 		}
 		return aspects;

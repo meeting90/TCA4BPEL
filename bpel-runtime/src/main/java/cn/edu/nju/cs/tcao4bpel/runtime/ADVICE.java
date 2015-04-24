@@ -11,6 +11,7 @@ import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.ode.bpel.o.OProcess;
 import org.apache.ode.bpel.o.OScope;
 import org.apache.ode.bpel.runtime.ACTIVITY;
 import org.apache.ode.bpel.runtime.ActivityInfo;
@@ -27,6 +28,7 @@ import org.apache.ode.jacob.ReceiveProcess;
 import org.apache.ode.jacob.Synch;
 import org.w3c.dom.Element;
 
+import cn.edu.nju.cs.tcao4bpel.o.OAdvice;
 import cn.edu.nju.cs.tcao4bpel.o.OPlace;
 
 /**
@@ -40,10 +42,12 @@ public class ADVICE extends ACTIVITY{
 	
 	private Map<OPlace, Boolean> _preValues = new HashMap<OPlace, Boolean>();
 	private AspectInfo _aspectInfo;
+	private OAdvice oadvice;
 
 	public ADVICE(ActivityInfo activity, AspectInfo aspectInfo,ScopeFrame scopeFrame) {
 		super(activity, scopeFrame, new LinkFrame(null), null);
 		_aspectInfo = aspectInfo;
+	
 		
 	}
 
@@ -51,6 +55,7 @@ public class ADVICE extends ACTIVITY{
 	private static final long serialVersionUID = 4615544770314527519L;
 	@Override
 	public void run() {
+		__log.info("aspect is running!");
 		if(_preValues.values().contains(false)){
 			// one precondition is marked as false (cannot satisfied until the end) in the process instance
 			__log.info("aspect is skipped");
@@ -60,7 +65,6 @@ public class ADVICE extends ACTIVITY{
 		//all preconditions status are collected
 		if(_preValues.keySet().containsAll(_aspectInfo.preConditions.keySet())){
 			__log.info("aspect is triggered");
-			
 			ActivityInfo activity = new ActivityInfo(genMonotonic(),_self.o,_self.self, newChannel(ParentScope.class));
 			instance(createActivity(activity));
 			instance(new RELEASETOKENS(activity.parent));
@@ -84,11 +88,12 @@ public class ADVICE extends ACTIVITY{
 	
 					private static final long serialVersionUID = -5408047027722055895L;
 					
-				}.setChannel(_self.self).setReceiver(new AspectConditionStatus() {
+				}.setChannel(_aspectInfo.resolvePre(oplace)).setReceiver(new AspectConditionStatus() {
 					private static final long serialVersionUID = -6559678468467510951L;
 	
 					@Override
 					public void conditionStatus(boolean value) {
+						__log.debug("receive a value: {"+ oplace.toString() +"} -" + value);
 						_preValues.put(oplace, value);
 						instance(ADVICE.this);
 						

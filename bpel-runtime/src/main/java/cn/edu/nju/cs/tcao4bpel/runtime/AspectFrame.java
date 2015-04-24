@@ -35,6 +35,7 @@ public class AspectFrame implements Serializable{
 	}
 	
 	public Set<OPlace> getPreConditions(OAspect oaspect){
+		
 		return oaspect.getPointcut().getPreCondition().getPlaces();
 	}
 	

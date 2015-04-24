@@ -2,7 +2,9 @@ package cn.edu.nju.cs.tcao4bpel.alang;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -203,9 +205,8 @@ public class ActivityFunctionImpl implements ActivityFunction{
 			candidate.add(th.getActivity());
 		for(Activity activity : candidate){
 			Collection<Activity> allChildren= bfsChidrenActivities(activity);
-			for(Activity act: allChildren){
-				result.addAll(bfsChidrenActivities(act));
-			}
+			result.addAll(allChildren);
+		
 		}
 		_activities = result;
 		return _activities;
