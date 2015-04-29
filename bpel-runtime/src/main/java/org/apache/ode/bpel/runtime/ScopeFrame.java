@@ -82,6 +82,8 @@ public class ScopeFrame implements Serializable {
             ScopeFrame parent,
             Set<CompensationHandler> visibleCompensationHandlers) {
         this(scopeDef,scopeInstanceId,parent,visibleCompensationHandlers,parent.globals);
+        __log.debug("initial scopeFrame:");
+        __log.debug(this.toString());
     }
     
     public ScopeFrame( OScope scopeDef,
@@ -110,6 +112,7 @@ public class ScopeFrame implements Serializable {
     public VariableInstance resolve(OScope.Variable variable) {
         ScopeFrame scopeFrame = find(variable.declaringScope);
         if (scopeFrame == null) return null;
+        __log.debug(scopeFrame.toString());
         return new VariableInstance(scopeFrame.scopeInstanceId, variable);
     }
 

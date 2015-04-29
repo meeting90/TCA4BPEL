@@ -21,10 +21,7 @@ public class TimeLogBpelEventListener extends DebugBpelEventListener {
 
 	@Override
 	public void onEvent(BpelEvent bpelEvent) {
-		
-			//__log.info(bpelEvent.toString());
-			//__log.info(bpelEvent.getTimestamp().getTime());
-		
+		__log.info(bpelEvent.toString() +"\n\ttimestamp = " + bpelEvent.getTimestamp().getTime());
 	}
 
 }

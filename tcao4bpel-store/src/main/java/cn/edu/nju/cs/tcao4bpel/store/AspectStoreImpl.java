@@ -48,52 +48,64 @@ public class AspectStoreImpl  implements AspectStore{
 	public static AspectStore getInstance(){
 		return INSTANCE;
 	}
+
 	@Override
 	public Collection<QName> deployAspect(File deploymentUnitdir, String scope,
 			ProcessStore processStore) {
 		_log.debug("Deploying Aspect package: " + deploymentUnitdir.getName());
 		final Date deployDate = new Date();
-		final AspectDeploymentUnitDir du = new AspectDeploymentUnitDir(deploymentUnitdir);
-		try{
+		final AspectDeploymentUnitDir du = new AspectDeploymentUnitDir(
+				deploymentUnitdir);
+		try {
 			_log.debug("Compiling deployment unit");
 			du.compile(scope, processStore);
-		}catch(CompilationException ce){
+		} catch (CompilationException ce) {
 			String errmsg = _msgs.msgDeployFailCompileErrors(ce);
-			_log.error(errmsg,ce);
-			throw new ContextException(errmsg,ce);
-			
+			_log.error(errmsg, ce);
+			throw new ContextException(errmsg, ce);
+
 		}
 		_log.debug("Scanning for compiled aspects");
 		du.scan();
 		final DeployAspectDocument dd = du.getDeplymentDescriptor();
 		final ArrayList<AspectConfImpl> aspects = new ArrayList<AspectConfImpl>();
-		if(_deploymentUnits.containsKey(du.getName())){
+		if (_deploymentUnits.containsKey(du.getName())) {
 			String errmsg = _msgs.msgDeployFailDuplicateDU(du.getName());
 			_log.error(errmsg);
 			throw new ContextException(errmsg);
 		}
-		_log.debug("deploying aspects defined in DD: " + dd.getDeployAspect().getAspectArray() );
-		for(TDeploymentAspect.Aspect aspectDD: dd.getDeployAspect().getAspectArray()){
+		_log.debug("deploying aspects defined in DD: "
+				+ dd.getDeployAspect().getAspectArray());
+		for (TDeploymentAspect.Aspect aspectDD : dd.getDeployAspect()
+				.getAspectArray()) {
 			QName aid = aspectDD.getName();
-			if(_aspects.containsKey(aid)){
-				String errmsg= _msgs.msgDeployFailDuplicatePID(aid, du.getName());
+			if (_aspects.containsKey(aid)) {
+				String errmsg = _msgs.msgDeployFailDuplicatePID(aid,
+						du.getName());
 				_log.error(errmsg);
 				throw new ContextException(errmsg);
 			}
 			CBAInfo cbaInfo = du.getCBAInfo(aid);
-			if(cbaInfo == null){
-				String errmsg = _msgs.msgDeployFailedProcessNotFound(aspectDD.getName(), du.getName());
+			if (cbaInfo == null) {
+				String errmsg = _msgs.msgDeployFailedProcessNotFound(
+						aspectDD.getName(), du.getName());
 				_log.error(errmsg);
 				throw new ContextException(errmsg);
 			}
 			OAspect oaspect = du.getAspect(aid);
-			AspectConfImpl aconf= new AspectConfImpl(aid, aspectDD.getName(), du, aspectDD, deployDate, oaspect);
+			AspectConfImpl aconf = new AspectConfImpl(aid, aspectDD.getName(),
+					du, aspectDD, deployDate, oaspect);
 			aspects.add(aconf);
 		}
 		_deploymentUnits.put(du.getName(), du);
-		for(AspectConfImpl aspect: aspects){
-			_log.info("Aspect deployed succcessfully : " + du.getDeployDir() + ","  + aspect.get_aid());
+		for (AspectConfImpl aspect : aspects) {
+			_log.info("Aspect deployed succcessfully : " + du.getDeployDir()
+					+ "," + aspect.get_aid());
 			_aspects.put(aspect.get_aid(), aspect);
+
+			fireEvent(new AspectStoreEvent(AspectStoreEvent.Type.DEPLOYED,
+					aspect.get_aid(), du.getName()));
+
 		}
 		return _aspects.keySet();
 	}

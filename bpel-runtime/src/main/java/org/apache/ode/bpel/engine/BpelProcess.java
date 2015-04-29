@@ -21,6 +21,7 @@ package org.apache.ode.bpel.engine;
 import java.io.InputStream;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -88,13 +89,23 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
+import sun.swing.SwingUtilities2.Section;
+
+import cn.edu.nju.cs.tcao4bpel.o.OAspect;
+import cn.edu.nju.cs.tcao4bpel.runtime.AspectInfo;
+import cn.edu.nju.cs.tcao4bpel.store.AspectConfImpl;
+import cn.edu.nju.cs.tcao4bpel.store.AspectStore;
+import cn.edu.nju.cs.tcao4bpel.store.AspectStoreEvent;
+import cn.edu.nju.cs.tcao4bpel.store.AspectStoreImpl;
+import cn.edu.nju.cs.tcao4bpel.store.AspectStoreListener;
+
 /**
  * Entry point into the runtime of a BPEL process.
  *
  * @author mszefler
  * @author Matthieu Riou <mriou at apache dot org>
  */
-public class BpelProcess {
+public class BpelProcess implements AspectStoreListener{
     static final Log __log = LogFactory.getLog(BpelProcess.class);
 
     private static final Messages __msgs = MessageBundle.getMessages(Messages.class);
@@ -129,6 +140,8 @@ public class BpelProcess {
     ExpressionLanguageRuntimeRegistry _expLangRuntimeRegistry;
     private ReplacementMap _replacementMap;
     final ProcessConf _pconf;
+    
+   
 
     /** {@link MessageExchangeInterceptor}s registered for this process. */
     private final List<MessageExchangeInterceptor> _mexInterceptors = new ArrayList<MessageExchangeInterceptor>();
@@ -153,6 +166,7 @@ public class BpelProcess {
         _pid = conf.getProcessId();
         _pconf = conf;
         _hydrationLatch = new HydrationLatch();
+        AspectStoreImpl.getInstance().registerListener(this);
     }
 
 
@@ -174,6 +188,44 @@ public class BpelProcess {
         List<Element> conf = _pconf.getExtensionElement(ExternalVariableConf.EXTVARCONF_ELEMENT);
         _extVarConf = new ExternalVariableConf(conf);
         _evm = new ExternalVariableManager(_pid, _extVarConf, _engine._contexts.externalVariableEngines, _oprocess);
+    }
+    
+    void initPartnerLinks(boolean forceInit){
+    	if (!_hydratedOnce || forceInit) {
+            for (PartnerLinkPartnerRoleImpl prole : _partnerRoles.values()) {
+                // Null for initializePartnerRole = false
+                if (prole._initialPartner != null) {
+                    PartnerRoleChannel channel = _engine._contexts.bindingContext.createPartnerRoleChannel(_pid,
+                            prole._plinkDef.partnerRolePortType, prole._initialPartner);
+                    prole._channel = channel;
+                    _partnerChannels.put(prole._initialPartner, prole._channel);
+                    EndpointReference epr = channel.getInitialEndpointReference();
+                    if (epr != null) {
+                        prole._initialEPR = epr;
+                        _partnerEprs.put(prole._initialPartner, epr);
+                    }
+                    if (__log.isDebugEnabled()) {
+                        __log.debug("Activated " + _pid + " partnerrole " + prole.getPartnerLinkName() + ": EPR is "
+                                + prole._initialEPR);
+                    }
+                          
+                }
+            }
+            _engine.setProcessSize(_pid, true);
+            _hydratedOnce = true;
+        }
+
+        for (PartnerLinkMyRoleImpl myrole : _myRoles.values()) {
+            myrole._initialEPR = _myEprs.get(myrole._endpoint);
+        }
+
+        for (PartnerLinkPartnerRoleImpl prole : _partnerRoles.values()) {
+            prole._channel = _partnerChannels.get(prole._initialPartner);
+            if (_partnerEprs.get(prole._initialPartner) != null) {
+                prole._initialEPR = _partnerEprs.get(prole._initialPartner);
+            }
+        }
+    	
     }
 
 
@@ -549,8 +601,24 @@ public class BpelProcess {
                 _partnerRoles.put(pl, partnerRole);
             }
         }
-    }
+        
+        Collection<AspectConfImpl> aspectConfs= AspectStoreImpl.getInstance().getAspects();
+        for(AspectConfImpl aspectConf: aspectConfs){
+        	for(OPartnerLink pl: aspectConf.getOaspect().getAdvice().getAllPartnerLinks()){
+        		if(pl.hasPartnerRole()){
+        			Endpoint endpoint = aspectConf.getInvokeEndpoints().get(pl.getName());
+        			 if (endpoint == null && pl.initializePartnerRole)
+                         throw new IllegalArgumentException(pl.getName() + " must be bound to an endpoint in deploy.xml");
+                     PartnerLinkPartnerRoleImpl partnerRole = new PartnerLinkPartnerRoleImpl(this, pl, endpoint);
+                     _partnerRoles.put(pl, partnerRole);
+        		}
+        	}
+        }
 
+    }
+    
+  
+   
     public ProcessDAO getProcessDAO() {
         return _pconf.isTransient() ? _engine._contexts.inMemDao.getConnection().getProcess(_pid) : getEngine()._contexts.dao
                 .getConnection().getProcess(_pid);
@@ -670,6 +738,7 @@ public class BpelProcess {
             _hydrationLatch.release(1);
         }
     }
+    
 
     protected Endpoint getInitialPartnerRoleEndpoint(OPartnerLink link) {
         try {
@@ -922,40 +991,7 @@ public class BpelProcess {
             setRoles(_oprocess);
             initExternalVariables();
 
-            if (!_hydratedOnce) {
-                for (PartnerLinkPartnerRoleImpl prole : _partnerRoles.values()) {
-                    // Null for initializePartnerRole = false
-                    if (prole._initialPartner != null) {
-                        PartnerRoleChannel channel = _engine._contexts.bindingContext.createPartnerRoleChannel(_pid,
-                                prole._plinkDef.partnerRolePortType, prole._initialPartner);
-                        prole._channel = channel;
-                        _partnerChannels.put(prole._initialPartner, prole._channel);
-                        EndpointReference epr = channel.getInitialEndpointReference();
-                        if (epr != null) {
-                            prole._initialEPR = epr;
-                            _partnerEprs.put(prole._initialPartner, epr);
-                        }
-                        if (__log.isDebugEnabled()) {
-                            __log.debug("Activated " + _pid + " partnerrole " + prole.getPartnerLinkName() + ": EPR is "
-                                    + prole._initialEPR);
-                        }
-                              
-                    }
-                }
-                _engine.setProcessSize(_pid, true);
-                _hydratedOnce = true;
-            }
-
-            for (PartnerLinkMyRoleImpl myrole : _myRoles.values()) {
-                myrole._initialEPR = _myEprs.get(myrole._endpoint);
-            }
-
-            for (PartnerLinkPartnerRoleImpl prole : _partnerRoles.values()) {
-                prole._channel = _partnerChannels.get(prole._initialPartner);
-                if (_partnerEprs.get(prole._initialPartner) != null) {
-                    prole._initialEPR = _partnerEprs.get(prole._initialPartner);
-                }
-            }
+            initPartnerLinks(false);
 
             /*
              * If necessary, create an object in the data store to represent the process. We'll re-use an existing object if it already
@@ -1238,5 +1274,19 @@ public class BpelProcess {
             //mex.release(_bpelProcess.isCleanupCategoryEnabled(m.getStatus() == MessageExchange.Status.RESPONSE, CLEANUP_CATEGORY.MESSAGES));
         }
     }
+
+
+	/* (non-Javadoc)
+	 * @see cn.edu.nju.cs.tcao4bpel.store.AspectStoreListener#onApsectStoreEvent(cn.edu.nju.cs.tcao4bpel.store.AspectStoreEvent)
+	 */
+	@Override
+	public void onApsectStoreEvent(AspectStoreEvent event) {
+		setRoles(_oprocess);
+		initPartnerLinks(true);
+		
+	}
+
+
+	
     
 }

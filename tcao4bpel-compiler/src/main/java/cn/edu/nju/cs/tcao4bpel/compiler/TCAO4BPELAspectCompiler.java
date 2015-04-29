@@ -171,6 +171,7 @@ public class TCAO4BPELAspectCompiler extends BpelCompiler20{
 		OPointcut pointcut = compile(aspect.getPointcut());
 		oaspect.setPointcut(pointcut);
 		Advice advice = aspect.getAdvice();
+		
 		OAdvice oadvice =  compile(advice, compiledProcess, rf, getVersion(aspectFile.getParent()));
 		oaspect.setAdvice(oadvice);
 		
@@ -334,6 +335,15 @@ public class TCAO4BPELAspectCompiler extends BpelCompiler20{
                 __log.debug("Compiled process digest: " + digest + "\nguid: " + _oprocess.guid);
             }
         }
+        
+        //remove variable declared in base process
+        for(String variableName: compiledProcess.procesScope.variables.keySet()){
+        	_oprocess.procesScope.variables.remove(variableName);
+        }
+        for(OScope.Variable variable: _oprocess.procesScope.variables.values()){
+        	__log.debug("variables in oadvice:"+ variable);
+        }
+        
         return (OAdvice)_oprocess;
     }
 

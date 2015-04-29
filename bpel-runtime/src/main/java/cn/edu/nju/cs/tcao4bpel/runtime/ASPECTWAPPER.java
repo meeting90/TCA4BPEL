@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.ode.bpel.evt.ActivityAspectDetectEvent;
 import org.apache.ode.bpel.o.OActivity;
 import org.apache.ode.bpel.runtime.ACTIVITY;
 import org.apache.ode.bpel.runtime.ActivityInfo;
@@ -18,7 +19,6 @@ import org.apache.ode.bpel.runtime.LinkFrame;
 import org.apache.ode.bpel.runtime.ScopeFrame;
 import org.apache.ode.bpel.runtime.channels.Termination;
 import org.apache.ode.jacob.CompositeProcess;
-import org.apache.ode.jacob.JacobRunnable;
 import org.apache.ode.jacob.ReceiveProcess;
 
 import cn.edu.nju.cs.tcao4bpel.o.OAspect;
@@ -37,6 +37,9 @@ public class ASPECTWAPPER extends ACTIVITY{
 	AspectFrame _aspectFrame;
 	OActivity _oactivity;
 	
+	ActivityInfo _self;
+	
+	
 	
 	
 	
@@ -49,6 +52,7 @@ public class ASPECTWAPPER extends ACTIVITY{
 		super(self, scopeFrame, linkFrame, aspectFrame);
 		_aspectFrame = aspectFrame;
 		_oactivity = self.o;
+		this._self= self;
 	}
 	
 	
@@ -63,6 +67,8 @@ public class ASPECTWAPPER extends ACTIVITY{
 	
 	@Override
 	public void run() {
+		
+		sendEvent(new ActivityAspectDetectEvent());
 		if(_aspectFrame == null){ // aspect itself
 			
 			instance(createActivity(_self));

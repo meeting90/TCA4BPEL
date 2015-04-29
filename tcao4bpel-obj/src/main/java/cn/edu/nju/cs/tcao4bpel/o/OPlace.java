@@ -3,8 +3,6 @@ package cn.edu.nju.cs.tcao4bpel.o;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.ode.bpel.o.OActivity;
 /**
  * 
  * @author Mingzhu Yuan @ cs.nju.edu.cn

@@ -33,7 +33,7 @@
   <bpel:sequence name="main">
     <bpel:receive createInstance="yes" name="receiveInput" operation="travelOrder" partnerLink="client" portType="tns:Travel" variable="input"/>
     <bpel:sequence name="retrieveCustomerInfoWrapper">
-      <bpel:assign>
+      <bpel:assign name="prepareCustomerInput">
         <bpel:copy>
           <bpel:to part="parameters" variable="userRequest"/>
           <bpel:from>
@@ -115,7 +115,7 @@
           </bpel:assign>
           <bpel:invoke inputVariable="searchFlightRequest" name="searchFlight" operation="searchFlight" outputVariable="searchFlightResponse" partnerLink="flight"/>
         </bpel:sequence>
-        <bpel:sequence>
+        <bpel:sequence name="selectFlightWrapper">
           <bpel:assign name="prepareSelectFlightInput">
             <bpel:copy>
               <bpel:from>
@@ -236,7 +236,7 @@
           </bpel:assign>
           <bpel:invoke inputVariable="searchHotelRequest" name="searchHotel" operation="searchHotel" outputVariable="searchHotelResponse" partnerLink="hotel"/>
         </bpel:sequence>
-        <bpel:sequence>
+        <bpel:sequence name="selectHotelWrapper">
           <bpel:assign name="prepareSelectHotelInput">
             <bpel:copy>
               <bpel:from>

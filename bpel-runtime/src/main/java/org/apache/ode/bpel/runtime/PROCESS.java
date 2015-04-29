@@ -41,6 +41,7 @@ import org.apache.ode.jacob.ReceiveProcess;
 import org.apache.ode.jacob.Synch;
 import org.w3c.dom.Element;
 
+import cn.edu.nju.cs.tcao4bpel.o.OAdvice;
 import cn.edu.nju.cs.tcao4bpel.o.OPlace;
 import cn.edu.nju.cs.tcao4bpel.runtime.ASPECT;
 import cn.edu.nju.cs.tcao4bpel.runtime.AspectConditionStatus;
@@ -55,7 +56,9 @@ public class PROCESS extends BpelJacobRunnable {
     private OProcess _oprocess;
     private InstanceGlobals _globals;
     
-    private static final Log __log = LogFactory.getLog(ASPECT.class);
+    private List<AspectInfo> _aspectInfos;
+    
+    
 
     public PROCESS(OProcess process) {
         _oprocess = process;
@@ -125,11 +128,11 @@ public class PROCESS extends BpelJacobRunnable {
 
 
     //for create aspect instance of _oprocess
-    public AspectFrame createAspects(ScopeFrame scopeFrame){
+    private AspectFrame createAspects(ScopeFrame scopeFrame){
     	AspectStore aspectStore = AspectStoreImpl.getInstance();
     	
     	Collection<AspectConfImpl> aspects= aspectStore.getAspects(_oprocess.getQName());
-    	List<AspectInfo> aspectInfos =new ArrayList<AspectInfo>(); 
+    	_aspectInfos =new ArrayList<AspectInfo>(); 
     	for(AspectConfImpl aspect: aspects){
     		
     		AspectInfo aspectInfo = new AspectInfo(aspect.getOaspect());
@@ -149,11 +152,20 @@ public class PROCESS extends BpelJacobRunnable {
     		
     		
     		
-    		aspectInfos.add(aspectInfo);
-    		instance(new ASPECT(aspectInfo, scopeFrame));
+    		_aspectInfos.add(aspectInfo);
+    		
+    	 
+	      
+	        ActivityInfo child = new ActivityInfo(genMonotonic(),
+	        		aspect.getOaspect().getAdvice().procesScope,
+	            newChannel(Termination.class), newChannel(ParentScope.class));
+	      
+	    
+			
+    		instance(new ASPECT(child, scopeFrame, new LinkFrame(null), null, aspectInfo));
     	}
     	
-    	AspectFrame aspectFrame =new AspectFrame(aspectInfos);
+    	AspectFrame aspectFrame =new AspectFrame(_aspectInfos);
     	return aspectFrame;
     }
 }

@@ -7,8 +7,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.ode.bpel.runtime.channels.LinkStatus;
-
 import cn.edu.nju.cs.tcao4bpel.o.OAspect;
 import cn.edu.nju.cs.tcao4bpel.o.OPlace;
 
@@ -26,10 +24,24 @@ public class AspectInfo implements Serializable{
 	Map<OPlace, AspectConditionStatus> postConditions= new HashMap<OPlace, AspectConditionStatus>();
 	Map<OPlace, AspectConditionStatus> preConditions = new HashMap<OPlace, AspectConditionStatus>();
 
-	
+	public AspectInfo(){
+		
+	}
 	public AspectInfo(OAspect oaspect){
 		this.oaspect = oaspect;
 		
+	}
+	public OAspect getOaspect() {
+		return oaspect;
+	}
+	public void setOaspect(OAspect oaspect) {
+		this.oaspect = oaspect;
+	}
+	public Map<OPlace, AspectConditionStatus> getPostConditions() {
+		return postConditions;
+	}
+	public Map<OPlace, AspectConditionStatus> getPreConditions() {
+		return preConditions;
 	}
 	public AspectConditionStatus resolvePre(OPlace place){
 		
