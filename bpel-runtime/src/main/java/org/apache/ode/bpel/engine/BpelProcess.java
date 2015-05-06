@@ -602,18 +602,7 @@ public class BpelProcess implements AspectStoreListener{
             }
         }
         
-        Collection<AspectConfImpl> aspectConfs= AspectStoreImpl.getInstance().getAspects();
-        for(AspectConfImpl aspectConf: aspectConfs){
-        	for(OPartnerLink pl: aspectConf.getOaspect().getAdvice().getAllPartnerLinks()){
-        		if(pl.hasPartnerRole()){
-        			Endpoint endpoint = aspectConf.getInvokeEndpoints().get(pl.getName());
-        			 if (endpoint == null && pl.initializePartnerRole)
-                         throw new IllegalArgumentException(pl.getName() + " must be bound to an endpoint in deploy.xml");
-                     PartnerLinkPartnerRoleImpl partnerRole = new PartnerLinkPartnerRoleImpl(this, pl, endpoint);
-                     _partnerRoles.put(pl, partnerRole);
-        		}
-        	}
-        }
+        
 
     }
     
@@ -1281,11 +1270,27 @@ public class BpelProcess implements AspectStoreListener{
 	 */
 	@Override
 	public void onApsectStoreEvent(AspectStoreEvent event) {
-		setRoles(_oprocess);
+		// add partnerlinks of aspects.
+		int childCount = _oprocess.getChildren().size();
+		Collection<AspectConfImpl> aspectConfs= AspectStoreImpl.getInstance().getAspects(_oprocess.getQName());
+	    for(AspectConfImpl aspectConf: aspectConfs){
+	    	for(OPartnerLink pl: aspectConf.getOaspect().getAdvice().getAllPartnerLinks()){
+	    		if(pl.hasPartnerRole()){
+	    			Endpoint endpoint = aspectConf.getInvokeEndpoints().get(pl.getName());
+	    			 if (endpoint == null && pl.initializePartnerRole)
+	                     throw new IllegalArgumentException(pl.getName() + " must be bound to an endpoint in deploy.xml");
+	                 PartnerLinkPartnerRoleImpl partnerRole = new PartnerLinkPartnerRoleImpl(this, pl, endpoint);
+	                 _partnerRoles.put(pl, partnerRole);
+	    		}
+	    	}
+	    }
+	    
 		initPartnerLinks(true);
 		
+		
 	}
-
+	
+	
 
 	
     

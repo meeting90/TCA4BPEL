@@ -28,11 +28,11 @@ import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ode.bpel.common.FaultException;
+import org.apache.ode.bpel.evt.ActivityDisabledEvent;
 import org.apache.ode.bpel.evt.ActivityEnabledEvent;
 import org.apache.ode.bpel.evt.ActivityExecEndEvent;
 import org.apache.ode.bpel.evt.ActivityExecStartEvent;
 import org.apache.ode.bpel.evt.ActivityFailureEvent;
-import org.apache.ode.bpel.evt.ActivityFinishedEvent;
 import org.apache.ode.bpel.evt.ActivityRecoveryEvent;
 import org.apache.ode.bpel.explang.EvaluationException;
 import org.apache.ode.bpel.o.OActivity;
@@ -105,7 +105,8 @@ public class ACTIVITYGUARD extends ACTIVITY {
                     fault = createFault(_oactivity.getOwner().constants.qnJoinFailure,_oactivity);
                     _self.parent.completed(fault, CompensationHandler.emptySet());
                 }
-
+                ActivityDisabledEvent event = new ActivityDisabledEvent();
+                sendEvent(event);
                 // Dead path activity.
                 dpe(_oactivity);
             }

@@ -65,7 +65,7 @@ public class OProcess extends OBase {
     /** Date process was compiled. */
     public Date compileDate;
 
-    int _childIdCounter = 0;
+    protected int _childIdCounter = 0;
 
     List<OBase> _children = new ArrayList<OBase>();
 
@@ -82,9 +82,12 @@ public class OProcess extends OBase {
     public NSContext namespaceContext = null;
     
     public OProcess(String bpelVersion) {
-        super(null);
-        this.version = bpelVersion;
-        instanceCount++;
+       this(bpelVersion, null);
+    }
+    public OProcess(String bpelVersion, OProcess base){
+    	super(base);
+    	this.version=bpelVersion;
+    	instanceCount++;
     }
 
     public OBase getChild(final int id) {

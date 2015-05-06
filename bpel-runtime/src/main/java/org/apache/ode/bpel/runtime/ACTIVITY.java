@@ -145,8 +145,8 @@ public abstract class ACTIVITY extends BpelJacobRunnable implements IndexedObjec
         // TODO: register listeners for target / incoming links
         
         //send activity disabled event
-        ActivityDisabledEvent event =new  ActivityDisabledEvent();
-        sendEvent(event);
+        //ActivityDisabledEvent event =new  ActivityDisabledEvent();
+        //sendEvent(event);
     }
 
     protected EvaluationContext getEvaluationContext() {

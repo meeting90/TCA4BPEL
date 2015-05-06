@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.script.CompiledScript;
 import javax.xml.namespace.QName;
 
 import org.apache.commons.logging.Log;
@@ -25,8 +24,6 @@ import org.apache.ode.bpel.compiler.bom.Activity;
 import org.apache.ode.bpel.compiler.bom.Bpel11QNames;
 import org.apache.ode.bpel.compiler.bom.Bpel20QNames;
 import org.apache.ode.bpel.compiler.bom.Import;
-import org.apache.ode.bpel.compiler.bom.PartnerLink;
-import org.apache.ode.bpel.compiler.bom.PartnerLinkType;
 import org.apache.ode.bpel.compiler.bom.Property;
 import org.apache.ode.bpel.compiler.bom.PropertyAlias;
 import org.apache.ode.bpel.compiler.wsdl.Definition4BPEL;
@@ -44,8 +41,6 @@ import org.apache.ode.utils.xsl.XslTransformHandler;
 import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-
-import com.sun.org.apache.xpath.internal.operations.Variable;
 
 import cn.edu.nju.cs.tcao4bpel.compiler.bom.Advice;
 import cn.edu.nju.cs.tcao4bpel.compiler.bom.Aspect;
@@ -272,7 +267,7 @@ public class TCAO4BPELAspectCompiler extends BpelCompiler20{
         }
 
         OScope procesScope = new OScope(_oprocess, null);
-        procesScope.name = "__PROCESS_SCOPE:" + advice.getName();
+        procesScope.name = "__ASPECT_SCOPE:" + advice.getName();
         procesScope.debugInfo = createDebugInfo(advice, null);   
         _oprocess.procesScope = compileScope(procesScope, advice, new Runnable() {
             public void run() {

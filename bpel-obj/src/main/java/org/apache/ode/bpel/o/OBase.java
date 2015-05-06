@@ -29,10 +29,14 @@ public class OBase implements Serializable {
     static final long serialVersionUID = -1L  ;
 
     /** Our identifier, in terms of our parent. */
-    private final int       _id;
+    private  int       _id;
     private final OProcess  _owner;
 
     public DebugInfo debugInfo;
+    
+    public void resetId(int newId){
+    	_id= newId;
+    }
 
     protected OBase(OProcess owner) {
         _owner = owner;
