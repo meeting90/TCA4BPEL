@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.ode.bpel.evt.ActivityAspectDetectEvent;
+import org.apache.ode.bpel.evt.ActivityExecStartEvent;
 import org.apache.ode.bpel.o.OActivity;
 import org.apache.ode.bpel.runtime.ACTIVITY;
 import org.apache.ode.bpel.runtime.ActivityInfo;
@@ -38,6 +39,7 @@ public class ASPECTWAPPER extends ACTIVITY{
 	OActivity _oactivity;
 	
 	ActivityInfo _self;
+	boolean _firstTime =true;
 	
 	
 	
@@ -67,10 +69,13 @@ public class ASPECTWAPPER extends ACTIVITY{
 	
 	@Override
 	public void run() {
-		
-		sendEvent(new ActivityAspectDetectEvent());
+		if(_firstTime){
+			sendEvent(new ActivityAspectDetectEvent());
+			_firstTime=false;
+		}
 		if(_aspectFrame == null){ // aspect itself
-			
+			 ActivityExecStartEvent aese = new ActivityExecStartEvent();
+             sendEvent(aese);
 			instance(createActivity(_self));
 			return;
 		}
@@ -82,12 +87,16 @@ public class ASPECTWAPPER extends ACTIVITY{
 			
 		}
 		if(posts.isEmpty()){//ready state of this activity is not related to the aspect; no need to wait 
-			 instance(createActivity(_self));
+			 ActivityExecStartEvent aese = new ActivityExecStartEvent();
+             sendEvent(aese); 
+			instance(createActivity(_self));
 		}
 		else{ 
 			if(_postValues.keySet().containsAll(posts.values())){  
 				//check for all aspect if postcondition satisfied, 
 				//if yes continue running the activity ,else block until all postcondition satisfied
+				 ActivityExecStartEvent aese = new ActivityExecStartEvent();
+	             sendEvent(aese);
 				instance(createActivity(_self));
 			}else{  
 				// continue wait  

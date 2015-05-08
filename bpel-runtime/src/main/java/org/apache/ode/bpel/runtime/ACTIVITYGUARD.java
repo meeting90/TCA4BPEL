@@ -88,8 +88,7 @@ public class ACTIVITYGUARD extends ACTIVITY {
 
         if (_linkVals.keySet().containsAll(_oactivity.targetLinks)) {
             if (evaluateJoinCondition()) {
-                ActivityExecStartEvent aese = new ActivityExecStartEvent();
-                sendEvent(aese);
+               
                 // intercept completion channel in order to execute transition conditions.
                 ActivityInfo activity = new ActivityInfo(genMonotonic(),_self.o,_self.self, newChannel(ParentScope.class));
                 //instance(createActivity(activity));

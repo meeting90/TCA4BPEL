@@ -1271,10 +1271,11 @@ public class BpelProcess implements AspectStoreListener{
 	@Override
 	public void onApsectStoreEvent(AspectStoreEvent event) {
 		// add partnerlinks of aspects.
-		int childCount = _oprocess.getChildren().size();
+		
 		Collection<AspectConfImpl> aspectConfs= AspectStoreImpl.getInstance().getAspects(_oprocess.getQName());
 	    for(AspectConfImpl aspectConf: aspectConfs){
 	    	for(OPartnerLink pl: aspectConf.getOaspect().getAdvice().getAllPartnerLinks()){
+	    		_oprocess.allPartnerLinks.add(pl);
 	    		if(pl.hasPartnerRole()){
 	    			Endpoint endpoint = aspectConf.getInvokeEndpoints().get(pl.getName());
 	    			 if (endpoint == null && pl.initializePartnerRole)

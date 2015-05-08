@@ -60,6 +60,7 @@ import org.apache.ode.bpel.intercept.InterceptorInvoker;
 import org.apache.ode.bpel.intercept.MessageExchangeInterceptor;
 import org.apache.ode.bpel.intercept.ProcessCountThrottler;
 import org.apache.ode.bpel.intercept.ProcessSizeThrottler;
+import org.apache.ode.bpel.o.OBase;
 import org.apache.ode.bpel.o.OConstants;
 import org.apache.ode.bpel.o.OPartnerLink;
 import org.apache.ode.bpel.o.OProcess;
@@ -238,7 +239,15 @@ public class BpelEngineImpl implements BpelEngine {
                 throw new BpelEngineException(errmsg);
             }
             {
-                OPartnerLink plink = (OPartnerLink) process.getOProcess().getChild(mexdao.getPartnerLinkModelId());
+               
+            	String plname = mexdao.getPartnerLink().getPartnerLinkName();
+                OPartnerLink plink =null; 
+            	OBase obase = process.getOProcess().getChild(mexdao.getPartnerLinkModelId());
+            	if(obase instanceof OPartnerLink)
+            		plink = (OPartnerLink) obase;
+            	else
+            		plink = process.getOProcess().getPartnerLink(plname);
+            		
                 PortType ptype = plink.partnerRolePortType;
                 Operation op = plink.getPartnerRoleOperation(mexdao.getOperation());
                 // TODO: recover Partner's EPR
