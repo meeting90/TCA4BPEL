@@ -146,7 +146,7 @@
   </extensions>
   <extensions>
     <extendedObject href="Travel.bpel#/"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1430123779000"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1431157047000"/>
   </extensions>
   <extensions>
     <extendedObject href="Travel.bpel#//@variables/@children.10"/>

@@ -92,6 +92,7 @@ public class ACTIVITYGUARD extends ACTIVITY {
                 // intercept completion channel in order to execute transition conditions.
                 ActivityInfo activity = new ActivityInfo(genMonotonic(),_self.o,_self.self, newChannel(ParentScope.class));
                 //instance(createActivity(activity));
+                sendEvent(new ActivityExecStartEvent());
                 instance(createAspectWapper(activity));
                 instance(new TCONDINTERCEPT(activity.parent));
             } else {

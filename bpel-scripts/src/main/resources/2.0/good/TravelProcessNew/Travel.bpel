@@ -31,7 +31,7 @@
     <bpel:variable messageType="flight:selectFlightResponse" name="selectFlightResponse"/>
   </bpel:variables>
   <bpel:sequence name="main">
-    <bpel:receive createInstance="yes" name="receiveInput" operation="travelOrder" partnerLink="client" portType="tns:Travel" variable="input"/>
+    <bpel:receive createInstance="yes" name="receiveCustomerRequest" operation="travelOrder" partnerLink="client" portType="tns:Travel" variable="input"/>
     <bpel:sequence name="retrieveCustomerInfoWrapper">
       <bpel:assign name="prepareCustomerInput">
         <bpel:copy>
@@ -339,7 +339,7 @@
           <bpel:to>$output.payload/tns:hotelInfo</bpel:to>
         </bpel:copy>
       </bpel:assign>
-      <bpel:reply name="replyTravelOrder" operation="travelOrder" partnerLink="client" variable="output"/>
+      <bpel:reply name="reply" operation="travelOrder" partnerLink="client" variable="output"/>
     </bpel:sequence>
   </bpel:sequence>
 </bpel:process>
